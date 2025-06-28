@@ -118,6 +118,129 @@
         </div>
     </section>
 
+        <!-- Preventivatore Online -->
+    <section id="preventivo" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                    <i class="fas fa-calculator mr-3"></i>Preventivatore Online
+                </h2>
+                <p class="text-xl text-gray-600">Calcola subito il costo del tuo intervento</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-xl card-shadow p-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Form Preventivo -->
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fas fa-exclamation-triangle mr-2 text-red-500"></i>Tipo di Problema
+                                </label>
+                                <select id="problemType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculatePrice()">
+                                    <option value="">Seleziona il problema...</option>
+                                    <option value="macchie-sangue" data-price="80">Macchie di Sangue</option>
+                                    <option value="macchie-urina" data-price="90">Macchie di Urina</option>
+                                    <option value="vomito" data-price="100">Vomito</option>
+                                    <option value="pelo-animale" data-price="60">Pelo di Animale</option>
+                                    <option value="cattivi-odori" data-price="70">Cattivi Odori</option>
+                                    <option value="macchie-cibo" data-price="50">Macchie di Cibo/Bevande</option>
+                                    <option value="fumo-sigarette" data-price="85">Odore di Fumo/Sigarette</option>
+                                    <option value="muffa-umidita" data-price="95">Muffa/Umidità</option>
+                                    <option value="inchiostro-vernice" data-price="75">Inchiostro/Vernice</option>
+                                    <option value="altro" data-price="65">Altro Problema</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fas fa-car mr-2 text-blue-500"></i>Tipo di Veicolo
+                                </label>
+                                <select id="vehicleType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculatePrice()">
+                                    <option value="">Seleziona il veicolo...</option>
+                                    <optgroup label="Auto">
+                                        <option value="auto-piccola" data-multiplier="1.0">Auto Piccola (Panda, 500, Yaris)</option>
+                                        <option value="auto-media" data-multiplier="1.2">Auto Media (Golf, Focus, Giulietta)</option>
+                                        <option value="auto-grande" data-multiplier="1.4">Auto Grande (Passat, Mondeo, A6)</option>
+                                        <option value="suv-piccolo" data-multiplier="1.3">SUV Piccolo (Puma, T-Cross, CX-3)</option>
+                                        <option value="suv-grande" data-multiplier="1.6">SUV Grande (X5, Q7, ML)</option>
+                                        <option value="monovolume" data-multiplier="1.5">Monovolume (Zafira, Touran, Scenic)</option>
+                                    </optgroup>
+                                    <optgroup label="Furgoni">
+                                        <option value="fiorino" data-multiplier="1.3">Fiat Fiorino</option>
+                                        <option value="doblo" data-multiplier="1.4">Fiat Doblò</option>
+                                        <option value="ducato" data-multiplier="1.8">Fiat Ducato</option>
+                                        <option value="iveco-daily" data-multiplier="1.9">Iveco Daily</option>
+                                        <option value="mercedes-sprinter" data-multiplier="2.0">Mercedes Sprinter</option>
+                                        <option value="ford-transit" data-multiplier="1.8">Ford Transit</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fas fa-cogs mr-2 text-green-500"></i>Tipo di Servizio
+                                </label>
+                                <select id="serviceType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculatePrice()">
+                                    <option value="">Seleziona il servizio...</option>
+                                    <option value="singolo-sedile" data-discount="0.4">Singolo Sedile</option>
+                                    <option value="pulizia-completa" data-discount="1.0">Pulizia Completa Interni</option>
+                                    <option value="sanificazione-ozono" data-discount="1.2">Pulizia + Sanificazione Ozono</option>
+                                    <option value="trattamento-premium" data-discount="1.5">Trattamento Premium Completo</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fas fa-map-marker-alt mr-2 text-purple-500"></i>Zona di Intervento
+                                </label>
+                                <select id="location" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculatePrice()">
+                                    <option value="">Seleziona la zona...</option>
+                                    <option value="treviso-centro" data-extra="0">Treviso Centro (Gratuito)</option>
+                                    <option value="treviso-periferia" data-extra="5">Treviso Periferia (+5€)</option>
+                                    <option value="provincia-vicina" data-extra="10">Provincia Vicina (+10€)</option>
+                                    <option value="provincia-lontana" data-extra="20">Provincia Lontana (+20€)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Risultato Preventivo -->
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">
+                                <i class="fas fa-receipt mr-2"></i>Il Tuo Preventivo
+                            </h3>
+                            
+                            <div id="priceBreakdown" class="space-y-4 mb-6">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Seleziona i parametri per il calcolo</span>
+                                </div>
+                            </div>
+
+                            <div class="border-t pt-4">
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="text-xl font-bold">Totale Stimato:</span>
+                                    <span id="totalPrice" class="price-display">€ --</span>
+                                </div>
+                                
+                                <div class="bg-green-100 border border-green-300 rounded-lg p-4 mb-4">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-shield-alt text-green-600 mr-2"></i>
+                                        <span class="text-sm text-green-800 font-semibold">Garanzia Soddisfatti o Rimborsati</span>
+                                    </div>
+                                    <p class="text-xs text-green-700 mt-1">Se non risolviamo il problema, non paghi nulla!</p>
+                                </div>
+
+                                <button id="requestQuote" class="w-full btn-primary py-3 rounded-lg font-semibold text-lg pulse-animation" onclick="showContactForm()" disabled>
+                                    <i class="fas fa-paper-plane mr-2"></i>Richiedi Preventivo Ufficiale
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Servizi Core -->
     <section id="servizi" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
