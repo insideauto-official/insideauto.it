@@ -1029,7 +1029,7 @@
             calendarGrid.innerHTML = '';
             weekDates.forEach((dateInfo, index) => {
                 const dateElement = document.createElement('div');
-                dateElement.className = `date-option ${dateInfo.available ? 'available' : 'unavailable'}`;
+                dateElement.className = `date-option ${dateInfo.available ? 'available'}`;
                 dateElement.onclick = () => selectDate(dateInfo, index);
                 
                 dateElement.innerHTML = `
@@ -1057,7 +1057,7 @@
 
         // Select date
         function selectDate(dateInfo, index) {
-            if (!dateInfo.available) return;
+            
             
             // Remove previous selection
             document.querySelectorAll('.date-option').forEach(el => el.classList.remove('selected'));
