@@ -3,78 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InsideAuto™ - Specialisti SOLO in Pulizia Interni Auto dal 2014! | Treviso</title>
-    <meta name="description" content="Specialisti pulizia interni auto a Treviso dal 2014. Risolviamo macchie sedili, cattivi odori, vomito, urina, sangue. Preventivo gratuito online.">
-    <meta name="keywords" content="pulizia interni auto, autolavaggio Treviso, car detailing, sanificazione auto, rimozione macchie sedili">
+    <title>InsideAuto™ - Specialisti SOLO in Pulizia Interni Auto dal 2014! | Autolavaggio Treviso</title>
+    <meta name="description" content="InsideAuto™ Treviso: Specialisti SOLO in pulizia interni auto dal 2014. Risolviamo macchie, cattivi odori, vomito, sangue, pelo animale. Servizi car detailing e sanificazione professionale.">
+    <meta name="keywords" content="autolavaggio Treviso, pulizia interni auto, car detailing, sanificazione auto, pulizia sedili auto, autolavaggio vicino a me, rimozione macchie auto, cattivi odori auto">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="InsideAuto™ - Specialisti SOLO in Pulizia Interni Auto dal 2014!">
+    <meta property="og:description" content="Risolviamo problemi impossibili negli interni auto: macchie, odori, vomito, sangue, pelo animale. 10+ anni esperienza a Treviso.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://insideauto.it">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AutomotiveBusiness",
+        "name": "InsideAuto™",
+        "description": "Specialisti in pulizia interni auto dal 2014",
+        "url": "https://insideauto.it",
+        "telephone": "+39-xxx-xxx-xxxx",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Treviso",
+            "addressRegion": "Veneto",
+            "addressCountry": "IT"
+        },
+        "areaServed": "Treviso",
+        "serviceType": ["Pulizia Interni Auto", "Car Detailing", "Sanificazione Auto"],
+        "foundingDate": "2014"
+    }
+    </script>
+    
+    <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-        }
-        .card-shadow {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        .btn-primary {
-            background: #000000;
-            color: white;
-            transition: all 0.3s ease;
-        }
-        .btn-primary:hover {
-            background: #333333;
-            transform: translateY(-2px);
-        }
-        .btn-secondary {
-            background: white;
-            color: #000000;
-            border: 2px solid #000000;
-            transition: all 0.3s ease;
-        }
-        .btn-secondary:hover {
-            background: #000000;
-            color: white;
-        }
-        .price-display {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #059669;
-        }
-        .pulse-animation {
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        .hero-section {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border-bottom: 1px solid #e5e7eb;
-        }
-        .service-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
+        body { font-family: 'Inter', sans-serif; }
+        .hero-gradient { background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); }
+        .card-shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }
+        .btn-primary { background: #000; color: #fff; transition: all 0.3s; }
+        .btn-primary:hover { background: #1f2937; transform: translateY(-1px); }
+        .service-card:hover { transform: translateY(-2px); transition: all 0.3s; }
+        .pulse-animation { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+        .sticky-header { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .price-display { font-size: 1.5rem; font-weight: bold; color: #059669; }
     </style>
 </head>
-<body class="bg-white">
+<body class="bg-white text-gray-800">
+
     <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <header class="sticky-header border-b border-gray-200">
         <nav class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-2">
                     <i class="fas fa-car text-2xl text-black"></i>
-                    <span class="text-xl font-bold text-black">InsideAuto™</span>
+                    <h1 class="text-xl font-bold">InsideAuto™</h1>
                 </div>
                 <div class="hidden md:flex space-x-6">
-                    <a href="#servizi" class="text-gray-700 hover:text-black transition">Servizi</a>
-                    <a href="#preventivo" class="text-gray-700 hover:text-black transition">Preventivatore</a>
-                    <a href="#gallery" class="text-gray-700 hover:text-black transition">Prima/Dopo</a>
-                    <a href="#contatti" class="text-gray-700 hover:text-black transition">Contatti</a>
+                    <a href="#servizi" class="hover:text-black transition">Servizi</a>
+                    <a href="#gallery" class="hover:text-black transition">Prima/Dopo</a>
+                    <a href="#guida" class="hover:text-black transition">Guide</a>
+                    <a href="#contatti" class="hover:text-black transition">Contatti</a>
                 </div>
-                <button class="btn-primary px-4 py-2 rounded-lg font-semibold">
+                <button class="btn-primary px-6 py-2 rounded-lg font-medium">
                     <i class="fas fa-phone mr-2"></i>Chiama Ora
                 </button>
             </div>
@@ -82,41 +78,43 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section py-16 lg:py-24">
+    <section class="hero-gradient py-16 lg:py-24">
         <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
-                Specialisti <span class="text-black">SOLO</span> in<br>
-                Pulizia Interni Auto<br>
-                <span class="text-black">dal 2014!</span>
-            </h1>
-            <p class="text-xl lg:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto">
-                Risolviamo problemi come <strong class="text-black">macchie sui sedili, cattivi odori, vomito, urina, sangue e pelo di animale</strong> nei casi più disperati
-            </p>
-            
-            <!-- Trust Indicators -->
-            <div class="flex flex-wrap justify-center items-center gap-8 mb-12">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-award text-2xl text-black"></i>
-                    <span class="text-lg font-semibold">10+ anni esperienza</span>
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+                    Specialisti <span class="text-black">SOLO</span> in<br>
+                    Pulizia Interni Auto<br>
+                    <span class="text-black">dal 2014!</span>
+                </h1>
+                <p class="text-xl lg:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                    Risolviamo problemi come <strong>macchie sui sedili, cattivi odori, vomito, urina, sangue e pelo di animale</strong> nei casi più disperati
+                </p>
+                
+                <!-- Trust Indicators -->
+                <div class="flex flex-wrap justify-center gap-8 mb-10">
+                    <div class="flex items-center">
+                        <i class="fas fa-medal text-black text-2xl mr-3"></i>
+                        <span class="font-semibold">10+ anni esperienza</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-map-marker-alt text-black text-2xl mr-3"></i>
+                        <span class="font-semibold">Treviso e Provincia</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-shield-alt text-black text-2xl mr-3"></i>
+                        <span class="font-semibold">Garanzia Risultato</span>
+                    </div>
                 </div>
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-map-marker-alt text-2xl text-black"></i>
-                    <span class="text-lg font-semibold">Treviso e Provincia</span>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-shield-alt text-2xl text-black"></i>
-                    <span class="text-lg font-semibold">Garanzia Risultato</span>
-                </div>
-            </div>
 
-            <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button onclick="scrollToSection('preventivo')" class="btn-primary px-8 py-4 rounded-lg text-lg font-semibold">
-                    <i class="fas fa-calculator mr-2"></i>Preventivo Gratuito
-                </button>
-                <button onclick="scrollToSection('gallery')" class="btn-secondary px-8 py-4 rounded-lg text-lg font-semibold">
-                    <i class="fas fa-images mr-2"></i>Guarda i Risultati
-                </button>
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn-primary px-8 py-4 rounded-lg text-lg font-semibold pulse-animation">
+                        <i class="fas fa-calculator mr-2"></i>Preventivo Gratuito
+                    </button>
+                    <button class="border-2 border-black px-8 py-4 rounded-lg text-lg font-semibold hover:bg-black hover:text-white transition">
+                        <i class="fas fa-images mr-2"></i>Guarda i Risultati
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -243,7 +241,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Servizi Core -->
     <section id="servizi" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
@@ -565,27 +563,27 @@
 
                 <div class="bg-white p-8 rounded-lg border border-gray-200 card-shadow">
                     <h3 class="text-2xl font-bold mb-6 text-center">Contattaci Ora</h3>
-                    <form class="space-y-4">
+                    <form class="space-y-4" id="contactForm">
                         <div>
-                            <input type="text" placeholder="Il tuo nome" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black">
+                            <input type="text" id="contactName" placeholder="Il tuo nome" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black">
                         </div>
                         <div>
-                            <input type="tel" placeholder="Telefono" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black">
+                            <input type="tel" id="contactPhone" placeholder="Telefono" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black">
                         </div>
                         <div>
-                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black">
+                            <select id="contactProblem" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black">
                                 <option>Che problema devi risolvere?</option>
                                 <option>Macchie sui sedili</option>
                                 <option>Cattivi odori</option>
                                 <option>Vomito</option>
                                 <option>Sangue</option>
-                                <option>Pelo animake</option>
+                                <option>Pelo animale</option>
                                 <option>Sanificazione completa</option>
                                 <option>Altro</option>
                             </select>
                         </div>
                         <div>
-                            <textarea placeholder="Descrivi il problema (opzionale)" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black"></textarea>
+                            <textarea id="contactMessage" placeholder="Descrivi il problema (opzionale)" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black"></textarea>
                         </div>
                         <button type="submit" class="btn-primary w-full py-3 rounded-lg font-semibold">
                             <i class="fas fa-paper-plane mr-2"></i>Richiedi Preventivo Gratuito
@@ -820,8 +818,118 @@
             });
         });
 
+        // Variables for quote data
+        let quoteData = {
+            problem: '',
+            vehicle: '',
+            service: '',
+            location: '',
+            price: 0
+        };
+
+        // Calculate price function
+        function calculatePrice() {
+            const problemSelect = document.getElementById('problemType');
+            const vehicleSelect = document.getElementById('vehicleType');
+            const serviceSelect = document.getElementById('serviceType');
+            const locationSelect = document.getElementById('location');
+            const totalPriceElement = document.getElementById('totalPrice');
+            const priceBreakdownElement = document.getElementById('priceBreakdown');
+            const requestQuoteButton = document.getElementById('requestQuote');
+
+            // Get selected values
+            const problemOption = problemSelect.options[problemSelect.selectedIndex];
+            const vehicleOption = vehicleSelect.options[vehicleSelect.selectedIndex];
+            const serviceOption = serviceSelect.options[serviceSelect.selectedIndex];
+            const locationOption = locationSelect.options[locationSelect.selectedIndex];
+
+            // Check if all fields are selected
+            if (!problemSelect.value || !vehicleSelect.value || !serviceSelect.value || !locationSelect.value) {
+                totalPriceElement.textContent = '€ --';
+                priceBreakdownElement.innerHTML = '<div class="flex justify-between items-center"><span class="text-gray-600">Seleziona i parametri per il calcolo</span></div>';
+                requestQuoteButton.disabled = true;
+                return;
+            }
+
+            // Get base price and multipliers
+            const basePrice = parseInt(problemOption.getAttribute('data-price') || 0);
+            const vehicleMultiplier = parseFloat(vehicleOption.getAttribute('data-multiplier') || 1);
+            const serviceDiscount = parseFloat(serviceOption.getAttribute('data-discount') || 1);
+            const locationExtra = parseInt(locationOption.getAttribute('data-extra') || 0);
+
+            // Calculate final price
+            const calculatedPrice = Math.round((basePrice * vehicleMultiplier * serviceDiscount) + locationExtra);
+            const minPrice = Math.round(calculatedPrice * 0.9);
+            const maxPrice = Math.round(calculatedPrice * 1.1);
+
+            // Store quote data
+            quoteData = {
+                problem: problemOption.text,
+                vehicle: vehicleOption.text,
+                service: serviceOption.text,
+                location: locationOption.text,
+                price: `€${minPrice}-${maxPrice}`
+            };
+
+            // Update display
+            totalPriceElement.textContent = `€${minPrice}-${maxPrice}`;
+            
+            // Update breakdown
+            priceBreakdownElement.innerHTML = `
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Problema:</span>
+                        <span class="font-semibold">${problemOption.text}</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Veicolo:</span>
+                        <span class="font-semibold">${vehicleOption.text}</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Servizio:</span>
+                        <span class="font-semibold">${serviceOption.text}</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Zona:</span>
+                        <span class="font-semibold">${locationOption.text}</span>
+                    </div>
+                </div>
+            `;
+
+            // Enable request quote button
+            requestQuoteButton.disabled = false;
+        }
+
+        // Show contact form with pre-filled data
+        function showContactForm() {
+            // Scroll to contact form
+            document.getElementById('contactForm').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+
+            // Pre-fill form
+            document.getElementById('contactProblem').value = quoteData.problem;
+            
+            // Update message field
+            const messageField = document.getElementById('contactMessage');
+            messageField.value = `Richiesta preventivo da calcolatore online:
+Problema: ${quoteData.problem}
+Veicolo: ${quoteData.vehicle}
+Servizio: ${quoteData.service}
+Zona: ${quoteData.location}
+Preventivo stimato: ${quoteData.price}
+
+Messaggio aggiuntivo: `;
+
+            // Focus on name field
+            setTimeout(() => {
+                document.getElementById('contactName').focus();
+            }, 500);
+        }
+
         // Gestione form contatti
-        document.querySelector('form').addEventListener('submit', function(e) {
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Grazie per la richiesta! Ti contatteremo entro 2 ore per il preventivo gratuito.');
         });
