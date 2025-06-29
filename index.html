@@ -53,6 +53,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        @media (max-width: 768px) {
+    .mobile-break {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-break {
+        display: none;
+    }
+}
         body { font-family: 'Inter', sans-serif; }
         .hero-gradient { background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); }
         .text-green-primary { color: #22c55e; font-weight: 800; }
@@ -95,10 +106,10 @@
         <div class="container mx-auto px-4 text-center">
             <div class="max-w-4xl mx-auto">
                 <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-    Specializzati <span class="text-green-primary font-extrabold">SOLO</span> in<br>
+    Specialisti<span class="mobile-break"><br></span> <span class="text-green-500 font-extrabold">SOLO</span> in<br>
     Pulizia Interni Auto<br>
     <span class="text-black">dal 2014!</span>
-</h1>
+</h1
                 <p class="text-xl lg:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
                     Risolviamo problemi come <strong>macchie sui sedili, cattivi odori, vomito, urina, sangue e pelo di animale</strong> nei casi più disperati
                 </p>
