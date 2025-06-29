@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pulizia Completa Interni Auto Treviso - InsideAuto™ | Specialisti dal 2014</title>
-    <meta name="description" content="Pulizia completa interni auto a Treviso con InsideAuto™. Aspirazione profonda, lavaggio sedili, plastiche e moquette. Preventivo gratuito. Specialisti dal 2014.">
-    <meta name="keywords" content="pulizia completa interni auto, pulizia interni auto Treviso, lavaggio interno auto, aspirazione sedili auto, pulizia plastiche auto, moquette auto">
+    <title>Pulizia Completa Interni Auto a Treviso - Trasforma la Tua Auto | InsideAuto™</title>
+    <meta name="description" content="Pulizia completa interni auto a Treviso. Trasformiamo la tua auto con aspirazione profonda, lavaggio sedili, plastiche e moquette. Auto sostitutiva inclusa per clienti fuori Veneto.">
+    <meta name="keywords" content="pulizia completa interni auto, pulizia interni auto Treviso, autolavaggio completo Treviso, lavaggio sedili auto, sanificazione auto Treviso">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Pulizia Completa Interni Auto Treviso - InsideAuto™">
-    <meta property="og:description" content="Servizio completo di pulizia interni auto: aspirazione profonda, lavaggio sedili, plastiche e moquette. Specialisti a Treviso dal 2014.">
+    <meta property="og:title" content="Pulizia Completa Interni Auto a Treviso - InsideAuto™">
+    <meta property="og:description" content="Trasformiamo la tua auto dall'interno con tecniche professionali. Auto sostitutiva inclusa per clienti fuori Veneto.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://insideauto.it/pulizia-completa-interni">
     <meta property="og:image" content="https://insideauto.it/images/loghi/foto-logo-andrea.png">
@@ -29,26 +29,20 @@
         "@context": "https://schema.org",
         "@type": "Service",
         "serviceType": "Pulizia Completa Interni Auto",
-        "name": "Pulizia Completa Interni Auto",
-        "description": "Servizio completo di pulizia interni auto con aspirazione profonda, lavaggio sedili, plastiche e moquette",
         "provider": {
             "@type": "AutomotiveBusiness",
             "name": "InsideAuto™",
+            "url": "https://insideauto.it",
+            "telephone": "+39-350-003-6917",
             "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Treviso",
-                "addressRegion": "Veneto",
+                "addressRegion": "Veneto", 
                 "addressCountry": "IT"
-            },
-            "telephone": "+393500036917"
+            }
         },
-        "areaServed": "Treviso",
-        "offers": {
-            "@type": "Offer",
-            "availability": "https://schema.org/InStock",
-            "price": "80-150",
-            "priceCurrency": "EUR"
-        }
+        "areaServed": ["Treviso", "Veneto", "Italia"],
+        "description": "Servizio professionale di pulizia completa interni auto con aspirazione profonda, lavaggio sedili, plastiche e moquette"
     }
     </script>
     
@@ -57,7 +51,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         body { font-family: 'Inter', sans-serif; }
@@ -69,9 +63,141 @@
         .pulse-animation { animation: pulse 2s infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
         .sticky-header { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-        .price-display { font-size: 1.5rem; font-weight: bold; color: #22c55e; }
-        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: #25D366; color: white; border-radius: 50px; padding: 15px; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); z-index: 1000; }
-        .step-number { background: #000; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        
+        /* Mobile hero title fix */
+        @media (max-width: 640px) {
+            .hero-title-mobile {
+                line-height: 1.1;
+                margin-bottom: 1.5rem;
+            }
+            .hero-title-mobile br.mobile-break {
+                display: block;
+            }
+        }
+        
+        @media (min-width: 641px) {
+            .hero-title-mobile br.mobile-break {
+                display: none;
+            }
+        }
+        
+        /* Calendar styles */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .date-option {
+            border: 2px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 12px 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .date-option.available:hover {
+            border-color: #22c55e;
+            background: #f0fdf4;
+            transform: translateY(-2px);
+        }
+        
+        .date-option.selected {
+            border-color: #22c55e;
+            background: #22c55e;
+            color: white;
+        }
+        
+        .date-option.unavailable {
+            background: #f3f4f6;
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .day-name {
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .date-number {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        
+        .month {
+            font-size: 0.75rem;
+            margin-bottom: 4px;
+        }
+        
+        .availability {
+            font-size: 0.65rem;
+            font-weight: 500;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .calendar-nav button {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .calendar-nav button:hover {
+            background: #e5e7eb;
+            transform: translateY(-1px);
+        }
+        
+        .calendar-nav button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* WhatsApp floating button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-1px);
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -80,33 +206,48 @@
     <header class="sticky-header border-b border-gray-200">
         <nav class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-2">
+                <a href="index.html" class="flex items-center space-x-2">
                     <img src="images/loghi/foto-logo-andrea.png" alt="InsideAuto Logo" class="h-8 w-auto">
                     <h1 class="text-xl font-bold">InsideAuto™</h1>
-                </div>
+                </a>
                 <div class="hidden md:flex space-x-6">
-                    <a href="/" class="hover:text-black transition">Home</a>
-                    <a href="/#servizi" class="hover:text-black transition">Servizi</a>
-                    <a href="/#gallery" class="hover:text-black transition">Prima/Dopo</a>
-                    <a href="/#contatti" class="hover:text-black transition">Contatti</a>
+                    <a href="index.html" class="hover:text-black transition">← Torna alla Home</a>
+                    <a href="#servizio" class="hover:text-black transition">Il Servizio</a>
+                    <a href="#processo" class="hover:text-black transition">Come Lavoriamo</a>
+                    <a href="#gallery" class="hover:text-black transition">Prima/Dopo</a>
+                    <a href="#calcolatore" class="hover:text-black transition">Calcolatore</a>
+                    <a href="#contatti" class="hover:text-black transition">Contatti</a>
                 </div>
-                <a href="tel:+393500036917" class="btn-primary px-6 py-2 rounded-lg font-medium inline-flex items-center">
+                <a href="tel:+393500036917" class="btn-primary px-6 py-2 rounded-lg font-medium">
                     <i class="fas fa-phone mr-2"></i>Chiama Ora
                 </a>
             </div>
         </nav>
     </header>
 
+    <!-- Breadcrumb -->
+    <div class="bg-gray-50 py-3">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center text-sm text-gray-600">
+                <a href="index.html" class="hover:text-black">Home</a>
+                <i class="fas fa-chevron-right mx-2 text-xs"></i>
+                <span class="text-gray-900">Pulizia Completa Interni</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
-    <section class="hero-gradient py-16 lg:py-24">
+    <section class="hero-gradient py-16 lg:py-20">
         <div class="container mx-auto px-4 text-center">
             <div class="max-w-4xl mx-auto">
-                <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-                    <span class="text-green-500 font-extrabold">Pulizia Completa</span><br>
-                    Interni Auto a Treviso
+                <h1 class="text-4xl lg:text-6xl font-bold mb-6 hero-title-mobile">
+                    Pulizia<br class="mobile-break sm:hidden">
+                    <span class="text-green-500 font-extrabold">COMPLETA</span><br>
+                    Interni Auto<br>
+                    a Treviso
                 </h1>
                 <p class="text-xl lg:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                    <strong>Aspirazione profonda, lavaggio sedili, plastiche e moquette</strong> con tecniche professionali per un interno come nuovo
+                    Trasformiamo la tua auto dall'interno con <strong>aspirazione profonda, lavaggio sedili, plastiche e moquette</strong> con tecniche professionali dal 2014
                 </p>
                 
                 <!-- Trust Indicators -->
@@ -116,8 +257,8 @@
                         <span class="font-semibold">10+ anni esperienza</span>
                     </div>
                     <div class="flex items-center">
-                        <i class="fas fa-search text-black text-2xl mr-3"></i>
-                        <span class="font-semibold">8.500 ricerche/mese</span>
+                        <i class="fas fa-map-marker-alt text-black text-2xl mr-3"></i>
+                        <span class="font-semibold">Treviso e Provincia</span>
                     </div>
                     <div class="flex items-center">
                         <i class="fas fa-shield-alt text-black text-2xl mr-3"></i>
@@ -127,17 +268,16 @@
 
                 <!-- CTA Buttons -->
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#preventivo" class="btn-primary px-8 py-4 rounded-lg text-lg font-semibold pulse-animation">
-                        <i class="fas fa-calculator mr-2"></i>Preventivo Gratuito
+                    <a href="#calcolatore" class="btn-primary px-8 py-4 rounded-lg text-lg font-semibold pulse-animation">
+                        <i class="fas fa-calculator mr-2"></i>Calcolatore Trasformazione
                     </a>
                     <a href="#gallery" class="border-2 border-black px-8 py-4 rounded-lg text-lg font-semibold hover:bg-black hover:text-white transition">
                         <i class="fas fa-images mr-2"></i>Guarda i Risultati
                     </a>
                 </div>
-
-                <!-- WhatsApp Contact -->
-                <div class="text-center mt-6">
-                    <a href="https://wa.me/393500036917?text=Ciao%20InsideAuto%21%20Vorrei%20informazioni%20sulla%20pulizia%20completa%20interni%20auto" target="_blank" class="inline-flex items-center text-green-600 hover:text-green-700 font-semibold">
+                
+                <div class="text-center mt-4">
+                    <a href="https://wa.me/393500036917?text=Ciao%20InsideAuto%21%20Sono%20interessato%20alla%20pulizia%20completa%20interni%20auto.%20Potreste%20darmi%20maggiori%20informazioni%3F" target="_blank" class="inline-flex items-center text-green-600 hover:text-green-700 font-semibold">
                         <i class="fab fa-whatsapp mr-2 text-xl"></i>
                         Contattaci su WhatsApp
                     </a>
@@ -146,154 +286,251 @@
         </div>
     </section>
 
-    <!-- Cosa Include il Servizio -->
-    <section class="py-16 bg-gray-50">
+    <!-- Cosa Include nel Servizio -->
+    <section id="servizio" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Cosa Include la Pulizia Completa</h2>
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">🔧 Cosa Include la Pulizia Completa</h2>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                    Ogni passaggio è studiato per riportare i tuoi interni al massimo splendore
+                    Ogni dettaglio viene curato per restituirti un abitacolo come nuovo
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                 <!-- Aspirazione Profonda -->
-                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow service-card">
-                    <div class="text-center">
-                        <i class="fas fa-vacuum text-4xl text-black mb-4"></i>
-                        <h3 class="text-xl font-bold mb-3">Aspirazione Profonda</h3>
-                        <p class="text-gray-600">Rimozione completa di polvere, briciole e detriti da sedili, tappetini e zone nascoste</p>
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-green-500 rounded-full p-2 flex-shrink-0">
+                            <i class="fas fa-check text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">Aspirazione Profonda</h3>
+                            <p class="text-gray-600 text-sm">Rimozione completa di polvere, briciole e residui da ogni angolo dell'abitacolo</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Lavaggio Sedili -->
-                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow service-card">
-                    <div class="text-center">
-                        <i class="fas fa-chair text-4xl text-black mb-4"></i>
-                        <h3 class="text-xl font-bold mb-3">Lavaggio Sedili</h3>
-                        <p class="text-gray-600">Pulizia profonda di tessuto o pelle con prodotti specifici per ogni materiale</p>
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-green-500 rounded-full p-2 flex-shrink-0">
+                            <i class="fas fa-check text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">Lavaggio Sedili Professionale</h3>
+                            <p class="text-gray-600 text-sm">Pulizia profonda tessuto e pelle con prodotti specifici certificati</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Pulizia Plastiche -->
-                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow service-card">
-                    <div class="text-center">
-                        <i class="fas fa-spray-can text-4xl text-black mb-4"></i>
-                        <h3 class="text-xl font-bold mb-3">Pulizia Plastiche</h3>
-                        <p class="text-gray-600">Sanificazione e lucidatura di cruscotto, pannelli e tutte le superfici interne</p>
+                <!-- Plastiche e Pannelli -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-green-500 rounded-full p-2 flex-shrink-0">
+                            <i class="fas fa-check text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">Pulizia Plastiche</h3>
+                            <p class="text-gray-600 text-sm">Sanificazione e protezione di cruscotto, portiere e tutti i pannelli</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Moquette e Tappetini -->
-                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow service-card">
-                    <div class="text-center">
-                        <i class="fas fa-broom text-4xl text-black mb-4"></i>
-                        <h3 class="text-xl font-bold mb-3">Moquette e Tappetini</h3>
-                        <p class="text-gray-600">Lavaggio a fondo con estrazione dell'acqua per eliminare sporco e odori</p>
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-green-500 rounded-full p-2 flex-shrink-0">
+                            <i class="fas fa-check text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">Moquette e Tappetini</h3>
+                            <p class="text-gray-600 text-sm">Lavaggio profondo con macchine a vapore professionali</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Vetri Interni -->
-                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow service-card">
-                    <div class="text-center">
-                        <i class="fas fa-window-restore text-4xl text-black mb-4"></i>
-                        <h3 class="text-xl font-bold mb-3">Vetri Interni</h3>
-                        <p class="text-gray-600">Pulizia cristalli interni per visibilità perfetta senza aloni o striature</p>
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-green-500 rounded-full p-2 flex-shrink-0">
+                            <i class="fas fa-check text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">Vetri Interni</h3>
+                            <p class="text-gray-600 text-sm">Pulizia cristalli senza aloni per massima visibilità</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Profumazione -->
-                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow service-card">
-                    <div class="text-center">
-                        <i class="fas fa-air-freshener text-4xl text-black mb-4"></i>
-                        <h3 class="text-xl font-bold mb-3">Profumazione Finale</h3>
-                        <p class="text-gray-600">Profumazione delicata e duratura per un abitacolo fresco e piacevole</p>
+                <!-- Sanificazione -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-green-500 rounded-full p-2 flex-shrink-0">
+                            <i class="fas fa-check text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">Sanificazione Finale</h3>
+                            <p class="text-gray-600 text-sm">Trattamento antibatterico e deodorante per un ambiente salubre</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Preventivatore Dedicato -->
-    <section id="preventivo" class="py-16">
+    <!-- Calcolatore Trasformazione -->
+    <section id="calcolatore" class="py-16">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                    <i class="fas fa-calculator mr-3"></i>Preventivo Pulizia Completa
+                    <i class="fas fa-calculator mr-3"></i>Calcolatore Trasformazione Auto
                 </h2>
-                <p class="text-xl text-gray-600">Calcola il costo per il tuo veicolo</p>
+                <p class="text-xl text-gray-600">Scopri l'investimento per trasformare la tua auto</p>
             </div>
 
             <div class="max-w-4xl mx-auto">
                 <div class="bg-white rounded-xl card-shadow p-8">
                     <div class="grid md:grid-cols-2 gap-8">
-                        <!-- Form Preventivo -->
+                        <!-- Form Calcolatore -->
                         <div class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fas fa-exclamation-triangle mr-2 text-red-500"></i>Tipo di Problema
+                                </label>
+                                <select id="problemType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculateTransformation()">
+                                    <option value="">Seleziona il problema...</option>
+                                    <option value="pulizia-generale" data-price="50">Pulizia Generale</option>
+                                    <option value="macchie-cibo" data-price="60">Macchie di Cibo/Bevande</option>
+                                    <option value="pelo-animale" data-price="70">Pelo di Animale</option>
+                                    <option value="cattivi-odori" data-price="75">Cattivi Odori</option>
+                                    <option value="usura-intensa" data-price="80">Usura Intensa</option>
+                                    <option value="macchie-sangue" data-price="90">Rimozione Macchie di Sangue</option>
+                                    <option value="macchie-urina" data-price="95">Rimozione Macchie di Urina</option>
+                                    <option value="vomito" data-price="100">Rimozione Vomito</option>
+                                    <option value="odore-fumo" data-price="85">Eliminazione Odore Fumo</option>
+                                    <option value="muffa-umidita" data-price="105">Trattamento Muffa/Umidità</option>
+                                    <option value="trasformazione-totale" data-price="120">Pulizia Standard Completa</option>
+                                    <option value="altra-situazione" data-price="75">Altra Situazione</option>
+                                </select>
+                            </div>
+
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-2">
                                     <i class="fas fa-car mr-2 text-blue-500"></i>Tipo di Veicolo
                                 </label>
-                                <select id="vehicleType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculatePrice()">
+                                <select id="vehicleType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculateTransformation()">
                                     <option value="">Seleziona il veicolo...</option>
-                                    <option value="auto-piccola" data-price="80">Auto Piccola (Panda, 500, Yaris)</option>
-                                    <option value="auto-media" data-price="100">Auto Media (Golf, Focus, Giulietta)</option>
-                                    <option value="auto-grande" data-price="120">Auto Grande (Passat, Mondeo, A6)</option>
-                                    <option value="suv-piccolo" data-price="110">SUV Piccolo (Puma, T-Cross)</option>
-                                    <option value="suv-grande" data-price="140">SUV Grande (X5, Q7, ML)</option>
-                                    <option value="monovolume" data-price="130">Monovolume (Zafira, Touran)</option>
-                                    <option value="furgone" data-price="150">Furgone (Doblò, Ducato)</option>
+                                    <optgroup label="Auto">
+                                        <option value="auto-piccola" data-multiplier="1.0">Auto Piccola (Panda, 500, Yaris)</option>
+                                        <option value="auto-media" data-multiplier="1.2">Auto Media (Golf, Focus, Giulietta)</option>
+                                        <option value="auto-grande" data-multiplier="1.4">Auto Grande (Passat, Mondeo, A6)</option>
+                                        <option value="suv-piccolo" data-multiplier="1.3">SUV Piccolo (Puma, T-Cross, CX-3)</option>
+                                        <option value="suv-grande" data-multiplier="1.6">SUV Grande (X5, Q7, ML)</option>
+                                        <option value="monovolume" data-multiplier="1.5">Monovolume (Zafira, Touran, Scenic)</option>
+                                    </optgroup>
+                                    <optgroup label="Furgoni">
+                                        <option value="fiorino" data-multiplier="1.3">Fiat Fiorino</option>
+                                        <option value="doblo" data-multiplier="1.4">Fiat Doblò</option>
+                                        <option value="ducato" data-multiplier="1.8">Fiat Ducato</option>
+                                        <option value="iveco-daily" data-multiplier="1.9">Iveco Daily</option>
+                                        <option value="mercedes-sprinter" data-multiplier="2.0">Mercedes Sprinter</option>
+                                        <option value="ford-transit" data-multiplier="1.8">Ford Transit</option>
+                                    </optgroup>
                                 </select>
                             </div>
 
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-2">
-                                    <i class="fas fa-cogs mr-2 text-green-500"></i>Livello di Sporco
+                                    <i class="fas fa-cogs mr-2 text-green-500"></i>Tipo di Trasformazione Necessaria
                                 </label>
-                                <select id="dirtLevel" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculatePrice()">
-                                    <option value="">Seleziona il livello...</option>
-                                    <option value="leggero" data-multiplier="1.0">Leggero (manutenzione normale)</option>
-                                    <option value="medio" data-multiplier="1.2">Medio (sporco accumulato)</option>
-                                    <option value="intenso" data-multiplier="1.5">Intenso (molto sporco)</option>
-                                    <option value="estremo" data-multiplier="1.8">Estremo (casi disperati)</option>
+                                <select id="serviceType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculateTransformation()">
+                                    <option value="">Seleziona la situazione...</option>
+                                    <option value="singolo-problema" data-discount="0.6">Problema Localizzato (singola zona)</option>
+                                    <option value="pulizia-completa" data-discount="1.0">Pulizia Standard Completa</option>
+                                    <option value="deep-cleaning" data-discount="1.3">Deep Cleaning Intensivo</option>
+                                    <option value="restauro-completo" data-discount="1.6">Restauro Completo Interni</option>
                                 </select>
                             </div>
 
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-2">
-                                    <i class="fas fa-plus mr-2 text-purple-500"></i>Servizi Aggiuntivi
+                                    <i class="fas fa-map-marker-alt mr-2 text-purple-500"></i>Da dove vieni?
                                 </label>
-                                <div class="space-y-2">
-                                    <label class="flex items-center">
-                                        <input type="checkbox" id="sanitization" class="mr-3" onchange="calculatePrice()">
-                                        <span>Sanificazione Ozono (+30€)</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="checkbox" id="protection" class="mr-3" onchange="calculatePrice()">
-                                        <span>Protezione Tessuti (+25€)</span>
-                                    </label>
+                                <select id="customerLocation" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculateTransformation()">
+                                    <option value="">Seleziona la tua zona...</option>
+                                    
+                                    <optgroup label="Provincia di Treviso">
+                                        <option value="treviso">Treviso</option>
+                                        <option value="conegliano">Conegliano</option>
+                                        <option value="castelfranco">Castelfranco Veneto</option>
+                                        <option value="montebelluna">Montebelluna</option>
+                                        <option value="oderzo">Oderzo</option>
+                                        <option value="spresiano">Spresiano</option>
+                                        <option value="vittorio-veneto">Vittorio Veneto</option>
+                                    </optgroup>
+                                    
+                                    <optgroup label="Altre Province Veneto">
+                                        <option value="padova">Padova</option>
+                                        <option value="venezia">Venezia/Mestre</option>
+                                        <option value="vicenza">Vicenza</option>
+                                        <option value="verona">Verona</option>
+                                        <option value="rovigo">Rovigo</option>
+                                        <option value="belluno">Belluno</option>
+                                    </optgroup>
+                                    
+                                    <optgroup label="🚗 AUTO SOSTITUTIVA INCLUSA">
+                                        <option value="friuli">Friuli-Venezia Giulia</option>
+                                        <option value="emilia">Emilia-Romagna</option>
+                                        <option value="lombardia">Lombardia</option>
+                                        <option value="altro-italia">Altra Regione Italia</option>
+                                    </optgroup>
+                                    
+                                    <option value="estero">Estero</option>
+                                </select>
+                            </div>
+
+                            <div id="carReplacementOffer" class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4" style="display: none;">
+                                <div class="flex items-center">
+                                    <i class="fas fa-car text-blue-600 mr-3 text-xl"></i>
+                                    <div>
+                                        <h4 class="font-bold text-blue-800">🎁 INCLUSO PER TE!</h4>
+                                        <p class="text-blue-700 text-sm">
+                                            Vieni da lontano per il nostro servizio? 
+                                            <strong>Auto sostitutiva GRATUITA inclusa!</strong><br>
+                                            <span class="text-xs">Lasci la tua auto da noi e sei libero di muoverti</span>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
 
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-2">
-                                    <i class="fas fa-map-marker-alt mr-2 text-red-500"></i>Zona di Intervento
+                                    <i class="fas fa-calendar mr-2 text-green-500"></i>Scegli il Giorno per la Trasformazione
                                 </label>
-                                <select id="location" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculatePrice()">
-                                    <option value="">Seleziona la zona...</option>
-                                    <option value="treviso-centro" data-extra="0">Treviso Centro (Gratuito)</option>
-                                    <option value="treviso-periferia" data-extra="5">Treviso Periferia (+5€)</option>
-                                    <option value="provincia" data-extra="15">Provincia (+15€)</option>
-                                </select>
+                                
+                                <div class="calendar-nav">
+                                    <button type="button" id="prevWeekBtn" onclick="navigateWeek(-1)">
+                                        <i class="fas fa-chevron-left mr-1"></i> Precedente
+                                    </button>
+                                    <span id="weekDisplay" class="font-semibold text-gray-700">Settimana 7-11 Luglio 2025</span>
+                                    <button type="button" id="nextWeekBtn" onclick="navigateWeek(1)">
+                                        Successiva <i class="fas fa-chevron-right ml-1"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="calendar-grid" id="calendarGrid">
+                                    <!-- Calendar will be populated by JavaScript -->
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Risultato Preventivo -->
+                        <!-- Risultato Trasformazione -->
                         <div class="bg-gray-50 rounded-lg p-6">
                             <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">
-                                <i class="fas fa-receipt mr-2"></i>Il Tuo Preventivo
+                                <i class="fas fa-gem mr-2"></i>Valore della Trasformazione
                             </h3>
                             
-                            <div id="priceBreakdown" class="space-y-4 mb-6">
+                            <div id="transformationSummary" class="space-y-4 mb-6">
                                 <div class="flex justify-between items-center">
                                     <span class="text-gray-600">Seleziona i parametri per il calcolo</span>
                                 </div>
@@ -301,8 +538,8 @@
 
                             <div class="border-t pt-4">
                                 <div class="flex justify-between items-center mb-4">
-                                    <span class="text-xl font-bold">Totale Stimato:</span>
-                                    <span id="totalPrice" class="price-display">€ --</span>
+                                    <span class="text-xl font-bold">Investimento per la Trasformazione:</span>
+                                    <span id="totalInvestment" class="text-3xl font-bold text-green-600">€ --</span>
                                 </div>
                                 
                                 <div class="bg-green-100 border border-green-300 rounded-lg p-4 mb-4">
@@ -310,16 +547,17 @@
                                         <i class="fas fa-shield-alt text-green-600 mr-2"></i>
                                         <span class="text-sm text-green-800 font-semibold">Garanzia Soddisfatti o Rimborsati</span>
                                     </div>
+                                    <p class="text-xs text-green-700 mt-1">Se non ottieni il risultato promesso, non investi nulla!</p>
                                 </div>
 
-                                <button id="requestQuote" class="w-full btn-primary py-3 rounded-lg font-semibold text-lg" onclick="requestCompleteQuote()" disabled>
-                                    <i class="fas fa-paper-plane mr-2"></i>Richiedi Preventivo Ufficiale
+                                <button id="requestTransformation" class="w-full btn-primary py-3 rounded-lg font-semibold text-lg pulse-animation" onclick="scrollToContactForm()" disabled>
+                                    <i class="fas fa-magic mr-2"></i>✨ Trasforma la Mia Auto
                                 </button>
 
                                 <div class="text-center mt-4">
-                                    <a href="https://wa.me/393500036917?text=Ciao%21%20Vorrei%20un%20preventivo%20per%20pulizia%20completa%20interni%20auto" target="_blank" class="inline-flex items-center text-green-600 hover:text-green-700 font-semibold">
-                                        <i class="fab fa-whatsapp mr-2"></i>
-                                        WhatsApp Diretto
+                                    <p class="text-sm text-gray-600 mb-2">Oppure contattaci direttamente:</p>
+                                    <a href="https://wa.me/393500036917" target="_blank" id="whatsappQuickBtn" class="btn-whatsapp px-6 py-2 rounded-lg font-semibold text-sm inline-flex items-center">
+                                        <i class="fab fa-whatsapp mr-2"></i>📱 WhatsApp
                                     </a>
                                 </div>
                             </div>
@@ -330,133 +568,139 @@
         </div>
     </section>
 
-    <!-- Processo Step-by-Step -->
-    <section class="py-16 bg-gray-50">
+    <!-- Prima/Dopo Gallery -->
+    <section id="gallery" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Il Nostro Processo Professionale</h2>
-                <p class="text-xl text-gray-600">Come lavoriamo per garantire risultati perfetti</p>
-            </div>
-
-            <div class="max-w-4xl mx-auto">
-                <div class="space-y-8">
-                    <!-- Step 1 -->
-                    <div class="flex items-start space-x-6">
-                        <div class="step-number flex-shrink-0">1</div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">Ispezione e Valutazione</h3>
-                            <p class="text-gray-600">Analizziamo lo stato degli interni e identifichiamo le aree che necessitano attenzione speciale</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="flex items-start space-x-6">
-                        <div class="step-number flex-shrink-0">2</div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">Rimozione e Preparazione</h3>
-                            <p class="text-gray-600">Rimuoviamo tappetini e oggetti personali, prepariamo l'ambiente di lavoro</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="flex items-start space-x-6">
-                        <div class="step-number flex-shrink-0">3</div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">Aspirazione Professionale</h3>
-                            <p class="text-gray-600">Aspirazione profonda con attrezzature industriali in ogni angolo e fessura</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 4 -->
-                    <div class="flex items-start space-x-6">
-                        <div class="step-number flex-shrink-0">4</div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">Trattamento Sedili e Tessuti</h3>
-                            <p class="text-gray-600">Pulizia specifica per ogni materiale con prodotti professionali certificati</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 5 -->
-                    <div class="flex items-start space-x-6">
-                        <div class="step-number flex-shrink-0">5</div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">Plastiche e Superfici</h3>
-                            <p class="text-gray-600">Sanificazione e protezione di cruscotto, pannelli e tutte le superfici dure</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 6 -->
-                    <div class="flex items-start space-x-6">
-                        <div class="step-number flex-shrink-0">6</div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">Controllo Qualità e Consegna</h3>
-                            <p class="text-gray-600">Ispezione finale, profumazione e consegna con garanzia di soddisfazione</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Prima/Dopo -->
-    <section id="gallery" class="py-16">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Prima e Dopo: Pulizia Completa</h2>
-                <p class="text-xl text-gray-600">Risultati reali sui nostri interventi di pulizia completa</p>
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">📸 Trasformazioni Realizzate</h2>
+                <p class="text-xl text-gray-600">Casi reali di pulizia completa interni - Prima e Dopo</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Caso 1 -->
+                <!-- Caso 1: Auto Familiare Completa -->
                 <div class="bg-white rounded-lg border border-gray-200 card-shadow overflow-hidden">
                     <div class="bg-gray-200 h-48 flex items-center justify-center">
                         <div class="text-center">
                             <i class="fas fa-car text-4xl text-gray-400 mb-2"></i>
-                            <p class="text-gray-500">Prima/Dopo Auto Familiare</p>
+                            <p class="text-gray-500 text-sm">Prima: Auto familiare molto sporca</p>
                         </div>
                     </div>
                     <div class="p-4">
-                        <h3 class="font-bold mb-2">Auto Familiare con Bambini</h3>
-                        <p class="text-gray-600 text-sm mb-3">5 anni senza pulizia profonda - sedili macchiati, moquette rovinata</p>
+                        <h3 class="font-bold mb-2">Auto Familiare - Pulizia Completa</h3>
+                        <p class="text-gray-600 text-sm mb-3">Monovolume con 5 anni di utilizzo intensivo. Sedili macchiati, moquette rovinata, plastiche sbiadite.</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Molto Sporco</span>
-                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Come Nuovo</span>
+                            <span class="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded">Caso Complesso</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Come Nuova</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Caso 2 -->
+                <!-- Caso 2: SUV Premium -->
                 <div class="bg-white rounded-lg border border-gray-200 card-shadow overflow-hidden">
                     <div class="bg-gray-200 h-48 flex items-center justify-center">
                         <div class="text-center">
-                            <i class="fas fa-taxi text-4xl text-gray-400 mb-2"></i>
-                            <p class="text-gray-500">Prima/Dopo Taxi</p>
+                            <i class="fas fa-car-side text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-gray-500 text-sm">Prima: SUV con interni in pelle</p>
                         </div>
                     </div>
                     <div class="p-4">
-                        <h3 class="font-bold mb-2">Taxi ad Alto Utilizzo</h3>
-                        <p class="text-gray-600 text-sm mb-3">200.000 km - usura estrema sedili, odori persistenti</p>
+                        <h3 class="font-bold mb-2">SUV Premium - Interni Pelle</h3>
+                        <p class="text-gray-600 text-sm mb-3">BMW X5 con sedili in pelle macchiati e cruscotto opacizzato. Trasformazione total premium.</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">Caso Estremo</span>
-                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Rinnovato</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Pelle Premium</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Showroom Quality</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Caso 3 -->
+                <!-- Caso 3: Furgone Commerciale -->
                 <div class="bg-white rounded-lg border border-gray-200 card-shadow overflow-hidden">
                     <div class="bg-gray-200 h-48 flex items-center justify-center">
                         <div class="text-center">
                             <i class="fas fa-truck text-4xl text-gray-400 mb-2"></i>
-                            <p class="text-gray-500">Prima/Dopo Furgone</p>
+                            <p class="text-gray-500 text-sm">Prima: Furgone lavoro</p>
                         </div>
                     </div>
                     <div class="p-4">
-                        <h3 class="font-bold mb-2">Furgone da Lavoro</h3>
-                        <p class="text-gray-600 text-sm mb-3">Utilizzo cantiere - polvere, fango, macchie di lavoro</p>
+                        <h3 class="font-bold mb-2">Furgone Ducato - Uso Intensivo</h3>
+                        <p class="text-gray-600 text-sm mb-3">Fiat Ducato da lavoro con sedili consumati e abitacolo molto sporco. Cliente da Padova.</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded">Molto Sporco</span>
-                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Perfetto</span>
+                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Uso Professionale</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Rinnovato</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <a href="https://wa.me/393500036917?text=Ciao%20InsideAuto%21%20Vorrei%20vedere%20più%20esempi%20di%20trasformazioni%20realizzate%20per%20la%20pulizia%20completa%20interni.%20Potete%20inviarmi%20altre%20foto%3F" target="_blank" class="btn-primary px-8 py-3 rounded-lg font-semibold">
+                    <i class="fas fa-images mr-2"></i>Vedi Altri Casi Risolti
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processo Step-by-Step -->
+    <section id="processo" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">⚙️ Come Lavoriamo</h2>
+                <p class="text-xl text-gray-600">Il nostro processo professionale in 6 fasi</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Fase 1 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">1</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Sopralluogo e Valutazione</h3>
+                            <p class="text-gray-600">Analizziamo le condizioni attuali e identifichiamo le problematiche specifiche da risolvere.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fase 2 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">2</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Aspirazione Profonda</h3>
+                            <p class="text-gray-600">Rimozione completa di polvere, residui e detriti con aspiratori professionali ad alta potenza.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fase 3 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">3</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Trattamento Sedili</h3>
+                            <p class="text-gray-600">Pulizia mirata di tessuto o pelle con prodotti specifici e tecniche appropriate al materiale.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fase 4 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">4</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Pulizia Plastiche</h3>
+                            <p class="text-gray-600">Sanificazione di cruscotto, portiere e pannelli con prodotti specifici per interni auto.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fase 5 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">5</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Moquette e Tappetini</h3>
+                            <p class="text-gray-600">Lavaggio con vapore saturo e asciugatura professionale per eliminare macchie e odori.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fase 6 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">6</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Controllo Qualità</h3>
+                            <p class="text-gray-600">Ispezione finale e rifinitura di ogni dettaglio per garantire il risultato perfetto.</p>
                         </div>
                     </div>
                 </div>
@@ -464,175 +708,223 @@
         </div>
     </section>
 
-    <!-- Testimonial Specifici -->
+    <!-- Recensioni Clienti -->
     <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Cosa Dicono i Nostri Clienti</h2>
-                <p class="text-xl text-gray-600">Recensioni per il servizio Pulizia Completa</p>
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">⭐ Cosa Dicono i Nostri Clienti</h2>
+                <p class="text-xl text-gray-600">Testimonianze reali sulla pulizia completa interni</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Recensione 1 -->
                 <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
                     <div class="flex items-center mb-4">
-                        <div class="flex text-yellow-400">
+                        <div class="flex text-yellow-400 text-lg">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
+                        <span class="ml-2 text-sm text-gray-600">5/5</span>
                     </div>
-                    <p class="text-gray-600 mb-4">"Auto con 3 bambini piccoli - sedili distrutti, moquette macchiata ovunque. Dopo il lavoro di Andrea sembra uscita dal concessionario!"</p>
-                    <div class="font-semibold">Maria F. - Treviso</div>
-                    <div class="text-sm text-gray-500">Pulizia Completa Auto Familiare</div>
+                    <p class="text-gray-600 mb-4">"Auto familiare con 3 bambini piccoli. Era diventata inutilizzabile per lo sporco. Andrea ha fatto miracoli - sembra uscita dal concessionario!"</p>
+                    <div class="font-semibold">Francesca R. - Treviso</div>
+                    <div class="text-sm text-gray-500">Pulizia completa Volkswagen Touran</div>
                 </div>
 
+                <!-- Recensione 2 -->
                 <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
                     <div class="flex items-center mb-4">
-                        <div class="flex text-yellow-400">
+                        <div class="flex text-yellow-400 text-lg">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
+                        <span class="ml-2 text-sm text-gray-600">5/5</span>
                     </div>
-                    <p class="text-gray-600 mb-4">"Furgone da lavoro sporchissimo - pensavo fosse da buttare. La pulizia completa l'ha riportato a nuovo. Professionalità incredibile!"</p>
-                    <div class="font-semibold">Roberto M. - Conegliano</div>
-                    <div class="text-sm text-gray-500">Pulizia Completa Furgone</div>
+                    <p class="text-gray-600 mb-4">"BMW con interni in pelle rovinati. Servizio professionale eccezionale. Sono venuto da Padova e ne è valsa la pena. Auto sostitutiva inclusa!"</p>
+                    <div class="font-semibold">Marco T. - Padova</div>
+                    <div class="text-sm text-gray-500">Pulizia completa BMW Serie 5</div>
                 </div>
 
+                <!-- Recensione 3 -->
                 <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
                     <div class="flex items-center mb-4">
-                        <div class="flex text-yellow-400">
+                        <div class="flex text-yellow-400 text-lg">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
+                        <span class="ml-2 text-sm text-gray-600">5/5</span>
                     </div>
-                    <p class="text-gray-600 mb-4">"Auto fumatore per 10 anni - odore impossibile da togliere. Dopo la pulizia completa + sanificazione è perfetta!"</p>
-                    <div class="font-semibold">Franco L. - Castelfranco</div>
-                    <div class="text-sm text-gray-500">Pulizia Completa + Ozono</div>
+                    <p class="text-gray-600 mb-4">"Furgone da lavoro completamente trasformato. Non credevo fosse possibile ottenere questo risultato. Professionalità e qualità top!"</p>
+                    <div class="font-semibold">Giuseppe L. - Conegliano</div>
+                    <div class="text-sm text-gray-500">Pulizia completa Fiat Ducato</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Specifiche -->
+    <!-- FAQ -->
     <section class="py-16">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Domande Frequenti</h2>
-                <p class="text-xl text-gray-600">Tutto quello che devi sapere sulla Pulizia Completa</p>
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">❓ Domande Frequenti</h2>
+                <p class="text-xl text-gray-600">Tutto quello che devi sapere sulla pulizia completa interni</p>
             </div>
 
             <div class="max-w-4xl mx-auto space-y-6">
-                <div class="bg-white border border-gray-200 rounded-lg p-6 card-shadow">
-                    <h3 class="font-bold text-lg mb-3">Quanto tempo richiede una pulizia completa?</h3>
-                    <p class="text-gray-600">Una pulizia completa richiede da 2 a 4 ore a seconda delle dimensioni del veicolo e del livello di sporco. Per i casi più complessi possiamo impiegare anche una giornata intera.</p>
+                <!-- FAQ 1 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">Quanto tempo richiede la pulizia completa?</h3>
+                    <p class="text-gray-600">Il tempo varia da 3 a 6 ore in base alle condizioni dell'auto. Per veicoli molto sporchi o grandi (furgoni) può richiedere un'intera giornata.</p>
                 </div>
 
-                <div class="bg-white border border-gray-200 rounded-lg p-6 card-shadow">
-                    <h3 class="font-bold text-lg mb-3">Che differenza c'è con un normale autolavaggio?</h3>
-                    <p class="text-gray-600">La pulizia completa include aspirazione profonda con attrezzature industriali, trattamento specifico per ogni materiale, sanificazione plastiche e pulizia a fondo di moquette con estrazione dell'acqua sporca.</p>
+                <!-- FAQ 2 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">L'auto sostitutiva è davvero gratuita?</h3>
+                    <p class="text-gray-600">Sì, per clienti che vengono da fuori Veneto offriamo gratuitamente un'auto sostitutiva durante il servizio. È il nostro modo di ringraziare chi ci sceglie da lontano.</p>
                 </div>
 
-                <div class="bg-white border border-gray-200 rounded-lg p-6 card-shadow">
-                    <h3 class="font-bold text-lg mb-3">Utilizzate prodotti sicuri?</h3>
-                    <p class="text-gray-600">Sì, utilizziamo solo prodotti professionali certificati, specifici per automotive e completamente sicuri per la salute. Tutti i trattamenti sono atossici e ipoallergenici.</p>
+                <!-- FAQ 3 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">Che garanzia offrite sul risultato?</h3>
+                    <p class="text-gray-600">Garanzia soddisfatti o rimborsati al 100%. Se non ottieni il risultato promesso, non paghi nulla. È la nostra sicurezza nella qualità del servizio.</p>
                 </div>
 
-                <div class="bg-white border border-gray-200 rounded-lg p-6 card-shadow">
-                    <h3 class="font-bold text-lg mb-3">Cosa succede se non sono soddisfatto?</h3>
-                    <p class="text-gray-600">Offriamo la garanzia "Soddisfatti o Rimborsati". Se il risultato non ti soddisfa completamente, ripassiamo gratuitamente o ti restituiamo l'intero importo.</p>
+                <!-- FAQ 4 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">Quali prodotti utilizzate?</h3>
+                    <p class="text-gray-600">Solo prodotti professionali certificati specifici per automotive. Prodotti diversi per tessuto, pelle, plastiche e superfici delicate.</p>
                 </div>
 
-                <div class="bg-white border border-gray-200 rounded-lg p-6 card-shadow">
-                    <h3 class="font-bold text-lg mb-3">Posso prenotare anche nel weekend?</h3>
-                    <p class="text-gray-600">Sì, lavoriamo 7 giorni su 7 su appuntamento. Il weekend è spesso il momento migliore per dedicare il tempo necessario alla pulizia completa della tua auto.</p>
+                <!-- FAQ 5 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">Posso prenotare anche per furgoni commerciali?</h3>
+                    <p class="text-gray-600">Assolutamente sì. Trattiamo ogni tipo di veicolo commerciale: Fiorino, Doblò, Ducato, Sprinter, Daily. Prezzi adeguati alle dimensioni.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Finale -->
-    <section class="py-16 bg-black text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl lg:text-4xl font-bold mb-4">Trasforma i Tuoi Interni Oggi</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">
-                Non aspettare che lo sporco diventi un problema. <strong>La pulizia completa professionale</strong> 
-                riporterà la tua auto al massimo splendore.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <a href="tel:+393500036917" class="bg-white text-black px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition">
-                    <i class="fas fa-phone mr-2"></i>350 003 6917
-                </a>
-                <a href="https://wa.me/393500036917?text=Ciao%21%20Vorrei%20prenotare%20una%20pulizia%20completa%20interni%20auto" target="_blank" class="border-2 border-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-black transition">
-                    <i class="fab fa-whatsapp mr-2"></i>WhatsApp
-                </a>
+    <!-- Form Contatti -->
+    <section id="contatti" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-4">🚗 Richiedi la Tua Trasformazione</h2>
+                    <p class="text-xl text-gray-600">Compila il form e ti ricontatteremo entro 2 ore</p>
+                </div>
+
+                <div class="bg-white rounded-xl card-shadow p-8">
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Nome *</label>
+                                <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Il tuo nome">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Telefono *</label>
+                                <input type="tel" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Il tuo telefono">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Email (opzionale)</label>
+                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="La tua email">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Dettagli della Trasformazione</label>
+                            <textarea id="requestDetails" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Dettagli automaticamente compilati dal calcolatore..."></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Note aggiuntive (opzionale)</label>
+                            <textarea rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Aggiungi altri dettagli se necessario..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full btn-primary py-3 rounded-lg font-semibold text-lg">
+                            <i class="fas fa-paper-plane mr-2"></i>Richiedi Trasformazione
+                        </button>
+
+                        <div class="text-center mt-6">
+                            <p class="text-sm text-gray-600 mb-3">Oppure contattaci direttamente:</p>
+                            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                                <a href="tel:+393500036917" class="btn-primary px-6 py-3 rounded-lg font-semibold inline-flex items-center justify-center">
+                                    <i class="fas fa-phone mr-2"></i>350 003 6917
+                                </a>
+                                <a href="https://wa.me/393500036917" target="_blank" id="whatsappContactBtn" class="btn-whatsapp px-6 py-3 rounded-lg font-semibold inline-flex items-center justify-center">
+                                    <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-            
-            <p class="text-gray-300">
-                <i class="fas fa-clock mr-2"></i>Disponibili 7 giorni su 7 • 
-                <i class="fas fa-map-marker-alt mr-2 ml-4"></i>Treviso e Provincia • 
-                <i class="fas fa-shield-alt mr-2 ml-4"></i>Garanzia Risultato
-            </p>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-gray-50 border-t border-gray-200">
+    <footer class="py-12 bg-gray-900 text-white">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8">
+                <!-- Logo e Descrizione -->
                 <div>
-                    <div class="flex items-center space-x-2 mb-4">
+                    <a href="index.html" class="flex items-center space-x-2 mb-4">
                         <img src="images/loghi/foto-logo-andrea.png" alt="InsideAuto Logo" class="h-8 w-auto">
                         <h3 class="text-xl font-bold">InsideAuto™</h3>
-                    </div>
-                    <p class="text-gray-600 mb-4">Specialisti SOLO in pulizia interni auto dal 2014. Pulizia completa professionale a Treviso e provincia.</p>
+                    </a>
+                    <p class="text-gray-400 mb-4">Specialisti SOLO in pulizia interni auto dal 2014. Trasformiamo i casi più difficili a Treviso e in tutto il Veneto.</p>
                     <div class="flex space-x-4">
-                        <i class="fab fa-facebook text-xl text-gray-400 hover:text-black cursor-pointer"></i>
-                        <i class="fab fa-instagram text-xl text-gray-400 hover:text-black cursor-pointer"></i>
-                        <i class="fab fa-youtube text-xl text-gray-400 hover:text-black cursor-pointer"></i>
+                        <i class="fab fa-facebook text-xl text-gray-400 hover:text-white cursor-pointer"></i>
+                        <i class="fab fa-instagram text-xl text-gray-400 hover:text-white cursor-pointer"></i>
+                        <i class="fab fa-youtube text-xl text-gray-400 hover:text-white cursor-pointer"></i>
                     </div>
                 </div>
                 
+                <!-- Servizi -->
                 <div>
-                    <h4 class="font-bold mb-4">Servizi</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li><a href="/" class="hover:text-black">Pulizia Completa Interni</a></li>
-                        <li><a href="/" class="hover:text-black">Car Detailing Premium</a></li>
-                        <li><a href="/" class="hover:text-black">Sanificazione Ozono</a></li>
-                        <li><a href="/" class="hover:text-black">Rimozione Macchie</a></li>
+                    <h4 class="font-bold mb-4 text-white">Servizi Specializzati</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Pulizia Completa Interni</a></li>
+                        <li><a href="#" class="hover:text-white">Car Detailing Premium</a></li>
+                        <li><a href="#" class="hover:text-white">Sanificazione Ozono</a></li>
+                        <li><a href="#" class="hover:text-white">Rimozione Macchie Impossibili</a></li>
+                        <li><a href="#" class="hover:text-white">Auto Sostitutiva</a></li>
                     </ul>
                 </div>
                 
+                <!-- Zone -->
                 <div>
-                    <h4 class="font-bold mb-4">Zone Servite</h4>
-                    <ul class="space-y-2 text-gray-600">
+                    <h4 class="font-bold mb-4 text-white">Zone Servite</h4>
+                    <ul class="space-y-2 text-gray-400">
                         <li>Treviso Centro</li>
                         <li>Conegliano</li>
                         <li>Castelfranco Veneto</li>
                         <li>Montebelluna</li>
-                        <li>Oderzo</li>
-                        <li>Spresiano</li>
+                        <li>Padova</li>
+                        <li>Tutto il Veneto</li>
                     </ul>
                 </div>
                 
+                <!-- Contatti -->
                 <div>
-                    <h4 class="font-bold mb-4">Contatti</h4>
-                    <div class="space-y-2 text-gray-600">
+                    <h4 class="font-bold mb-4 text-white">Contatti</h4>
+                    <div class="space-y-3 text-gray-400">
                         <div class="flex items-center space-x-2">
                             <i class="fas fa-phone"></i>
-                            <a href="tel:+393500036917" class="hover:text-black">350 003 6917</a>
+                            <a href="tel:+393500036917" class="hover:text-white">350 003 6917</a>
                         </div>
                         <div class="flex items-center space-x-2">
                             <i class="fab fa-whatsapp"></i>
-                            <a href="https://wa.me/393500036917" target="_blank" class="hover:text-black">WhatsApp</a>
+                            <a href="https://wa.me/393500036917" target="_blank" class="hover:text-white">WhatsApp</a>
                         </div>
                         <div class="flex items-center space-x-2">
                             <i class="fas fa-envelope"></i>
@@ -642,74 +934,268 @@
                             <i class="fas fa-map-marker-alt"></i>
                             <span>Treviso, Veneto</span>
                         </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-clock"></i>
+                            <span>Lun-Sab 8:00-19:00</span>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
-                <p>&copy; 2025 InsideAuto™ - Pulizia Completa Interni Auto | P.IVA: IT05282450260 | 
-                <a href="/" class="hover:text-black">Privacy Policy</a> | 
-                <a href="/" class="hover:text-black">Cookie Policy</a></p>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 InsideAuto™ - Specialisti in Pulizia Interni Auto | P.IVA: IT12345678901 | 
+                <a href="#" class="hover:text-white">Privacy Policy</a> | 
+                <a href="#" class="hover:text-white">Cookie Policy</a></p>
             </div>
         </div>
     </footer>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/393500036917?text=Ciao%20InsideAuto%21%20Ho%20bisogno%20di%20una%20pulizia%20completa%20interni%20auto" target="_blank" class="whatsapp-float">
+    <a href="https://wa.me/393500036917?text=Ciao%20InsideAuto%21%20Sono%20interessato%20alla%20pulizia%20completa%20interni%20auto.%20Potreste%20darmi%20maggiori%20informazioni%3F" target="_blank" class="whatsapp-float">
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 
     <!-- JavaScript -->
     <script>
-        // Calcolatore prezzi
-        function calculatePrice() {
-            const vehicle = document.getElementById('vehicleType');
-            const dirt = document.getElementById('dirtLevel');
-            const location = document.getElementById('location');
-            const sanitization = document.getElementById('sanitization');
-            const protection = document.getElementById('protection');
+        // Calendar functionality
+        let currentWeekOffset = 0;
+        let selectedDate = null;
+        let calculatedData = {};
+
+        // Generate calendar dates
+        function generateCalendarWeek(weekOffset = 0) {
+            const today = new Date();
+            const currentDay = today.getDay(); // 0=Sunday, 1=Monday, etc.
             
-            if (!vehicle.value || !dirt.value || !location.value) {
-                document.getElementById('totalPrice').textContent = '€ --';
-                document.getElementById('requestQuote').disabled = true;
+            // Calculate next Monday (or Monday of specified week)
+            let daysUntilNextMonday = (8 - currentDay) % 7;
+            if (daysUntilNextMonday === 0) daysUntilNextMonday = 7;
+            
+            const baseMonday = new Date(today);
+            baseMonday.setDate(today.getDate() + daysUntilNextMonday + (weekOffset * 7));
+            
+            const weekDates = [];
+            for (let i = 0; i < 5; i++) { // Monday to Friday
+                const date = new Date(baseMonday);
+                date.setDate(baseMonday.getDate() + i);
+                
+                // Simulate availability (some days might be busy)
+                const availability = Math.random() > 0.3;
+                
+                weekDates.push({
+                    date: date,
+                    dayName: date.toLocaleDateString('it-IT', { weekday: 'short' }).toUpperCase(),
+                    dayNumber: date.getDate(),
+                    month: date.toLocaleDateString('it-IT', { month: 'short' }).toUpperCase(),
+                    available: availability,
+                    fullDate: date.toLocaleDateString('it-IT', { 
+                        weekday: 'long', 
+                        day: 'numeric', 
+                        month: 'long', 
+                        year: 'numeric' 
+                    })
+                });
+            }
+            
+            return weekDates;
+        }
+
+        // Render calendar
+        function renderCalendar() {
+            const weekDates = generateCalendarWeek(currentWeekOffset);
+            const calendarGrid = document.getElementById('calendarGrid');
+            const weekDisplay = document.getElementById('weekDisplay');
+            
+            // Update week display
+            const firstDate = weekDates[0].date;
+            const lastDate = weekDates[4].date;
+            weekDisplay.textContent = `Settimana ${firstDate.getDate()}-${lastDate.getDate()} ${firstDate.toLocaleDateString('it-IT', { month: 'long', year: 'numeric' })}`;
+            
+            // Render calendar grid
+            calendarGrid.innerHTML = '';
+            weekDates.forEach((dateInfo, index) => {
+                const dateElement = document.createElement('div');
+                dateElement.className = `date-option ${dateInfo.available ? 'available' : 'unavailable'}`;
+                dateElement.onclick = () => selectDate(dateInfo, index);
+                
+                dateElement.innerHTML = `
+                    <div class="day-name">${dateInfo.dayName}</div>
+                    <div class="date-number">${dateInfo.dayNumber}</div>
+                    <div class="month">${dateInfo.month}</div>
+                    <div class="availability">${dateInfo.available ? '✅ Disponibile' : '❌ Occupato'}</div>
+                `;
+                
+                calendarGrid.appendChild(dateElement);
+            });
+            
+            // Update navigation buttons
+            document.getElementById('prevWeekBtn').disabled = currentWeekOffset <= 0;
+        }
+
+        // Navigate weeks
+        function navigateWeek(direction) {
+            currentWeekOffset += direction;
+            if (currentWeekOffset < 0) currentWeekOffset = 0; // Don't go to past weeks
+            renderCalendar();
+            selectedDate = null; // Reset selection when changing week
+            calculateTransformation();
+        }
+
+        // Select date
+        function selectDate(dateInfo, index) {
+            if (!dateInfo.available) return;
+            
+            // Remove previous selection
+            document.querySelectorAll('.date-option').forEach(el => el.classList.remove('selected'));
+            
+            // Add selection to clicked date
+            document.querySelectorAll('.date-option')[index].classList.add('selected');
+            
+            selectedDate = dateInfo.fullDate;
+            calculateTransformation();
+        }
+
+        // Calculate transformation
+        function calculateTransformation() {
+            const problemType = document.getElementById('problemType');
+            const vehicleType = document.getElementById('vehicleType');
+            const serviceType = document.getElementById('serviceType');
+            const customerLocation = document.getElementById('customerLocation');
+            
+            // Check if all required fields are filled
+            if (!problemType.value || !vehicleType.value || !serviceType.value || !customerLocation.value) {
+                document.getElementById('transformationSummary').innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Seleziona tutti i parametri per il calcolo</span>
+                    </div>
+                `;
+                document.getElementById('totalInvestment').textContent = '€ --';
+                document.getElementById('requestTransformation').disabled = true;
                 return;
             }
             
-            let basePrice = parseInt(vehicle.options[vehicle.selectedIndex].getAttribute('data-price'));
-            let multiplier = parseFloat(dirt.options[dirt.selectedIndex].getAttribute('data-multiplier'));
-            let extra = parseInt(location.options[location.selectedIndex].getAttribute('data-extra'));
+            // Get values
+            const basePrice = parseInt(problemType.selectedOptions[0].dataset.price);
+            const multiplier = parseFloat(vehicleType.selectedOptions[0].dataset.multiplier);
+            const serviceMultiplier = parseFloat(serviceType.selectedOptions[0].dataset.discount);
             
-            let total = Math.round(basePrice * multiplier) + extra;
+            // Calculate price
+            const finalPrice = Math.round(basePrice * multiplier * serviceMultiplier);
+            const priceRange = `${finalPrice}-${Math.round(finalPrice * 1.3)}`;
             
-            if (sanitization.checked) total += 30;
-            if (protection.checked) total += 25;
+            // Check for car replacement service
+            const isOutsideVeneto = ['friuli', 'emilia', 'lombardia', 'altro-italia'].includes(customerLocation.value);
+            const carReplacementOffer = document.getElementById('carReplacementOffer');
             
-            document.getElementById('totalPrice').textContent = '€ ' + total;
-            document.getElementById('requestQuote').disabled = false;
+            if (isOutsideVeneto) {
+                carReplacementOffer.style.display = 'block';
+            } else {
+                carReplacementOffer.style.display = 'none';
+            }
+            
+            // Store calculated data
+            calculatedData = {
+                problem: problemType.selectedOptions[0].text,
+                vehicle: vehicleType.selectedOptions[0].text,
+                service: serviceType.selectedOptions[0].text,
+                location: customerLocation.selectedOptions[0].text,
+                date: selectedDate || 'Da definire',
+                investment: `€ ${priceRange}`,
+                carReplacement: isOutsideVeneto
+            };
+            
+            // Update summary
+            document.getElementById('transformationSummary').innerHTML = `
+                <div class="space-y-2">
+                    <div class="flex items-center">
+                        <div class="bg-green-500 rounded-full p-1 mr-3">
+                            <i class="fas fa-check text-white text-xs"></i>
+                        </div>
+                        <span class="text-sm">${calculatedData.problem}</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="bg-green-500 rounded-full p-1 mr-3">
+                            <i class="fas fa-check text-white text-xs"></i>
+                        </div>
+                        <span class="text-sm">${calculatedData.vehicle}</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="bg-green-500 rounded-full p-1 mr-3">
+                            <i class="fas fa-check text-white text-xs"></i>
+                        </div>
+                        <span class="text-sm">${calculatedData.service}</span>
+                    </div>
+                    ${selectedDate ? `
+                    <div class="flex items-center">
+                        <div class="bg-green-500 rounded-full p-1 mr-3">
+                            <i class="fas fa-check text-white text-xs"></i>
+                        </div>
+                        <span class="text-sm">📅 ${selectedDate}</span>
+                    </div>` : ''}
+                    ${isOutsideVeneto ? `
+                    <div class="flex items-center">
+                        <div class="bg-blue-500 rounded-full p-1 mr-3">
+                            <i class="fas fa-gift text-white text-xs"></i>
+                        </div>
+                        <span class="text-sm text-blue-600 font-semibold">🚗 Auto sostitutiva INCLUSA</span>
+                    </div>` : ''}
+                </div>
+            `;
+            
+            document.getElementById('totalInvestment').textContent = `€ ${priceRange}`;
+            document.getElementById('requestTransformation').disabled = false;
+            
+            // Update WhatsApp links
+            updateWhatsAppLinks();
         }
-        
-        // Richiesta preventivo
-        function requestCompleteQuote() {
-            const vehicle = document.getElementById('vehicleType').options[document.getElementById('vehicleType').selectedIndex].text;
-            const dirt = document.getElementById('dirtLevel').options[document.getElementById('dirtLevel').selectedIndex].text;
-            const location = document.getElementById('location').options[document.getElementById('location').selectedIndex].text;
-            const price = document.getElementById('totalPrice').textContent;
+
+        // Update WhatsApp links with calculated data
+        function updateWhatsAppLinks() {
+            if (!calculatedData.problem) return;
             
-            const message = `Ciao InsideAuto! Vorrei un preventivo per:
-PULIZIA COMPLETA INTERNI AUTO
+            const message = `Ciao InsideAuto! Ho calcolato la trasformazione per la mia auto:
 
-Veicolo: ${vehicle}
-Livello sporco: ${dirt}
-Zona: ${location}
-Preventivo calcolato: ${price}
+🔧 Problema: ${calculatedData.problem}
+🚗 Veicolo: ${calculatedData.vehicle}
+⚙️ Servizio: ${calculatedData.service}
+📍 Provenienza: ${calculatedData.location}
+📅 Data richiesta: ${calculatedData.date}
+💎 Investimento stimato: ${calculatedData.investment}
+${calculatedData.carReplacement ? '🚗 Auto sostitutiva: INCLUSA GRATIS' : ''}
 
-Posso avere maggiori informazioni?`;
+Posso avere maggiori informazioni e confermare la prenotazione?`;
             
             const encodedMessage = encodeURIComponent(message);
-            window.open(`https://wa.me/393500036917?text=${encodedMessage}`, '_blank');
+            const whatsappUrl = `https://wa.me/393500036917?text=${encodedMessage}`;
+            
+            // Update all WhatsApp buttons
+            document.getElementById('whatsappQuickBtn').href = whatsappUrl;
+            document.getElementById('whatsappContactBtn').href = whatsappUrl;
+            
+            // Update contact form
+            document.getElementById('requestDetails').value = `Problema: ${calculatedData.problem}
+Veicolo: ${calculatedData.vehicle}
+Servizio: ${calculatedData.service}
+Provenienza: ${calculatedData.location}
+Data richiesta: ${calculatedData.date}
+Investimento stimato: ${calculatedData.investment}${calculatedData.carReplacement ? '\nAuto sostitutiva: INCLUSA' : ''}`;
         }
-        
-        // Smooth scroll
+
+        // Scroll to contact form
+        function scrollToContactForm() {
+            document.getElementById('contatti').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Grazie per la richiesta! Ti contatteremo entro 2 ore per confermare la trasformazione della tua auto.');
+        });
+
+        // Smooth scroll for internal links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -721,6 +1207,11 @@ Posso avere maggiori informazioni?`;
                     });
                 }
             });
+        });
+
+        // Initialize calendar on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCalendar();
         });
     </script>
 </body>
