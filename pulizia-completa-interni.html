@@ -211,6 +211,28 @@
     background-color: #128C7E;
     transform: translateY(-1px);
 }
+        .date-option.today {
+        border-color: #3b82f6;
+        background: #eff6ff;
+    }
+
+    .date-option.today.selected {
+        border-color: #22c55e;
+        background: #22c55e;
+        color: white;
+    }
+
+    .date-option.unavailable {
+        background: #f3f4f6;
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .calendar-nav button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background: #f9fafb;
+    }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -895,7 +917,7 @@
                         <img src="images/loghi/foto-logo-andrea.png" alt="InsideAuto Logo" class="h-8 w-auto">
                         <h3 class="text-xl font-bold">InsideAuto™</h3>
                     </a>
-                    <p class="text-gray-400 mb-4">Specialisti SOLO in pulizia interni auto dal 2014. Trasformiamo i casi più difficili a Treviso e in tutto il Veneto.</p>
+                    <p class="text-gray-400 mb-4">Specializzati SOLO in pulizia interni auto dal 2014. Trasformiamo i casi più difficili a Treviso e in tutto il Veneto.</p>
                     <div class="flex space-x-4">
                         <i class="fab fa-facebook text-xl text-gray-400 hover:text-white cursor-pointer"></i>
                         <i class="fab fa-instagram text-xl text-gray-400 hover:text-white cursor-pointer"></i>
@@ -971,203 +993,217 @@
 
     <!-- JavaScript -->
     <script>
-        // Calendar functionality
-        let currentWeekOffset = 0;
-        let selectedDate = null;
-        let calculatedData = {};
+        // Calendar functionality - Complete Corrected Version
+let currentWeekOffset = 0;
+let selectedDate = null;
+let calculatedData = {};
+let initialMonday = null; // Store the Monday of the week when page was loaded
 
-        // Generate calendar dates
-        function generateCalendarWeek(weekOffset = 0) {
-            const today = new Date();
-            const currentDay = today.getDay(); // 0=Sunday, 1=Monday, etc.
-            
-            // Calculate next Monday (or Monday of specified week)
-            let daysUntilNextMonday = (8 - currentDay) % 7;
-            if (daysUntilNextMonday === 0) daysUntilNextMonday = 7;
-            
-            const baseMonday = new Date(today);
-            baseMonday.setDate(today.getDate() + daysUntilNextMonday + (weekOffset * 7));
-            
-            const weekDates = [];
-            for (let i = 0; i < 5; i++) { // Monday to Friday
-                const date = new Date(baseMonday);
-                date.setDate(baseMonday.getDate() + i);
-                
-                // Simulate availability (some days might be busy)
-                const availability = Math.random() = true;
-                
-                weekDates.push({
-                    date: date,
-                    dayName: date.toLocaleDateString('it-IT', { weekday: 'short' }).toUpperCase(),
-                    dayNumber: date.getDate(),
-                    month: date.toLocaleDateString('it-IT', { month: 'short' }).toUpperCase(),
-                    available: availability,
-                    fullDate: date.toLocaleDateString('it-IT', { 
-                        weekday: 'long', 
-                        day: 'numeric', 
-                        month: 'long', 
-                        year: 'numeric' 
-                    })
-                });
-            }
-            
-            return weekDates;
+// Get current week's Monday
+function getCurrentMonday() {
+    const today = new Date();
+    const day = today.getDay();
+    const diff = today.getDate() - day + (day === 0 ? -6 : 1); // adjust when day is sunday
+    const monday = new Date(today.setDate(diff));
+    return monday;
+}
+
+// Generate calendar dates starting from current week
+function generateCalendarWeek(weekOffset = 0) {
+    const baseMonday = getCurrentMonday();
+    baseMonday.setDate(baseMonday.getDate() + (weekOffset * 7));
+    
+    const weekDates = [];
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Reset time for comparison
+    
+    for (let i = 0; i < 5; i++) { // Monday to Friday
+        const date = new Date(baseMonday);
+        date.setDate(baseMonday.getDate() + i);
+        
+        // Don't allow past dates (except today)
+        const isToday = date.getTime() === today.getTime();
+        const isPast = date < today && !isToday;
+        
+        // All future dates (including today) are available
+        const availability = !isPast;
+        
+        weekDates.push({
+            date: date,
+            dayName: date.toLocaleDateString('it-IT', { weekday: 'short' }).toUpperCase(),
+            dayNumber: date.getDate(),
+            month: date.toLocaleDateString('it-IT', { month: 'short' }).toUpperCase(),
+            available: availability,
+            isPast: isPast,
+            isToday: isToday,
+            fullDate: date.toLocaleDateString('it-IT', { 
+                weekday: 'long', 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric' 
+            })
+        });
+    }
+    
+    return weekDates;
+}
+
+// Render calendar
+function renderCalendar() {
+    const weekDates = generateCalendarWeek(currentWeekOffset);
+    const calendarGrid = document.getElementById('calendarGrid');
+    const weekDisplay = document.getElementById('weekDisplay');
+    
+    // Update week display
+    const firstDate = weekDates[0].date;
+    const lastDate = weekDates[4].date;
+    const monthName = firstDate.toLocaleDateString('it-IT', { month: 'long' });
+    const year = firstDate.getFullYear();
+    
+    weekDisplay.textContent = `Settimana ${firstDate.getDate()}-${lastDate.getDate()} ${monthName} ${year}`;
+    
+    // Clear and render calendar grid
+    calendarGrid.innerHTML = '';
+    
+    weekDates.forEach((dateInfo, index) => {
+        const dateElement = document.createElement('div');
+        
+        // Set classes based on availability
+        let classes = 'date-option';
+        if (dateInfo.isPast) {
+            classes += ' unavailable';
+        } else {
+            classes += ' available';
         }
-
-        // Render calendar
-        function renderCalendar() {
-            const weekDates = generateCalendarWeek(currentWeekOffset);
-            const calendarGrid = document.getElementById('calendarGrid');
-            const weekDisplay = document.getElementById('weekDisplay');
-            
-            // Update week display
-            const firstDate = weekDates[0].date;
-            const lastDate = weekDates[4].date;
-            weekDisplay.textContent = `Settimana ${firstDate.getDate()}-${lastDate.getDate()} ${firstDate.toLocaleDateString('it-IT', { month: 'long', year: 'numeric' })}`;
-            
-            // Render calendar grid
-            calendarGrid.innerHTML = '';
-            weekDates.forEach((dateInfo, index) => {
-                const dateElement = document.createElement('div');
-                dateElement.className = `date-option ${dateInfo.available ? 'available'}`;
-                dateElement.onclick = () => selectDate(dateInfo, index);
-                
-                dateElement.innerHTML = `
-                    <div class="day-name">${dateInfo.dayName}</div>
-                    <div class="date-number">${dateInfo.dayNumber}</div>
-                    <div class="month">${dateInfo.month}</div>
-                    <div class="availability">${dateInfo.available ? '✅ Disponibile'}</div>
-                `;
-                
-                calendarGrid.appendChild(dateElement);
-            });
-            
-            // Update navigation buttons
-            document.getElementById('prevWeekBtn').disabled = currentWeekOffset <= 0;
+        
+        if (dateInfo.isToday) {
+            classes += ' today';
         }
-
-        // Navigate weeks
-        function navigateWeek(direction) {
-            currentWeekOffset += direction;
-            if (currentWeekOffset < 0) currentWeekOffset = 0; // Don't go to past weeks
-            renderCalendar();
-            selectedDate = null; // Reset selection when changing week
-            calculateTransformation();
+        
+        dateElement.className = classes;
+        
+        // Add click handler for all non-past dates
+        if (!dateInfo.isPast) {
+            dateElement.onclick = () => selectDate(dateInfo, index);
+            dateElement.style.cursor = 'pointer';
+        } else {
+            dateElement.style.cursor = 'not-allowed';
         }
-
-        // Select date
-        function selectDate(dateInfo, index) {
-            
-            
-            // Remove previous selection
-            document.querySelectorAll('.date-option').forEach(el => el.classList.remove('selected'));
-            
-            // Add selection to clicked date
-            document.querySelectorAll('.date-option')[index].classList.add('selected');
-            
-            selectedDate = dateInfo.fullDate;
-            calculateTransformation();
+        
+        // Set content
+        let availabilityText = '';
+        if (dateInfo.isPast) {
+            availabilityText = '⏰ Passato';
+        } else if (dateInfo.isToday) {
+            availabilityText = '📅 Oggi';
+        } else {
+            availabilityText = '✅ Disponibile';
         }
+        
+        dateElement.innerHTML = `
+            <div class="day-name">${dateInfo.dayName}</div>
+            <div class="date-number">${dateInfo.dayNumber}</div>
+            <div class="month">${dateInfo.month}</div>
+            <div class="availability">${availabilityText}</div>
+        `;
+        
+        calendarGrid.appendChild(dateElement);
+    });
+    
+    // Update navigation buttons
+    const prevBtn = document.getElementById('prevWeekBtn');
+    const nextBtn = document.getElementById('nextWeekBtn');
+    
+    // Disable previous button if we're at current week
+    prevBtn.disabled = currentWeekOffset <= 0;
+    
+    // Limit to 8 weeks in advance
+    nextBtn.disabled = currentWeekOffset >= 8;
+}
 
-        // Calculate transformation
-        function calculateTransformation() {
-            const problemType = document.getElementById('problemType');
-            const vehicleType = document.getElementById('vehicleType');
-            const serviceType = document.getElementById('serviceType');
-            const customerLocation = document.getElementById('customerLocation');
-            
-            // Check if all required fields are filled
-            if (!problemType.value || !vehicleType.value || !serviceType.value || !customerLocation.value) {
-                document.getElementById('transformationSummary').innerHTML = `
-                    <div class="flex justify-between items-center">
-                        <span class="text-gray-600">Seleziona tutti i parametri per il calcolo</span>
-                    </div>
-                `;
-                document.getElementById('totalInvestment').textContent = '€ --';
-                document.getElementById('requestTransformation').disabled = true;
-                return;
-            }
-            
-            // Get values
-            const basePrice = parseInt(problemType.selectedOptions[0].dataset.price);
-            const multiplier = parseFloat(vehicleType.selectedOptions[0].dataset.multiplier);
-            const serviceMultiplier = parseFloat(serviceType.selectedOptions[0].dataset.discount);
-            
-            // Calculate price
-            const finalPrice = Math.round(basePrice * multiplier * serviceMultiplier);
-            const priceRange = `${finalPrice}-${Math.round(finalPrice * 1.3)}`;
-            
-            // Check for car replacement service
-            const isOutsideVeneto = ['friuli', 'emilia', 'lombardia', 'altro-italia'].includes(customerLocation.value);
-            const carReplacementOffer = document.getElementById('carReplacementOffer');
-            
-            if (isOutsideVeneto) {
-                carReplacementOffer.style.display = 'block';
-            } else {
-                carReplacementOffer.style.display = 'none';
-            }
-            
-            // Store calculated data
-            calculatedData = {
-                problem: problemType.selectedOptions[0].text,
-                vehicle: vehicleType.selectedOptions[0].text,
-                service: serviceType.selectedOptions[0].text,
-                location: customerLocation.selectedOptions[0].text,
-                date: selectedDate || 'Da definire',
-                investment: `€ ${priceRange}`,
-                carReplacement: isOutsideVeneto
-            };
-            
-            // Update summary
-            document.getElementById('transformationSummary').innerHTML = `
-                <div class="space-y-2">
-                    <div class="flex items-center">
-                        <div class="bg-green-500 rounded-full p-1 mr-3">
-                            <i class="fas fa-check text-white text-xs"></i>
-                        </div>
-                        <span class="text-sm">${calculatedData.problem}</span>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="bg-green-500 rounded-full p-1 mr-3">
-                            <i class="fas fa-check text-white text-xs"></i>
-                        </div>
-                        <span class="text-sm">${calculatedData.vehicle}</span>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="bg-green-500 rounded-full p-1 mr-3">
-                            <i class="fas fa-check text-white text-xs"></i>
-                        </div>
-                        <span class="text-sm">${calculatedData.service}</span>
-                    </div>
-                    ${selectedDate ? `
-                    <div class="flex items-center">
-                        <div class="bg-green-500 rounded-full p-1 mr-3">
-                            <i class="fas fa-check text-white text-xs"></i>
-                        </div>
-                        <span class="text-sm">📅 ${selectedDate}</span>
-                    </div>` : ''}
-                    ${isOutsideVeneto ? `
-                    <div class="flex items-center">
-                        <div class="bg-blue-500 rounded-full p-1 mr-3">
-                            <i class="fas fa-gift text-white text-xs"></i>
-                        </div>
-                        <span class="text-sm text-blue-600 font-semibold">🚗 Auto sostitutiva INCLUSA</span>
-                    </div>` : ''}
-                </div>
-            `;
-            
-            document.getElementById('totalInvestment').textContent = `€ ${priceRange}`;
-            document.getElementById('requestTransformation').disabled = false;
-            
-            // Update WhatsApp links
-            updateWhatsAppLinks();
-        }
+// Navigate weeks
+function navigateWeek(direction) {
+    const newOffset = currentWeekOffset + direction;
+    
+    // Don't go to past weeks
+    if (newOffset < 0) return;
+    
+    // Don't go more than 8 weeks in advance
+    if (newOffset > 8) return;
+    
+    currentWeekOffset = newOffset;
+    renderCalendar();
+    
+    // Reset selection when changing week
+    selectedDate = null;
+    calculateTransformation();
+}
 
-        // Update WhatsApp links with calculated data
-        function updateWhatsAppLinks() {
-            if (!calculatedData.problem) return;
-            
-            const message = `Ciao InsideAuto! Ho calcolato la trasformazione per la mia auto:
+// Select date
+function selectDate(dateInfo, index) {
+    if (dateInfo.isPast) return;
+    
+    // Remove previous selection
+    document.querySelectorAll('.date-option').forEach(el => el.classList.remove('selected'));
+    
+    // Add selection to clicked date
+    const dateElements = document.querySelectorAll('.date-option');
+    if (dateElements[index]) {
+        dateElements[index].classList.add('selected');
+    }
+    
+    selectedDate = dateInfo.fullDate;
+    calculateTransformation();
+}
+
+// Auto-adjust for new week - IMPROVED VERSION
+function checkWeekUpdate() {
+    const now = new Date();
+    const currentMonday = getCurrentMonday();
+    
+    // Initialize on first run
+    if (!initialMonday) {
+        initialMonday = new Date(currentMonday);
+        return;
+    }
+    
+    // Check if we're in a new week
+    const daysDifference = Math.floor((currentMonday - initialMonday) / (1000 * 60 * 60 * 24));
+    const weeksDifference = Math.floor(daysDifference / 7);
+    
+    // If we're viewing the "current week" but actual week has changed
+    if (currentWeekOffset === 0 && weeksDifference > 0) {
+        // Reset to new current week
+        initialMonday = new Date(currentMonday);
+        renderCalendar();
+        console.log('📅 Calendario aggiornato automaticamente alla nuova settimana');
+    }
+}
+
+// Calculate transformation
+function calculateTransformation() {
+    const problemType = document.getElementById('problemType');
+    const vehicleType = document.getElementById('vehicleType');
+    const serviceType = document.getElementById('serviceType');
+    const customerLocation = document.getElementById('customerLocation');
+    
+    // Check if all required fields are filled
+    if (!problemType.value || !vehicleType.value || !serviceType.value || !customerLocation.value) {
+        document.getElementById('transformationSummary').innerHTML = `
+            <div class="flex justify-between items-center">
+                <span class="text-gray-600">Seleziona tutti i parametri per il calcolo</span>
+            </div>
+        `;
+        document.getElementById('totalInvestment').textContent = '€ --';
+        document.getElementById('requestTransformation').disabled = true;
+        return;
+    }
+
+    // Update WhatsApp links with calculated data
+function updateWhatsAppLinks() {
+    if (!calculatedData.problem) return;
+    
+    const message = `Ciao InsideAuto! Ho calcolato la trasformazione per la mia auto:
 
 🔧 Problema: ${calculatedData.problem}
 🚗 Veicolo: ${calculatedData.vehicle}
@@ -1178,55 +1214,171 @@
 ${calculatedData.carReplacement ? '🚗 Auto sostitutiva: INCLUSA GRATIS' : ''}
 
 Posso avere maggiori informazioni e confermare la prenotazione?`;
-            
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/393500036917?text=${encodedMessage}`;
-            
-            // Update all WhatsApp buttons
-            document.getElementById('whatsappQuickBtn').href = whatsappUrl;
-            document.getElementById('whatsappContactBtn').href = whatsappUrl;
-            
-            // Update contact form
-            document.getElementById('requestDetails').value = `Problema: ${calculatedData.problem}
+    
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/393500036917?text=${encodedMessage}`;
+    
+    // Update all WhatsApp buttons
+    document.getElementById('whatsappQuickBtn').href = whatsappUrl;
+    document.getElementById('whatsappContactBtn').href = whatsappUrl;
+    
+    // Update contact form
+    document.getElementById('requestDetails').value = `Problema: ${calculatedData.problem}
 Veicolo: ${calculatedData.vehicle}
 Servizio: ${calculatedData.service}
 Provenienza: ${calculatedData.location}
 Data richiesta: ${calculatedData.date}
 Investimento stimato: ${calculatedData.investment}${calculatedData.carReplacement ? '\nAuto sostitutiva: INCLUSA' : ''}`;
-        }
+}
+    
+    // Get values
+    const basePrice = parseInt(problemType.selectedOptions[0].dataset.price);
+    const multiplier = parseFloat(vehicleType.selectedOptions[0].dataset.multiplier);
+    const serviceMultiplier = parseFloat(serviceType.selectedOptions[0].dataset.discount);
+    
+    // Calculate price
+    const finalPrice = Math.round(basePrice * multiplier * serviceMultiplier);
+    const priceRange = `${finalPrice}-${Math.round(finalPrice * 1.3)}`;
+    
+    // Check for car replacement service
+    const isOutsideVeneto = ['friuli', 'emilia', 'lombardia', 'altro-italia'].includes(customerLocation.value);
+    const carReplacementOffer = document.getElementById('carReplacementOffer');
+    
+    if (isOutsideVeneto) {
+        carReplacementOffer.style.display = 'block';
+    } else {
+        carReplacementOffer.style.display = 'none';
+    }
+    
+    // Store calculated data
+    calculatedData = {
+        problem: problemType.selectedOptions[0].text,
+        vehicle: vehicleType.selectedOptions[0].text,
+        service: serviceType.selectedOptions[0].text,
+        location: customerLocation.selectedOptions[0].text,
+        date: selectedDate || 'Da definire',
+        investment: `€ ${priceRange}`,
+        carReplacement: isOutsideVeneto
+    };
+    
+    // Update summary
+    document.getElementById('transformationSummary').innerHTML = `
+        <div class="space-y-2">
+            <div class="flex items-center">
+                <div class="bg-green-500 rounded-full p-1 mr-3">
+                    <i class="fas fa-check text-white text-xs"></i>
+                </div>
+                <span class="text-sm">${calculatedData.problem}</span>
+            </div>
+            <div class="flex items-center">
+                <div class="bg-green-500 rounded-full p-1 mr-3">
+                    <i class="fas fa-check text-white text-xs"></i>
+                </div>
+                <span class="text-sm">${calculatedData.vehicle}</span>
+            </div>
+            <div class="flex items-center">
+                <div class="bg-green-500 rounded-full p-1 mr-3">
+                    <i class="fas fa-check text-white text-xs"></i>
+                </div>
+                <span class="text-sm">${calculatedData.service}</span>
+            </div>
+            ${selectedDate ? `
+            <div class="flex items-center">
+                <div class="bg-green-500 rounded-full p-1 mr-3">
+                    <i class="fas fa-check text-white text-xs"></i>
+                </div>
+                <span class="text-sm">📅 ${selectedDate}</span>
+            </div>` : ''}
+            ${isOutsideVeneto ? `
+            <div class="flex items-center">
+                <div class="bg-blue-500 rounded-full p-1 mr-3">
+                    <i class="fas fa-gift text-white text-xs"></i>
+                </div>
+                <span class="text-sm text-blue-600 font-semibold">🚗 Auto sostitutiva INCLUSA</span>
+            </div>` : ''}
+        </div>
+    `;
+    
+    document.getElementById('totalInvestment').textContent = `€ ${priceRange}`;
+    document.getElementById('requestTransformation').disabled = false;
+    
+    // Update WhatsApp links
+    updateWhatsAppLinks();
+}
 
-        // Scroll to contact form
-        function scrollToContactForm() {
-            document.getElementById('contatti').scrollIntoView({ 
+// Update WhatsApp links with calculated data
+function updateWhatsAppLinks() {
+    if (!calculatedData.problem) return;
+    
+    const message = `Ciao InsideAuto! Ho calcolato la trasformazione per la mia auto:
+
+🔧 Problema: ${calculatedData.problem}
+🚗 Veicolo: ${calculatedData.vehicle}
+⚙️ Servizio: ${calculatedData.service}
+📍 Provenienza: ${calculatedData.location}
+📅 Data richiesta: ${calculatedData.date}
+💎 Investimento stimato: ${calculatedData.investment}
+${calculatedData.carReplacement ? '🚗 Auto sostitutiva: INCLUSA GRATIS' : ''}
+
+Posso avere maggiori informazioni e confermare la prenotazione?`;
+    
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/393500036917?text=${encodedMessage}`;
+    
+    // Update all WhatsApp buttons
+    document.getElementById('whatsappQuickBtn').href = whatsappUrl;
+    document.getElementById('whatsappContactBtn').href = whatsappUrl;
+    
+    // Update contact form
+    document.getElementById('requestDetails').value = `Problema: ${calculatedData.problem}
+Veicolo: ${calculatedData.vehicle}
+Servizio: ${calculatedData.service}
+Provenienza: ${calculatedData.location}
+Data richiesta: ${calculatedData.date}
+Investimento stimato: ${calculatedData.investment}${calculatedData.carReplacement ? '\nAuto sostitutiva: INCLUSA' : ''}`;
+}
+
+// Scroll to contact form
+function scrollToContactForm() {
+    document.getElementById('contatti').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+    });
+}
+
+// Form submission
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Grazie per la richiesta! Ti contatteremo entro 2 ore per confermare la trasformazione della tua auto.');
+});
+
+// Smooth scroll for internal links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
         }
+    });
+});
 
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Grazie per la richiesta! Ti contatteremo entro 2 ore per confermare la trasformazione della tua auto.');
-        });
-
-        // Smooth scroll for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Initialize calendar on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            renderCalendar();
-        });
+// Initialize calendar on page load - UPDATED
+document.addEventListener('DOMContentLoaded', function() {
+    // Set initial Monday
+    initialMonday = getCurrentMonday();
+    
+    renderCalendar();
+    
+    // Check for week updates every hour
+    setInterval(checkWeekUpdate, 3600000); // 1 hour
+    
+    // Also check every time user visits the page (faster detection)
+    setInterval(checkWeekUpdate, 300000); // 5 minutes
+});
     </script>
 </body>
 </html>
