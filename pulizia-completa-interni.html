@@ -1310,46 +1310,123 @@ Investimento stimato: ${calculatedData.investment}${calculatedData.carReplacemen
 function updateWhatsAppLinks() {
     if (!calculatedData.problem) return;
     
-    const message = `Ciao InsideAuto! Ho calcolato la trasformazione per la mia auto:
+    const message = `Ciao InsideAuto! Ho utilizzato il calcolatore sul vostro sito per la mia auto:
 
-🔧 Problema: ${calculatedData.problem}
-🚗 Veicolo: ${calculatedData.vehicle}
-⚙️ Servizio: ${calculatedData.service}
-📍 Provenienza: ${calculatedData.location}
-📅 Data richiesta: ${calculatedData.date}
-💎 Investimento stimato: ${calculatedData.investment}
-${calculatedData.carReplacement ? '🚗 Auto sostitutiva: INCLUSA GRATIS' : ''}
+🔧 PROBLEMA: ${calculatedData.problem}
+🚗 VEICOLO: ${calculatedData.vehicle}
+⚙️ SERVIZIO: ${calculatedData.service}
+📍 PROVENIENZA: ${calculatedData.location}
+📅 DATA PREFERITA: ${calculatedData.date}
+💎 INVESTIMENTO STIMATO: ${calculatedData.investment}${calculatedData.carReplacement ? '\n🚗 AUTO SOSTITUTIVA: INCLUSA GRATIS!' : ''}
 
-Posso avere maggiori informazioni e confermare la prenotazione?`;
+Vorrei maggiori informazioni e confermare la prenotazione. Quando possiamo sentirci?
+
+Grazie!`;
     
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/393500036917?text=${encodedMessage}`;
     
     // Update all WhatsApp buttons
-    document.getElementById('whatsappQuickBtn').href = whatsappUrl;
-    document.getElementById('whatsappContactBtn').href = whatsappUrl;
+    const whatsappButtons = [
+        document.getElementById('whatsappQuickBtn'),
+        document.getElementById('whatsappContactBtn'),
+        document.querySelector('.whatsapp-float')
+    ];
+    
+    whatsappButtons.forEach(button => {
+        if (button) {
+            button.href = whatsappUrl;
+        }
+    });
     
     // Update contact form
-    document.getElementById('requestDetails').value = `Problema: ${calculatedData.problem}
-Veicolo: ${calculatedData.vehicle}
-Servizio: ${calculatedData.service}
-Provenienza: ${calculatedData.location}
-Data richiesta: ${calculatedData.date}
-Investimento stimato: ${calculatedData.investment}${calculatedData.carReplacement ? '\nAuto sostitutiva: INCLUSA' : ''}`;
+    const requestDetails = document.getElementById('requestDetails');
+    if (requestDetails) {
+        const formText = `🔧 Problema: ${calculatedData.problem}
+🚗 Veicolo: ${calculatedData.vehicle}
+⚙️ Servizio: ${calculatedData.service}
+📍 Provenienza: ${calculatedData.location}
+📅 Data richiesta: ${calculatedData.date}
+💎 Investimento stimato: ${calculatedData.investment}${calculatedData.carReplacement ? '\n🚗 Auto sostitutiva: INCLUSA' : ''}`;
+        
+        requestDetails.value = formText;
+    }
 }
-
-// Scroll to contact form
+// Scroll to contact form and populate with calculated data
 function scrollToContactForm() {
+    // Populate form with calculated data
+    if (calculatedData.problem) {
+        const requestDetails = document.getElementById('requestDetails');
+        const detailsText = `🔧 Problema: ${calculatedData.problem}
+🚗 Veicolo: ${calculatedData.vehicle}
+⚙️ Servizio: ${calculatedData.service}
+📍 Provenienza: ${calculatedData.location}
+📅 Data richiesta: ${calculatedData.date}
+💎 Investimento stimato: ${calculatedData.investment}${calculatedData.carReplacement ? '\n🚗 Auto sostitutiva: INCLUSA GRATIS' : ''}`;
+        
+        requestDetails.value = detailsText;
+        
+        // Add visual feedback
+        requestDetails.style.backgroundColor = '#f0fdf4';
+        setTimeout(() => {
+            requestDetails.style.backgroundColor = '';
+        }, 2000);
+    }
+    
+    // Scroll to form
     document.getElementById('contatti').scrollIntoView({ 
         behavior: 'smooth',
         block: 'start'
     });
+    
+    // Focus on first empty field
+    setTimeout(() => {
+        const nameField = document.querySelector('input[type="text"]');
+        if (nameField && !nameField.value) {
+            nameField.focus();
+        }
+    }, 1000);
 }
 
-// Form submission
+// Form submission with complete data
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    alert('Grazie per la richiesta! Ti contatteremo entro 2 ore per confermare la trasformazione della tua auto.');
+    
+    // Get form data
+    const formData = new FormData(this);
+    const name = this.querySelector('input[type="text"]').value;
+    const phone = this.querySelector('input[type="tel"]').value;
+    const email = this.querySelector('input[type="email"]').value || 'Non fornita';
+    const details = document.getElementById('requestDetails').value;
+    const notes = this.querySelector('textarea[rows="3"]').value || 'Nessuna nota aggiuntiva';
+    
+    // Create complete message for WhatsApp with all data
+    const completeMessage = `🚗 NUOVA RICHIESTA TRASFORMAZIONE AUTO - InsideAuto
+
+👤 DATI CLIENTE:
+Nome: ${name}
+Telefono: ${phone}
+Email: ${email}
+
+📋 DETTAGLI TRASFORMAZIONE:
+${details}
+
+📝 NOTE AGGIUNTIVE:
+${notes}
+
+⏰ Richiesta inviata: ${new Date().toLocaleString('it-IT')}
+
+Contattare il cliente entro 2 ore per conferma appuntamento.`;
+    
+    // Show success message
+    alert('✅ Richiesta inviata con successo!\n\nTi contatteremo entro 2 ore per confermare la trasformazione della tua auto.\n\nPuoi anche contattarci direttamente su WhatsApp per una risposta più rapida.');
+    
+    // Optional: Open WhatsApp with complete data
+    if (confirm('Vuoi inviare i dettagli anche tramite WhatsApp per una risposta più rapida?')) {
+        const encodedCompleteMessage = encodeURIComponent(completeMessage);
+        const whatsappUrlComplete = `https://wa.me/393500036917?text=${encodedCompleteMessage}`;
+        window.open(whatsappUrlComplete, '_blank');
+    }
 });
 
 // Smooth scroll for internal links
