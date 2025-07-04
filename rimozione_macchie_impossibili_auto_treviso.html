@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rimozione Macchie Impossibili Auto Treviso - Vomito Sangue Urina | InsideAuto™</title>
+    <meta name="description" content="Rimozione macchie impossibili da auto a Treviso. Vomito, sangue, urina, bevande, cibo - risolviamo i casi più disperati con tecniche professionali. Garanzia risultato. Auto sostitutiva inclusa.">
+    <meta name="keywords" content="rimozione macchie impossibili auto, pulizia vomito auto, rimozione sangue auto, pulizia urina auto, macchie impossibili Treviso, pulizia auto professionale">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Rimozione Macchie Impossibili Auto Treviso - InsideAuto™">
+    <meta property="og:description" content="Risolviamo i casi più disperati: vomito, sangue, urina, bevande, cibo. Tecniche professionali specializzate. Auto sostitutiva inclusa per clienti fuori Veneto.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://insideauto.it/rimozione-macchie-impossibili">
+    <meta property="og:image" content="https://insideauto.it/images/loghi/foto-logo-andrea.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/loghi/foto-logo-andrea.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/loghi/foto-logo-andrea.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/loghi/foto-logo-andrea.png">
+    <link rel="shortcut icon" href="images/loghi/foto-logo-andrea.png">
+    <meta name="msapplication-TileImage" content="images/loghi/foto-logo-andrea.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#000000">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Rimozione Macchie Impossibili Auto",
+        "provider": {
+            "@type": "AutomotiveBusiness",
+            "name": "InsideAuto™",
+            "url": "https://insideauto.it",
+            "telephone": "+39-350-003-6917",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Treviso",
+                "addressRegion": "Veneto", 
+                "addressCountry": "IT"
+            }
+        },
+        "areaServed": ["Treviso", "Veneto", "Italia"],
+        "description": "Servizio specializzato rimozione macchie impossibili da auto: vomito, sangue, urina, bevande, cibo con tecniche professionali"
+    }
+    </script>
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hero-gradient { background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); }
+        .card-shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }
+        .btn-primary { background: #000; color: #fff; transition: all 0.3s; }
+        .btn-primary:hover { background: #1f2937; transform: translateY(-1px); }
+        .service-card:hover { transform: translateY(-2px); transition: all 0.3s; }
+        .pulse-animation { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+        .sticky-header { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        
+        /* Mobile hero title fix */
+        @media (max-width: 640px) {
+            .hero-title-mobile {
+                line-height: 1.1;
+                margin-bottom: 1.5rem;
+            }
+            .hero-title-mobile br.mobile-break {
+                display: block;
+            }
+        }
+        
+        @media (min-width: 641px) {
+            .hero-title-mobile br.mobile-break {
+                display: none;
+            }
+        }
+        
+        /* Calendar styles */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .date-option {
+            border: 2px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 12px 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .date-option.available:hover {
+            border-color: #22c55e;
+            background: #f0fdf4;
+            transform: translateY(-2px);
+        }
+        
+        .date-option.selected {
+            border-color: #22c55e;
+            background: #22c55e;
+            color: white;
+        }
+        
+        .date-option.unavailable {
+            background: #f3f4f6;
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .day-name {
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .date-number {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        
+        .month {
+            font-size: 0.75rem;
+            margin-bottom: 4px;
+        }
+        
+        .availability {
+            font-size: 0.65rem;
+            font-weight: 500;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .calendar-nav button {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .calendar-nav button:hover {
+            background: #e5e7eb;
+            transform: translateY(-1px);
+        }
+        
+        .calendar-nav button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* WhatsApp floating button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-1px);
+        }
+
+        /* Round icons fix */
+        .icon-round {
+            border-radius: 50% !important;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Header -->
+    <header class="sticky-header border-b border-gray-200">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <img src="images/loghi/foto-logo-andrea.png" alt="InsideAuto Logo" class="h-8 w-auto">
+                    <h1 class="text-xl font-bold">InsideAuto™</h1>
+                </a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="hover:text-black transition">← Torna alla Home</a>
+                    <a href="#servizio" class="hover:text-black transition">Il Servizio</a>
+                    <a href="#processo" class="hover:text-black transition">Come Lavoriamo</a>
+                    <a href="#gallery" class="hover:text-black transition">Prima/Dopo</a>
+                    <a href="#calcolatore" class="hover:text-black transition">Calcolatore</a>
+                    <a href="#contatti" class="hover:text-black transition">Contatti</a>
+                </div>
+                <a href="tel:+393500036917" class="btn-primary px-6 py-2 rounded-lg font-medium">
+                    <i class="fas fa-phone mr-2"></i>Chiama Ora
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="bg-gray-50 py-3">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center text-sm text-gray-600">
+                <a href="index.html" class="hover:text-black">Home</a>
+                <i class="fas fa-chevron-right mx-2 text-xs"></i>
+                <span class="text-gray-900">Rimozione Macchie Impossibili</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient py-16 lg:py-20">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl lg:text-6xl font-bold mb-6 hero-title-mobile">
+                    Rimozione<br class="mobile-break sm:hidden">
+                    <span class="text-red-500 font-extrabold">MACCHIE IMPOSSIBILI</span><br>
+                    da Auto<br>
+                    a Treviso
+                </h1>
+                <p class="text-xl lg:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                    <strong>Vomito, sangue, urina, bevande, cibo</strong> - Risolviamo anche i casi più disperati con tecniche professionali specializzate dal 2014
+                </p>
+                
+                <!-- Trust Indicators -->
+                <div class="flex flex-wrap justify-center gap-8 mb-10">
+                    <div class="flex items-center">
+                        <i class="fas fa-shield-alt text-black text-2xl mr-3"></i>
+                        <span class="font-semibold">Garanzia Risultato 100%</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-flask text-black text-2xl mr-3"></i>
+                        <span class="font-semibold">Tecniche Specializzate</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-medal text-black text-2xl mr-3"></i>
+                        <span class="font-semibold">Casi Disperati Risolti</span>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#calcolatore" class="btn-primary px-8 py-4 rounded-lg text-lg font-semibold pulse-animation">
+                        <i class="fas fa-calculator mr-2"></i>Calcolatore Emergenza
+                    </a>
+                    <a href="#gallery" class="border-2 border-black px-8 py-4 rounded-lg text-lg font-semibold hover:bg-black hover:text-white transition">
+                        <i class="fas fa-images mr-2"></i>Casi Risolti
+                    </a>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="https://wa.me/393500036917?text=🚨%20EMERGENZA%20MACCHIE%20IMPOSSIBILI%21%20Ho%20bisogno%20urgente%20di%20aiuto%20per%20rimuovere%20macchie%20impossibili%20dalla%20mia%20auto.%20Potreste%20aiutarmi%3F" target="_blank" class="inline-flex items-center text-green-600 hover:text-green-700 font-semibold">
+                        <i class="fab fa-whatsapp mr-2 text-xl"></i>
+                        🚨 Emergenza WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cosa Include nel Servizio -->
+    <section id="servizio" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">🧬 Tecniche Specializzate per Macchie Impossibili</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Ogni tipo di macchia richiede tecniche specifiche e prodotti dedicati
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- Rimozione Vomito -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-green-500 icon-round p-2 flex-shrink-0">
+                            <i class="fas fa-check-circle text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">Rimozione Vomito</h3>
+                            <p class="text-gray-600 text-sm">Trattamento enzimatico specifico per eliminare completamente residui e odori persistenti</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rimozione Sangue -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-green-500 icon-round p-2 flex-shrink-0">
+                            <i class="fas fa-check-circle text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">Rimozione Sangue</h3>
+                            <p class="text-gray-600 text-sm">Proteine specifiche per sciogliere coaguli e macchie di sangue anche vecchie e secche</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rimozione Urina -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-green-500 icon-round p-2 flex-shrink-0">
+                            <i class="fas fa-check-circle text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">Rimozione Urina</h3>
+                            <p class="text-gray-600 text-sm">Neutralizzazione ammoniaca e cristalli urici con eliminazione totale degli odori</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rimozione Bevande -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-green-500 icon-round p-2 flex-shrink-0">
+                            <i class="fas fa-check-circle text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">Macchie Bevande</h3>
+                            <p class="text-gray-600 text-sm">Caffè, vino, succhi: trattamento specifico per ogni tipologia di bevanda</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rimozione Cibo -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-green-500 icon-round p-2 flex-shrink-0">
+                            <i class="fas fa-check-circle text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">Residui Alimentari</h3>
+                            <p class="text-gray-600 text-sm">Grassi, proteine, zuccheri: rimozione completa senza danneggiare tessuti</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sanificazione Finale -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-green-500 icon-round p-2 flex-shrink-0">
+                            <i class="fas fa-check-circle text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">Sanificazione Post-Trattamento</h3>
+                            <p class="text-gray-600 text-sm">Sterilizzazione finale per eliminare batteri e garantire igiene completa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calcolatore Emergenza -->
+    <section id="calcolatore" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                    <i class="fas fa-calculator mr-3"></i>🚨 Calcolatore Emergenza Macchie
+                </h2>
+                <p class="text-xl text-gray-600">Scopri subito come possiamo aiutarti nel tuo caso disperato</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-xl card-shadow p-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Form Calcolatore -->
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fas fa-exclamation-triangle mr-2 text-red-500"></i>Tipo di Macchia Impossibile
+                                </label>
+                                <select id="stainType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculateStainRemoval()">
+                                    <option value="">Seleziona il tipo di macchia...</option>
+                                    <option value="vomito" data-price="90">Vomito (persone/animali)</option>
+                                    <option value="sangue" data-price="100">Sangue (fresco o secco)</option>
+                                    <option value="urina-umana" data-price="85">Urina Umana</option>
+                                    <option value="urina-animale" data-price="95">Urina Animale</option>
+                                    <option value="feci" data-price="110">Feci (persone/animali)</option>
+                                    <option value="vino-rosso" data-price="70">Vino Rosso</option>
+                                    <option value="caffe" data-price="60">Caffè/Cioccolata</option>
+                                    <option value="sugo-olio" data-price="75">Sugo/Olio/Grasso</option>
+                                    <option value="vernice-colla" data-price="120">Vernice/Colla</option>
+                                    <option value="muffa-umidita" data-price="105">Muffa/Umidità</option>
+                                    <option value="bruciature" data-price="130">Bruciature Sigarette</option>
+                                    <option value="caso-misto" data-price="150">Caso Misto/Multiplo</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fas fa-car mr-2 text-blue-500"></i>Tipo di Veicolo
+                                </label>
+                                <select id="vehicleType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculateStainRemoval()">
+                                    <option value="">Seleziona il veicolo...</option>
+                                    <optgroup label="Auto">
+                                        <option value="auto-piccola" data-multiplier="1.0">Auto Piccola (Panda, 500, Yaris)</option>
+                                        <option value="auto-media" data-multiplier="1.2">Auto Media (Golf, Focus, Giulietta)</option>
+                                        <option value="auto-grande" data-multiplier="1.4">Auto Grande (Passat, Mondeo, A6)</option>
+                                        <option value="suv-piccolo" data-multiplier="1.3">SUV Piccolo (Puma, T-Cross, CX-3)</option>
+                                        <option value="suv-grande" data-multiplier="1.6">SUV Grande (X5, Q7, ML)</option>
+                                        <option value="monovolume" data-multiplier="1.5">Monovolume (Zafira, Touran, Scenic)</option>
+                                    </optgroup>
+                                    <optgroup label="Veicoli Commerciali">
+                                        <option value="fiorino" data-multiplier="1.3">Fiat Fiorino</option>
+                                        <option value="doblo" data-multiplier="1.4">Fiat Doblò</option>
+                                        <option value="ducato" data-multiplier="1.8">Fiat Ducato</option>
+                                        <option value="iveco-daily" data-multiplier="1.9">Iveco Daily</option>
+                                        <option value="camper" data-multiplier="2.2">Camper/Roulotte</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fas fa-clock mr-2 text-orange-500"></i>Gravità della Situazione
+                                </label>
+                                <select id="urgencyLevel" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculateStainRemoval()">
+                                    <option value="">Seleziona la gravità...</option>
+                                    <option value="recente" data-discount="0.8">Macchia Recente (entro 24h)</option>
+                                    <option value="vecchia" data-discount="1.2">Macchia Vecchia (oltre 1 settimana)</option>
+                                    <option value="molto-vecchia" data-discount="1.5">Macchia Molto Vecchia (oltre 1 mese)</option>
+                                    <option value="tentativo-fallito" data-discount="1.3">Già tentato di pulire senza successo</option>
+                                    <option value="emergenza" data-discount="1.6">Emergenza Assoluta</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fas fa-map-marker-alt mr-2 text-purple-500"></i>Da dove vieni?
+                                </label>
+                                <select id="customerLocation" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculateStainRemoval()">
+                                    <option value="">Seleziona la tua zona...</option>
+                                    
+                                    <optgroup label="Provincia di Treviso">
+                                        <option value="treviso">Treviso</option>
+                                        <option value="conegliano">Conegliano</option>
+                                        <option value="castelfranco">Castelfranco Veneto</option>
+                                        <option value="montebelluna">Montebelluna</option>
+                                        <option value="oderzo">Oderzo</option>
+                                        <option value="spresiano">Spresiano</option>
+                                        <option value="vittorio-veneto">Vittorio Veneto</option>
+                                    </optgroup>
+                                    
+                                    <optgroup label="Altre Province Veneto">
+                                        <option value="padova">Padova</option>
+                                        <option value="venezia">Venezia/Mestre</option>
+                                        <option value="vicenza">Vicenza</option>
+                                        <option value="verona">Verona</option>
+                                        <option value="rovigo">Rovigo</option>
+                                        <option value="belluno">Belluno</option>
+                                    </optgroup>
+                                    
+                                    <optgroup label="🚗 AUTO SOSTITUTIVA INCLUSA">
+                                        <option value="friuli">Friuli-Venezia Giulia</option>
+                                        <option value="emilia">Emilia-Romagna</option>
+                                        <option value="lombardia">Lombardia</option>
+                                        <option value="altro-italia">Altra Regione Italia</option>
+                                    </optgroup>
+                                    
+                                    <option value="estero">Estero</option>
+                                </select>
+                            </div>
+
+                            <div id="carReplacementOffer" class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4" style="display: none;">
+                                <div class="flex items-center">
+                                    <i class="fas fa-car text-blue-600 mr-3 text-xl"></i>
+                                    <div>
+                                        <h4 class="font-bold text-blue-800">🎁 INCLUSO PER TE!</h4>
+                                        <p class="text-blue-700 text-sm">
+                                            Vieni da lontano per il nostro servizio specializzato? 
+                                            <strong>Auto sostitutiva GRATUITA inclusa!</strong><br>
+                                            <span class="text-xs">Lasci la tua auto da noi e sei libero di muoverti</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fas fa-calendar mr-2 text-green-500"></i>Scegli il Giorno per l'Intervento
+                                </label>
+                                
+                                <div class="calendar-nav">
+                                    <button type="button" id="prevWeekBtn" onclick="navigateWeek(-1)">
+                                        <i class="fas fa-chevron-left mr-1"></i> Precedente
+                                    </button>
+                                    <span id="weekDisplay" class="font-semibold text-gray-700">Settimana 7-11 Luglio 2025</span>
+                                    <button type="button" id="nextWeekBtn" onclick="navigateWeek(1)">
+                                        Successiva <i class="fas fa-chevron-right ml-1"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="calendar-grid" id="calendarGrid">
+                                    <!-- Calendar will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Risultato Intervento -->
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">
+                                <i class="fas fa-tools mr-2"></i>Costo Intervento Specializzato
+                            </h3>
+                            
+                            <div id="stainRemovalSummary" class="space-y-4 mb-6">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Seleziona i parametri per il calcolo</span>
+                                </div>
+                            </div>
+
+                            <div class="border-t pt-4">
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="text-xl font-bold">Investimento per la Rimozione:</span>
+                                    <span id="totalInvestment" class="text-3xl font-bold text-green-600">€ --</span>
+                                </div>
+                                
+                                <div class="bg-green-100 border border-green-300 rounded-lg p-4 mb-4">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-shield-alt text-green-600 mr-2"></i>
+                                        <span class="text-sm text-green-800 font-semibold">Garanzia Risultato al 100%</span>
+                                    </div>
+                                    <p class="text-xs text-green-700 mt-1">Se non rimuoviamo la macchia, non paghi nulla!</p>
+                                </div>
+
+                                <button id="requestStainRemoval" class="w-full btn-primary py-3 rounded-lg font-semibold text-lg pulse-animation" onclick="scrollToContactForm()" disabled>
+                                    <i class="fas fa-magic mr-2"></i>🚨 Rimuovi le Macchie Ora
+                                </button>
+
+                                <div class="text-center mt-4">
+                                    <p class="text-sm text-gray-600 mb-2">Oppure contattaci subito:</p>
+                                    <a href="https://wa.me/393500036917" target="_blank" id="whatsappQuickBtn" class="btn-whatsapp px-6 py-2 rounded-lg font-semibold text-sm inline-flex items-center">
+                                        <i class="fab fa-whatsapp mr-2"></i>Invia su WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prima/Dopo Gallery -->
+    <section id="gallery" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">🏆 Casi Impossibili Risolti</h2>
+                <p class="text-xl text-gray-600">I risultati parlano da soli - Prima e Dopo</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Caso 1: Vomito -->
+                <div class="bg-white rounded-lg border border-gray-200 card-shadow overflow-hidden">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-car text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-gray-500 text-sm">Prima: Vomito su sedili tessuto</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">Rimozione Vomito Completa</h3>
+                        <p class="text-gray-600 text-sm mb-3">Auto familiare con vomito su sedili. Trattamento enzimatico ha eliminato completamente macchia e odore.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">Caso Disperato</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">100% Rimosso</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Caso 2: Sangue -->
+                <div class="bg-white rounded-lg border border-gray-200 card-shadow overflow-hidden">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-car-side text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-gray-500 text-sm">Prima: Macchie di sangue vecchie</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">Sangue Vecchio su Pelle</h3>
+                        <p class="text-gray-600 text-sm mb-3">Mercedes con macchie di sangue secco. Proteine specifiche hanno sciolto completamente i coaguli.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded">Macchia Vecchia</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Perfetto</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Caso 3: Urina -->
+                <div class="bg-white rounded-lg border border-gray-200 card-shadow overflow-hidden">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-truck text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-gray-500 text-sm">Prima: Urina animale penetrata</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">Urina Gatto su Moquette</h3>
+                        <p class="text-gray-600 text-sm mb-3">Neutralizzazione ammoniaca e cristalli urici. Odore completamente eliminato.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Odore Forte</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Inodore</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <a href="https://wa.me/393500036917?text=Ciao%20InsideAuto%21%20Vorrei%20vedere%20più%20esempi%20di%20macchie%20impossibili%20che%20avete%20risolto.%20Potete%20inviarmi%20altre%20foto%20prima%2Fdopo%3F" target="_blank" class="btn-primary px-8 py-3 rounded-lg font-semibold">
+                    <i class="fas fa-images mr-2"></i>Vedi Altri Miracoli
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processo Step-by-Step -->
+    <section id="processo" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">🔬 Il Nostro Processo Scientifico</h2>
+                <p class="text-xl text-gray-600">Ogni macchia impossibile ha la sua soluzione specifica</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Fase 1 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">1</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Analisi della Macchia</h3>
+                            <p class="text-gray-600">Identifichiamo la composizione chimica per scegliere il trattamento più efficace.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fase 2 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">2</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Test di Compatibilità</h3>
+                            <p class="text-gray-600">Verifichiamo la reazione del prodotto su una zona nascosta del tessuto.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fase 3 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">3</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Applicazione Mirata</h3>
+                            <p class="text-gray-600">Utilizziamo enzimi, proteine o solventi specifici per il tipo di macchia.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fase 4 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">4</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Tempo di Azione</h3>
+                            <p class="text-gray-600">Lasciamo agire il prodotto per il tempo necessario alla dissoluzione completa.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fase 5 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">5</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Rimozione Meccanica</h3>
+                            <p class="text-gray-600">Estrazione con macchine professionali per eliminare completamente i residui.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fase 6 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">6</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Sanificazione Finale</h3>
+                            <p class="text-gray-600">Sterilizzazione per eliminare batteri e garantire igiene totale.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recensioni Clienti -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">💬 Testimonianze Casi Disperati</h2>
+                <p class="text-xl text-gray-600">Chi credeva di dover cambiare auto...</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Recensione 1 -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400 text-lg">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-sm text-gray-600">5/5</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Mia figlia ha vomitato in auto durante un viaggio. L'odore era insopportabile. Pensavo di dover vendere l'auto. Andrea ha fatto un miracolo - zero odore!"</p>
+                    <div class="font-semibold">Maria S. - Treviso</div>
+                    <div class="text-sm text-gray-500">Rimozione vomito BMW Serie 3</div>
+                </div>
+
+                <!-- Recensione 2 -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400 text-lg">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-sm text-gray-600">5/5</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Incidente con sangue sui sedili in pelle. Macchie vecchie di 2 mesi. Altri mi avevano detto impossibile. InsideAuto ha risolto tutto perfettamente!"</p>
+                    <div class="font-semibold">Roberto L. - Padova</div>
+                    <div class="text-sm text-gray-500">Rimozione sangue Audi A6</div>
+                </div>
+
+                <!-- Recensione 3 -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400 text-lg">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-sm text-gray-600">5/5</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Il mio gatto aveva fatto pipì in auto. Urina penetrata nella moquette per settimane. Odore terribile. Ora l'auto è come nuova, professionalità incredibile!"</p>
+                    <div class="font-semibold">Elena M. - Conegliano</div>
+                    <div class="text-sm text-gray-500">Rimozione urina Toyota Yaris</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">❓ Domande sui Casi Disperati</h2>
+                <p class="text-xl text-gray-600">Tutto quello che devi sapere sulla rimozione macchie impossibili</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-6">
+                <!-- FAQ 1 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">Riuscite davvero a rimuovere qualsiasi macchia?</h3>
+                    <p class="text-gray-600">La nostra percentuale di successo è del 98%. Solo in casi estremi (tessuto carbonizzato o danneggiato chimicamente) non possiamo garantire il risultato. Ma prima valutiamo sempre.</p>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">Quanto tempo serve per macchie molto vecchie?</h3>
+                    <p class="text-gray-600">Le macchie vecchie richiedono più tempo perché i residui si sono "fissati". Può servire da 2 a 6 ore in base al caso. Ma anche macchie di anni fa sono state rimosse con successo.</p>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">I prodotti sono sicuri per la salute?</h3>
+                    <p class="text-gray-600">Usiamo solo prodotti certificati e atossici. Molti sono a base enzimatica (naturali). Dopo il trattamento l'auto è sicura per bambini e animali.</p>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">Se non riuscite a rimuovere la macchia?</h3>
+                    <p class="text-gray-600">Garanzia 100%: se non rimuoviamo la macchia, non paghi nulla. È la nostra sicurezza nella competenza e nell'esperienza maturata in 10+ anni.</p>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">Intervenite anche in emergenza?</h3>
+                    <p class="text-gray-600">Sì, per casi urgenti (incidenti, malori in auto) offriamo servizio di emergenza entro 4 ore dalla chiamata. Contattateci subito su WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Contatti -->
+    <section id="contatti" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-4">🚨 Richiedi Intervento Immediato</h2>
+                    <p class="text-xl text-gray-600">Compila il form e ti ricontatteremo entro 1 ora</p>
+                </div>
+
+                <div class="bg-white rounded-xl card-shadow p-8">
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Nome *</label>
+                                <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Il tuo nome">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Telefono *</label>
+                                <input type="tel" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Il tuo telefono">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Email (opzionale)</label>
+                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="La tua email">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Dettagli dell'Intervento</label>
+                            <textarea id="requestDetails" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Dettagli automaticamente compilati dal calcolatore..."></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Descrizione aggiuntiva del problema (opzionale)</label>
+                            <textarea rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Descrivi meglio la macchia, quando è successo, tentativi già fatti..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full btn-primary py-3 rounded-lg font-semibold text-lg">
+                            <i class="fas fa-paper-plane mr-2"></i>🚨 Richiedi Intervento
+                        </button>
+
+                        <div class="text-center mt-6">
+                            <p class="text-sm text-gray-600 mb-3">Oppure contattaci direttamente:</p>
+                            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                                <a href="tel:+393500036917" class="btn-primary px-6 py-3 rounded-lg font-semibold inline-flex items-center justify-center">
+                                    <i class="fas fa-phone mr-2"></i>350 003 6917
+                                </a>
+                                <a href="https://wa.me/393500036917" target="_blank" id="whatsappContactBtn" class="btn-whatsapp px-6 py-3 rounded-lg font-semibold inline-flex items-center justify-center">
+                                    <i class="fab fa-whatsapp mr-2"></i>Invia su WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Logo e Descrizione -->
+                <div>
+                    <a href="index.html" class="flex items-center space-x-2 mb-4">
+                        <img src="images/loghi/foto-logo-andrea.png" alt="InsideAuto Logo" class="h-8 w-auto">
+                        <h3 class="text-xl font-bold">InsideAuto™</h3>
+                    </a>
+                    <p class="text-gray-400 mb-4">Specialisti in rimozione macchie impossibili dal 2014. Risolviamo i casi più disperati a Treviso e in tutto il Veneto.</p>
+                    <div class="flex space-x-4">
+                        <i class="fab fa-facebook text-xl text-gray-400 hover:text-white cursor-pointer"></i>
+                        <i class="fab fa-instagram text-xl text-gray-400 hover:text-white cursor-pointer"></i>
+                        <i class="fab fa-youtube text-xl text-gray-400 hover:text-white cursor-pointer"></i>
+                    </div>
+                </div>
+                
+                <!-- Servizi -->
+                <div>
+                    <h4 class="font-bold mb-4 text-white">Macchie Specializzate</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Rimozione Vomito</a></li>
+                        <li><a href="#" class="hover:text-white">Rimozione Sangue</a></li>
+                        <li><a href="#" class="hover:text-white">Rimozione Urina</a></li>
+                        <li><a href="#" class="hover:text-white">Macchie Alimentari</a></li>
+                        <li><a href="#" class="hover:text-white">Casi Disperati</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Zone -->
+                <div>
+                    <h4 class="font-bold mb-4 text-white">Zone Servite</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Treviso Centro</li>
+                        <li>Conegliano</li>
+                        <li>Castelfranco Veneto</li>
+                        <li>Montebelluna</li>
+                        <li>Padova</li>
+                        <li>Tutto il Veneto</li>
+                    </ul>
+                </div>
+                
+                <!-- Contatti -->
+                <div>
+                    <h4 class="font-bold mb-4 text-white">Emergenze</h4>
+                    <div class="space-y-3 text-gray-400">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+393500036917" class="hover:text-white">350 003 6917</a>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fab fa-whatsapp"></i>
+                            <a href="https://wa.me/393500036917" target="_blank" class="hover:text-white">WhatsApp 24/7</a>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@insideauto.it</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Treviso, Veneto</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-clock"></i>
+                            <span>Emergenze H24</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 InsideAuto™ - Specialisti in Rimozione Macchie Impossibili | P.IVA: IT12345678901 | 
+                <a href="#" class="hover:text-white">Privacy Policy</a> | 
+                <a href="#" class="hover:text-white">Cookie Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/393500036917?text=🚨%20EMERGENZA%20MACCHIE%20IMPOSSIBILI%21%20Ho%20bisogno%20urgente%20di%20aiuto%20per%20rimuovere%20macchie%20impossibili%20dalla%20mia%20auto.%20Potreste%20aiutarmi%3F" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // Calendar functionality - Complete Corrected Version
+        let currentWeekOffset = 0;
+        let selectedDate = null;
+        let calculatedData = {};
+        let initialMonday = null; // Store the Monday of the week when page was loaded
+
+        // Get current week's Monday
+        function getCurrentMonday() {
+            const today = new Date();
+            const day = today.getDay();
+            const diff = today.getDate() - day + (day === 0 ? -6 : 1); // adjust when day is sunday
+            const monday = new Date(today.setDate(diff));
+            return monday;
+        }
+
+        // Generate calendar dates starting from current week
+        function generateCalendarWeek(weekOffset = 0) {
+            const baseMonday = getCurrentMonday();
+            baseMonday.setDate(baseMonday.getDate() + (weekOffset * 7));
+            
+            const weekDates = [];
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); // Reset time for comparison
+            
+            for (let i = 0; i < 5; i++) { // Monday to Friday
+                const date = new Date(baseMonday);
+                date.setDate(baseMonday.getDate() + i);
+                
+                // Don't allow past dates (except today)
+                const isToday = date.getTime() === today.getTime();
+                const isPast = date < today && !isToday;
+                
+                // All future dates (including today) are available
+                const availability = !isPast;
+                
+                weekDates.push({
+                    date: date,
+                    dayName: date.toLocaleDateString('it-IT', { weekday: 'short' }).toUpperCase(),
+                    dayNumber: date.getDate(),
+                    month: date.toLocaleDateString('it-IT', { month: 'short' }).toUpperCase(),
+                    available: availability,
+                    isPast: isPast,
+                    isToday: isToday,
+                    fullDate: date.toLocaleDateString('it-IT', { 
+                        weekday: 'long', 
+                        day: 'numeric', 
+                        month: 'long', 
+                        year: 'numeric' 
+                    })
+                });
+            }
+            
+            return weekDates;
+        }
+
+        // Render calendar
+        function renderCalendar() {
+            const weekDates = generateCalendarWeek(currentWeekOffset);
+            const calendarGrid = document.getElementById('calendarGrid');
+            const weekDisplay = document.getElementById('weekDisplay');
+            
+            // Update week display
+            const firstDate = weekDates[0].date;
+            const lastDate = weekDates[4].date;
+            const monthName = firstDate.toLocaleDateString('it-IT', { month: 'long' });
+            const year = firstDate.getFullYear();
+            
+            weekDisplay.textContent = `Settimana ${firstDate.getDate()}-${lastDate.getDate()} ${monthName} ${year}`;
+            
+            // Clear and render calendar grid
+            calendarGrid.innerHTML = '';
+            
+            weekDates.forEach((dateInfo, index) => {
+                const dateElement = document.createElement('div');
+                
+                // Set classes based on availability
+                let classes = 'date-option';
+                if (dateInfo.isPast) {
+                    classes += ' unavailable';
+                } else {
+                    classes += ' available';
+                }
+                
+                if (dateInfo.isToday) {
+                    classes += ' today';
+                }
+                
+                dateElement.className = classes;
+                
+                // Add click handler for all non-past dates
+                if (!dateInfo.isPast) {
+                    dateElement.onclick = () => selectDate(dateInfo, index);
+                    dateElement.style.cursor = 'pointer';
+                } else {
+                    dateElement.style.cursor = 'not-allowed';
+                }
+                
+                // Set content
+                let availabilityText = '';
+                if (dateInfo.isPast) {
+                    availabilityText = '⏰ Passato';
+                } else if (dateInfo.isToday) {
+                    availabilityText = '📅 Oggi';
+                } else {
+                    availabilityText = '✅ Disponibile';
+                }
+                
+                dateElement.innerHTML = `
+                    <div class="day-name">${dateInfo.dayName}</div>
+                    <div class="date-number">${dateInfo.dayNumber}</div>
+                    <div class="month">${dateInfo.month}</div>
+                    <div class="availability">${availabilityText}</div>
+                `;
+                
+                calendarGrid.appendChild(dateElement);
+            });
+            
+            // Update navigation buttons
+            const prevBtn = document.getElementById('prevWeekBtn');
+            const nextBtn = document.getElementById('nextWeekBtn');
+            
+            // Disable previous button if we're at current week
+            prevBtn.disabled = currentWeekOffset <= 0;
+            
+            // Limit to 8 weeks in advance
+            nextBtn.disabled = currentWeekOffset >= 8;
+        }
+
+        // Navigate weeks
+        function navigateWeek(direction) {
+            const newOffset = currentWeekOffset + direction;
+            
+            // Don't go to past weeks
+            if (newOffset < 0) return;
+            
+            // Don't go more than 8 weeks in advance
+            if (newOffset > 8) return;
+            
+            currentWeekOffset = newOffset;
+            renderCalendar();
+            
+            // Reset selection when changing week
+            selectedDate = null;
+            calculateStainRemoval();
+        }
+
+        // Select date
+        function selectDate(dateInfo, index) {
+            if (dateInfo.isPast) return;
+            
+            // Remove previous selection
+            document.querySelectorAll('.date-option').forEach(el => el.classList.remove('selected'));
+            
+            // Add selection to clicked date
+            const dateElements = document.querySelectorAll('.date-option');
+            if (dateElements[index]) {
+                dateElements[index].classList.add('selected');
+            }
+            
+            selectedDate = dateInfo.fullDate;
+            calculateStainRemoval();
+        }
+
+        // Auto-adjust for new week - IMPROVED VERSION
+        function checkWeekUpdate() {
+            const now = new Date();
+            const currentMonday = getCurrentMonday();
+            
+            // Initialize on first run
+            if (!initialMonday) {
+                initialMonday = new Date(currentMonday);
+                return;
+            }
+            
+            // Check if we're in a new week
+            const daysDifference = Math.floor((currentMonday - initialMonday) / (1000 * 60 * 60 * 24));
+            const weeksDifference = Math.floor(daysDifference / 7);
+            
+            // If we're viewing the "current week" but actual week has changed
+            if (currentWeekOffset === 0 && weeksDifference > 0) {
+                // Reset to new current week
+                initialMonday = new Date(currentMonday);
+                renderCalendar();
+                console.log('📅 Calendario aggiornato automaticamente alla nuova settimana');
+            }
+        }
+
+        // Calculate stain removal
+        function calculateStainRemoval() {
+            const stainType = document.getElementById('stainType');
+            const vehicleType = document.getElementById('vehicleType');
+            const urgencyLevel = document.getElementById('urgencyLevel');
+            const customerLocation = document.getElementById('customerLocation');
+            
+            // Check if all required fields are filled
+            if (!stainType.value || !vehicleType.value || !urgencyLevel.value || !customerLocation.value) {
+                document.getElementById('stainRemovalSummary').innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Seleziona tutti i parametri per il calcolo</span>
+                    </div>
+                `;
+                document.getElementById('totalInvestment').textContent = '€ --';
+                document.getElementById('requestStainRemoval').disabled = true;
+                return;
+            }
+            
+            // Get values
+            const basePrice = parseInt(stainType.selectedOptions[0].dataset.price);
+            const multiplier = parseFloat(vehicleType.selectedOptions[0].dataset.multiplier);
+            const urgencyMultiplier = parseFloat(urgencyLevel.selectedOptions[0].dataset.discount);
+            
+            // Calculate price
+            const finalPrice = Math.round(basePrice * multiplier * urgencyMultiplier);
+            const priceRange = `${finalPrice}-${Math.round(finalPrice * 1.2)}`;
+            
+            // Check for car replacement service
+            const isOutsideVeneto = ['friuli', 'emilia', 'lombardia', 'altro-italia'].includes(customerLocation.value);
+            const carReplacementOffer = document.getElementById('carReplacementOffer');
+            
+            if (isOutsideVeneto) {
+                carReplacementOffer.style.display = 'block';
+            } else {
+                carReplacementOffer.style.display = 'none';
+            }
+            
+            // Store calculated data
+            calculatedData = {
+                stain: stainType.selectedOptions[0].text,
+                vehicle: vehicleType.selectedOptions[0].text,
+                urgency: urgencyLevel.selectedOptions[0].text,
+                location: customerLocation.selectedOptions[0].text,
+                date: selectedDate || 'Da definire',
+                investment: `€ ${priceRange}`,
+                carReplacement: isOutsideVeneto
+            };
+            
+            // Update summary
+            document.getElementById('stainRemovalSummary').innerHTML = `
+                <div class="space-y-2">
+                    <div class="flex items-center">
+                        <div class="bg-green-500 icon-round p-2 mr-3" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-check-circle text-white text-xs"></i>
+                        </div>
+                        <span class="text-sm">${calculatedData.stain}</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="bg-green-500 icon-round p-2 mr-3" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-check-circle text-white text-xs"></i>
+                        </div>
+                        <span class="text-sm">${calculatedData.vehicle}</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="bg-green-500 icon-round p-2 mr-3" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-check-circle text-white text-xs"></i>
+                        </div>
+                        <span class="text-sm">${calculatedData.urgency}</span>
+                    </div>
+                    ${selectedDate ? `
+                    <div class="flex items-center">
+                        <div class="bg-green-500 icon-round p-2 mr-3" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-check-circle text-white text-xs"></i>
+                        </div>
+                        <span class="text-sm">📅 ${selectedDate}</span>
+                    </div>` : ''}
+                    ${isOutsideVeneto ? `
+                    <div class="flex items-center">
+                        <div class="bg-blue-500 icon-round p-2 mr-3" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-gift text-white text-xs"></i>
+                        </div>
+                        <span class="text-sm text-blue-600 font-semibold">🚗 Auto sostitutiva INCLUSA</span>
+                    </div>` : ''}
+                </div>
+            `;
+            
+            document.getElementById('totalInvestment').textContent = `€ ${priceRange}`;
+            document.getElementById('requestStainRemoval').disabled = false;
+            
+            // Update WhatsApp links
+            updateWhatsAppLinks();
+        }
+
+        // Update WhatsApp links with calculated data
+        function updateWhatsAppLinks() {
+            if (!calculatedData.stain) return;
+            
+            const message = `🚨 RICHIESTA EMERGENZA MACCHIE IMPOSSIBILI - InsideAuto
+
+🔬 TIPO MACCHIA: ${calculatedData.stain}
+🚗 VEICOLO: ${calculatedData.vehicle}
+⏰ URGENZA: ${calculatedData.urgency}
+📍 PROVENIENZA: ${calculatedData.location}
+📅 DATA PREFERITA: ${calculatedData.date}
+💰 INVESTIMENTO STIMATO: ${calculatedData.investment}${calculatedData.carReplacement ? '\n🚗 AUTO SOSTITUTIVA: INCLUSA GRATIS!' : ''}
+
+🆘 Ho bisogno del vostro intervento specializzato per rimuovere questa macchia impossibile. Quando possiamo organizzare l'intervento?
+
+Grazie per l'aiuto!`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/393500036917?text=${encodedMessage}`;
+            
+            // Update all WhatsApp buttons
+            const whatsappButtons = [
+                document.getElementById('whatsappQuickBtn'),
+                document.getElementById('whatsappContactBtn'),
+                document.querySelector('.whatsapp-float')
+            ];
+            
+            whatsappButtons.forEach(button => {
+                if (button) {
+                    button.href = whatsappUrl;
+                }
+            });
+            
+            // Update contact form
+            const requestDetails = document.getElementById('requestDetails');
+            if (requestDetails) {
+                const formText = `🔬 Tipo macchia: ${calculatedData.stain}
+🚗 Veicolo: ${calculatedData.vehicle}
+⏰ Urgenza: ${calculatedData.urgency}
+📍 Provenienza: ${calculatedData.location}
+📅 Data richiesta: ${calculatedData.date}
+💰 Investimento stimato: ${calculatedData.investment}${calculatedData.carReplacement ? '\n🚗 Auto sostitutiva: INCLUSA' : ''}`;
+                
+                requestDetails.value = formText;
+            }
+        }
+
+        // Scroll to contact form and populate with calculated data
+        function scrollToContactForm() {
+            // Populate form with calculated data
+            if (calculatedData.stain) {
+                const requestDetails = document.getElementById('requestDetails');
+                const detailsText = `🔬 Tipo macchia: ${calculatedData.stain}
+🚗 Veicolo: ${calculatedData.vehicle}
+⏰ Urgenza: ${calculatedData.urgency}
+📍 Provenienza: ${calculatedData.location}
+📅 Data richiesta: ${calculatedData.date}
+💰 Investimento stimato: ${calculatedData.investment}${calculatedData.carReplacement ? '\n🚗 Auto sostitutiva: INCLUSA GRATIS' : ''}`;
+                
+                requestDetails.value = detailsText;
+                
+                // Add visual feedback
+                requestDetails.style.backgroundColor = '#f0fdf4';
+                setTimeout(() => {
+                    requestDetails.style.backgroundColor = '';
+                }, 2000);
+            }
+            
+            // Scroll to form
+            document.getElementById('contatti').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Focus on first empty field
+            setTimeout(() => {
+                const nameField = document.querySelector('input[type="text"]');
+                if (nameField && !nameField.value) {
+                    nameField.focus();
+                }
+            }, 1000);
+        }
+
+        // Form submission with complete data
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = this.querySelector('input[type="text"]').value;
+            const phone = this.querySelector('input[type="tel"]').value;
+            const email = this.querySelector('input[type="email"]').value || 'Non fornita';
+            const details = document.getElementById('requestDetails').value;
+            const notes = this.querySelector('textarea[rows="3"]').value || 'Nessuna descrizione aggiuntiva';
+            
+            // Create complete message for WhatsApp with all data
+            const completeMessage = `🚨 RICHIESTA EMERGENZA MACCHIE IMPOSSIBILI - InsideAuto
+
+👤 DATI CLIENTE:
+Nome: ${name}
+Telefono: ${phone}
+Email: ${email}
+
+🔬 DETTAGLI MACCHIA:
+${details}
+
+📝 DESCRIZIONE AGGIUNTIVA:
+${notes}
+
+⏰ Richiesta inviata: ${new Date().toLocaleString('it-IT')}
+
+🆘 INTERVENTO URGENTE RICHIESTO - Contattare il cliente entro 1 ora.`;
+            
+            // Show success message
+            alert('🚨 Richiesta di emergenza inviata!\n\nTi contatteremo entro 1 ora per organizzare l\'intervento urgente.\n\nPer casi estremi puoi anche chiamarci direttamente al 350 003 6917.');
+            
+            // Optional: Open WhatsApp with complete data
+            if (confirm('Vuoi inviare i dettagli anche tramite WhatsApp per un intervento ancora più rapido?')) {
+                const encodedCompleteMessage = encodeURIComponent(completeMessage);
+                const whatsappUrlComplete = `https://wa.me/393500036917?text=${encodedCompleteMessage}`;
+                window.open(whatsappUrlComplete, '_blank');
+            }
+        });
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize calendar on page load - UPDATED
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial Monday
+            initialMonday = getCurrentMonday();
+            
+            renderCalendar();
+            
+            // Check for week updates every hour
+            setInterval(checkWeekUpdate, 3600000); // 1 hour
+            
+            // Also check every time user visits the page (faster detection)
+            setInterval(checkWeekUpdate, 300000); // 5 minutes
+        });
+    </script>
+</body>
+</html>
