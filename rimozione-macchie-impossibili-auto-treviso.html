@@ -832,49 +832,54 @@
                 </div>
 
                 <div class="bg-white rounded-xl card-shadow p-8">
-                    <form id="contactForm" class="space-y-6">
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Nome *</label>
-                                <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Il tuo nome">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Telefono *</label>
-                                <input type="tel" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Il tuo telefono">
-                            </div>
-                        </div>
+                    <form id="contactForm" action="https://formspree.io/f/xdkzvadp" method="POST" class="space-y-6">
+    <!-- Campi nascosti Formspree -->
+    <input type="hidden" name="_subject" value="Nuova Richiesta Trasformazione Auto - InsideAuto">
+    <input type="hidden" name="_next" value="https://insideauto.it/">
+    <input type="hidden" name="_language" value="it">
+    
+    <div class="grid md:grid-cols-2 gap-4">
+        <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">Nome *</label>
+            <input type="text" name="nome" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Il tuo nome">
+        </div>
+        <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">Telefono *</label>
+            <input type="tel" name="telefono" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Il tuo telefono">
+        </div>
+    </div>
 
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Email (opzionale)</label>
-                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="La tua email">
-                        </div>
+    <div>
+    <label class="block text-sm font-semibold text-gray-700 mb-2">Email *</label>
+    <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="La tua email">
+</div>
 
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Dettagli dell'Intervento</label>
-                            <textarea id="requestDetails" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Dettagli automaticamente compilati dal calcolatore..."></textarea>
-                        </div>
+    <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-2">Dettagli della Trasformazione</label>
+        <textarea name="dettagli_trasformazione" id="requestDetails" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Dettagli automaticamente compilati dal calcolatore..."></textarea>
+    </div>
 
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Descrizione aggiuntiva del problema (opzionale)</label>
-                            <textarea rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Descrivi meglio la macchia, quando è successo, tentativi già fatti..."></textarea>
-                        </div>
+    <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-2">Note aggiuntive (opzionale)</label>
+        <textarea name="note_aggiuntive" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Aggiungi altri dettagli se necessario..."></textarea>
+    </div>
 
-                        <button type="submit" class="w-full btn-primary py-3 rounded-lg font-semibold text-lg">
-                            <i class="fas fa-paper-plane mr-2"></i>🚨 Richiedi Intervento
-                        </button>
+    <button type="submit" class="w-full btn-primary py-3 rounded-lg font-semibold text-lg">
+        <i class="fas fa-paper-plane mr-2"></i>Richiedi Trasformazione
+    </button>
 
-                        <div class="text-center mt-6">
-                            <p class="text-sm text-gray-600 mb-3">Oppure contattaci direttamente:</p>
-                            <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                                <a href="tel:+393500036917" class="btn-primary px-6 py-3 rounded-lg font-semibold inline-flex items-center justify-center">
-                                    <i class="fas fa-phone mr-2"></i>350 003 6917
-                                </a>
-                                <a href="https://wa.me/393500036917" target="_blank" id="whatsappContactBtn" class="btn-whatsapp px-6 py-3 rounded-lg font-semibold inline-flex items-center justify-center">
-                                    <i class="fab fa-whatsapp mr-2"></i>Invia su WhatsApp
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+    <div class="text-center mt-6">
+        <p class="text-sm text-gray-600 mb-3">Oppure contattaci direttamente:</p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="tel:+393500036917" class="btn-primary px-6 py-3 rounded-lg font-semibold inline-flex items-center justify-center">
+                <i class="fas fa-phone mr-2"></i>350 003 6917
+            </a>
+            <a href="https://wa.me/393500036917" target="_blank" id="whatsappContactBtn" class="btn-whatsapp px-6 py-3 rounded-lg font-semibold inline-flex items-center justify-center">
+                <i class="fab fa-whatsapp mr-2"></i>Invia su WhatsApp
+            </a>
+        </div>
+    </div>
+</form>
                 </div>
             </div>
         </div>
