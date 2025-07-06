@@ -108,38 +108,48 @@
 <body>
     <div class="container">
         
-        <!-- Hero Section Corretta -->
-<div class="hero" style="text-align: center; padding: 30px 0;">
-    <!-- Logo + Titolo -->
-    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px;">
+        <!-- Header Mobile (Nuova Sezione) -->
+<header style="padding: 15px; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100;">
+    <div style="display: flex; align-items: center; justify-content: space-between; max-width: 1000px; margin: 0 auto;">
+        <!-- Logo -->
         <img 
             src="https://raw.githubusercontent.com/insideauto-official/insideauto.it/main/images/loghi/foto-logo-andrea.png" 
             alt="Logo Pulizia Auto Interna" 
-            style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"
+            style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;"
         >
-        <h1 style="margin: 0;">Pulizia Auto Interna Professionale</h1>
+        
+        <!-- Menu Icon (Opzionale) -->
+        <div style="width: 24px;">☰</div>
     </div>
+</header>
+
+<!-- Hero Section Mobile (Modificata) -->
+<div class="hero" style="padding: 20px; text-align: center;">
+    <!-- Titolo su una sola riga -->
+    <h1 style="font-size: 1.5rem; line-height: 1.3; margin: 15px 0;">Pulizia Auto Interna Professionale</h1>
     
-    <!-- Testo Descrittivo -->
-    <p style="max-width: 800px; margin: 0 auto 20px;">Rimuoviamo ogni traccia di sporco, polvere e odori dagli interni della tua auto con prodotti sicuri e tecniche avanzate.</p>
+    <!-- Testo -->
+    <p style="font-size: 0.9rem; max-width: 90%; margin: 0 auto 20px;">
+        Rimuoviamo ogni traccia di sporco, polvere e odori dagli interni della tua auto con prodotti sicuri e tecniche avanzate.
+    </p>
     
-    <!-- Immagine Prima/Dopo -->
+    <!-- Immagine -->
     <img 
-        src="https://raw.githubusercontent.com/insideauto-official/insideauto.it/main/images/pulizia-auto-interna.png" 
-        alt="Prima e dopo pulizia interni auto - Confronto visivo" 
-        style="max-width: 100%; border-radius: 8px; margin: 20px auto; display: block;"
+        src="https://raw.githubusercontent.com/insideauto-official/insideauto.it/main/images/lavaggio-interni-auto.png" 
+        alt="Prima e dopo pulizia interni auto" 
+        style="max-width: 100%; border-radius: 8px; margin: 0 auto 15px; display: block;"
         loading="lazy"
     >
     
-    <!-- Pulsante WhatsApp CENTRATO sotto l'immagine -->
-    <div style="margin-top: 15px;">
+    <!-- Pulsante -->
+        <div style="margin-top: 15px;">
     <a 
         href="https://wa.me/393500036917?text=Ciao,%20vorrei%20maggiori%20informazioni%20sul%20lavaggio%20interni%20auto.%20Potete%20aiutarmi?" 
         style="background-color: #25D366; color: white; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center;"
     >
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="20" style="margin-right: 10px;"> Richiedi Info
-    </a>
-</div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="16" style="margin-right: 8px;"> Richiedi Info
+        </a>
+    </div>
 </div>
 
         <!-- Service Cards -->
