@@ -77,12 +77,10 @@
                 Cerchi un "<strong>lavaggio interni auto vicino a me</strong>"? Il nostro servizio premium va oltre i normali autolavaggi con:
             </p>
             
-            <img 
-                src="https://raw.githubusercontent.com/insideauto-official/insideauto.it/main/images/lavaggio-tappezzeria.jpg" 
-                alt="Prima e dopo lavaggio tappezzeria auto - Confronto visivo" 
-                style="max-width: 100%; border-radius: 10px; margin: 20px auto; display: block;"
-                loading="lazy"
-            >
+            <video width="100%" controls autoplay muted loop>  <!-- "muted" è obbligatorio per l'autoplay su molti browser -->
+        <source src="Lavaggio-sedili-auto.mp4" type="video/mp4">
+        Il tuo browser non supporta il video. <a href="Lavaggio-sedili-auto.mp4">Scaricalo qui</a>.
+    </video>
             
             <a 
                 href="https://wa.me/393500036917?text=Ciao,%20cerco%20un%20servizio%20professionale%20per%20lavare%20la%20tappezzeria%20dell'auto%20nella%20zona%20di%20[INSERISCI%20CITTÀ]" 
@@ -185,6 +183,102 @@
                 <p>Serviamo tutta la provincia di Treviso. Inserisci la tua città nel messaggio WhatsApp per verificare la disponibilità.</p>
             </div>
         </div>
+        
+<!-- ============ INIZIO SEZIONE VERIFICA CAP ============ -->
+<div style="margin: 60px 0;">
+    <h2 style="text-align: center;">Verifica la copertura nella tua zona</h2>
+    
+    <!-- Tool Verifica CAP -->
+    <div style="max-width: 500px; margin: 0 auto 30px; padding: 20px; background: #F9F9F9; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.05);">
+        <div style="display: flex; gap: 10px;">
+            <input 
+                type="text" 
+                id="capInput" 
+                placeholder="Inserisci il tuo CAP (es: 31050)" 
+                style="flex: 1; padding: 12px; border: 1px solid #DDD; border-radius: 5px;"
+                maxlength="5"
+            >
+            <button 
+                onclick="verificaCopertura()" 
+                style="background: #25D366; color: white; border: none; padding: 0 25px; border-radius: 5px; font-weight: bold; cursor: pointer;"
+            >
+                Verifica
+            </button>
+        </div>
+        <p id="risultatoVerifica" style="margin: 15px 0 0; font-size: 14px; text-align: center;"></p>
+    </div>
+
+    <!-- Mappa (versione ottimizzata) -->
+    <div id="mappa" style="width:100%;height:400px;border-radius:10px;background:#F5F5F5;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="caricaMappa()">
+        <div style="text-align:center;">
+            <img src="https://raw.githubusercontent.com/insideauto-official/insideauto.it/main/images/mappa-preview.jpg" alt="Anteprima mappa zona di copertura" style="max-width:100%; border-radius:8px; opacity:0.8;">
+            <p style="margin-top:10px;background:#25D366;color:white;padding:8px;border-radius:5px;display:inline-block;">▶️ Carica la mappa interattiva</p>
+        </div>
+    </div>
+</div>
+
+<!-- Script CAP e Mappa -->
+<script>
+// Database CAP serviti (personalizza con i tuoi)
+const copertura = {
+    '31050': { comuni: ['Spresiano'], servito: true },
+    '31100': { comuni: ['Treviso'], servito: true },
+    '31015': { comuni: ['Conegliano'], servito: true }
+    // Aggiungi altri CAP qui
+};
+
+function verificaCopertura() {
+    const cap = document.getElementById('capInput').value;
+    const risultato = document.getElementById('risultatoVerifica');
+    
+    if (!/^\d{5}$/.test(cap)) {
+        risultato.innerHTML = '⚠️ Inserisci un CAP valido di 5 cifre';
+        risultato.style.color = '#FF0000';
+        return;
+    }
+
+    const zona = copertura[cap];
+    
+    if (zona?.servito) {
+        risultato.innerHTML = `
+            ✅ <strong>Servizio disponibile a ${zona.comuni.join(', ')}!</strong><br>
+            <a href="https://wa.me/393500036917?text=Il%20mio%20CAP%20è%20${cap}%20(${zona.comuni.join(', ')})%20e%20vorrei%20prenotare" 
+               style="background: #25D366; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 8px;">
+               PRENOTA ORA
+            </a>
+        `;
+        risultato.style.color = '#25A765';
+    } else {
+        risultato.innerHTML = `
+            🔴 Non ancora servito nel CAP ${cap}<br>
+            <button onclick="avvisamiDisponibilita('${cap}')" 
+                    style="background: #FFA500; color: white; border: none; padding: 8px 15px; border-radius: 5px; margin-top: 8px; cursor: pointer;">
+                    🚀 Avvisami quando arriverete
+            </button>
+        `;
+        risultato.style.color = '#FFA500';
+    }
+}
+
+function avvisamiDisponibilita(cap) {
+    window.open(`https://wa.me/393500036917?text=Avvisami%20quando%20servirete%20il%20CAP%20${cap}`, '_blank');
+}
+
+function caricaMappa() {
+    document.getElementById('mappa').innerHTML = `
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d177770.129272798!2d12.07539625!3d45.763409999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477930e7a5f87a95%3A0x38e91d70402e8180!2sProvincia%20di%20Treviso!5e0!3m2!1sit!2sit!4v1720297886341!5m2!1sit!2sit" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Zona di copertura servizio lavaggio sedili auto">
+        </iframe>
+    `;
+}
+</script>
 
         <!-- Footer -->
         <div style="background-color: #F5F5F5; padding: 30px; border-radius: 8px; margin: 40px 0 20px; text-align: center;">
