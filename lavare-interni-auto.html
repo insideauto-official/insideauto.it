@@ -96,34 +96,62 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             z-index: 100;
         }
+        
+@media (min-width: 768px) {
+    header { padding: 20px 30px; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero p { font-size: 1.1rem; max-width: 70%; }
+}
+
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Hero Section -->
-        <div class="hero">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;">
-                <img 
-                    src="https://raw.githubusercontent.com/insideauto-official/insideauto.it/main/images/loghi/foto-logo-andrea.png" 
-                    alt="Logo InsideAuto - Lavaggio Interni Auto" 
-                    style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"
-                >
-                <h1 style="margin: 0;">Lavaggio Interni Auto Professionale</h1>
-            </div>
-            
-            <p>Servizio completo per <strong>lavare interni auto</strong> e igienizzare l'<strong>interno auto</strong> con prodotti eco-compatibili.</p>
-            
-            <img 
-                src="https://raw.githubusercontent.com/insideauto-official/insideauto.it/main/images/lavaggio-interni-auto.png" 
-                alt="Prima e dopo lavaggio interni auto - Confronto visivo" 
-                style="max-width: 100%; border-radius: 8px; margin: 15px 0;"
-                loading="lazy"
-            >
-            
-            <a href="https://wa.me/393500036917?text=Ciao,%20vorrei%20maggiori%20informazioni%20per%20un%20lavaggio%20interni%20auto" class="cta-button">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="20" style="margin-right: 10px;"> Richiedi Info
-            </a>
-        </div>
+        <!-- Header Mobile -->
+<header style="padding: 15px; background: white; border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; z-index: 100;">
+    <div style="display: flex; align-items: center; max-width: 1000px; margin: 0 auto;">
+        <!-- Logo -->
+        <img 
+            src="https://raw.githubusercontent.com/insideauto-official/insideauto.it/main/images/loghi/foto-logo-andrea.png" 
+            alt="Logo Lavaggio Interni Auto" 
+            style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; margin-right: 15px;"
+        >
+        <!-- Nome Brand (Mobile) -->
+        <span style="font-weight: bold; font-size: 1.1rem;">InsideAuto</span>
+    </div>
+</header>
+
+<!-- Hero Section Mobile -->
+<div class="hero" style="padding: 20px 15px; text-align: center;">
+    <!-- Titolo unica riga -->
+    <h1 style="font-size: 1.6rem; line-height: 1.3; margin: 10px 0 15px;">
+        Lavaggio Interni Auto Professionale
+    </h1>
+    
+    <!-- Testo -->
+    <p style="font-size: 0.95rem; line-height: 1.5; max-width: 90%; margin: 0 auto 20px;">
+        Servizio completo per <strong>lavare interni auto</strong> e igienizzare l'interno auto con prodotti eco-compatibili.
+    </p>
+    
+    <!-- Immagine -->
+    <img 
+        src="https://raw.githubusercontent.com/insideauto-official/insideauto.it/main/images/lavaggio-interni-auto.png" 
+        alt="Risultati lavaggio interni auto prima e dopo" 
+        style="max-width: 100%; border-radius: 10px; margin: 0 auto 20px; display: block;"
+        loading="lazy"
+    >
+    
+    <!-- Pulsante WhatsApp -->
+    <div style="margin-top: 15px;">
+        <a 
+            href="https://wa.me/393500036917?text=Ciao,%20vorrei%20info%20sul%20lavaggio%20interni%20auto.%20Disponibili%20oggi?" 
+            style="background-color: #25D366; color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; font-size: 0.95rem;"
+        >
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="18" style="margin-right: 8px;"> 
+            Richiedi Info
+        </a>
+    </div>
+</div>
 
         <!-- Sezione Servizi -->
         <div class="service">
