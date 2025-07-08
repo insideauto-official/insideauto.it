@@ -231,11 +231,11 @@
         maxlength="5"
       >
       <button 
-        onclick="verificaCopertura()" 
-        style="background: #25D366; color: white; border: none; padding: 0 30px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px;"
-      >
-        Verifica
-      </button>
+  onclick="verificaCopertura()"
+  style="background: #25D366; color: white; border: none; padding: 0 30px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px;"
+>
+  Verifica
+</button>
     </div>
     <p id="risultatoVerifica" style="margin: 20px 0 0; font-size: 16px; text-align: center;"></p>
   </div>
@@ -388,5 +388,38 @@ function avvisamiDisponibilita(cap) {
         </div>
     </div>
 </div>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("Script caricato correttamente"); // Debug
+  
+  const copertura = {
+    '31027': { comuni: ['Spresiano'], servito: true },
+    '31100': { comuni: ['Treviso'], servito: true },
+    // Aggiungi altri CAP qui
+  };
+
+  window.verificaCopertura = function() {
+    const cap = document.getElementById('capInput').value;
+    const risultato = document.getElementById('risultatoVerifica');
+    console.log("CAP inserito:", cap); // Debug
+    
+    if (!/^\d{5}$/.test(cap)) {
+      risultato.innerHTML = '⚠️ Inserisci un CAP valido di 5 cifre';
+      risultato.style.color = '#FF0000';
+      return;
+    }
+
+    const zona = copertura[cap];
+    
+    if (zona?.servito) {
+      risultato.innerHTML = `✅ <strong>Servizio disponibile a ${zona.comuni.join(', ')}!</strong>`;
+      risultato.style.color = '#25D366';
+    } else {
+      risultato.innerHTML = `🔴 Non ancora servito nel CAP ${cap}`;
+      risultato.style.color = '#FFA500';
+    }
+  };
+});
+</script>
 </body>
 </html>
