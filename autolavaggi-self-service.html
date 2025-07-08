@@ -219,23 +219,45 @@
        <!-- ============ INIZIO SEZIONE VERIFICA CAP ============ -->
 <div style="margin: 60px 0;">
   <!-- 1. TOOL CAP (PRIMA) -->
-  <div style="max-width: 800px; margin: 0 auto 40px; padding: 25px; background: white; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
-    <h2 style="text-align: center; margin-bottom: 20px;">Verifica la copertura nella tua zona</h2>
+  <div style="margin: 30px 0; padding: 0 15px;">
+  <h2 style="text-align: center; margin-bottom: 20px;">Verifica la copertura nella tua zona</h2>
+  
+  <!-- Container flessibile per input e pulsante -->
+  <div style="display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: 0 auto;">
+    <!-- Input CAP -->
+    <input 
+      type="text" 
+      id="capInputMobile"
+      placeholder="Inserisci CAP (es: 31050)"
+      style="
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        width: 100%;
+        box-sizing: border-box;
+      "
+      maxlength="5"
+    >
     
-    <div style="display: flex; gap: 15px; max-width: 500px; margin: 0 auto;">
-      <input 
-        type="text" 
-        id="capInput" 
-        placeholder="Inserisci il tuo CAP (es: 31027)" 
-        style="flex: 1; padding: 12px; border: 1px solid #DDD; border-radius: 8px; font-size: 16px;"
-        maxlength="5"
-      >
-      <button 
-  onclick="verificaCopertura()"
-  style="background: #25D366; color: white; border: none; padding: 0 30px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px;"
->
-  Verifica
-</button>
+    <!-- Pulsante Verifica ottimizzato per mobile -->
+    <button
+      onclick="verificaCoperturaMobile()"
+      style="
+        background: #25D366;
+        color: white;
+        border: none;
+        padding: 14px;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      "
+    >
+      Verifica
+    </button>
     </div>
     <p id="risultatoVerifica" style="margin: 20px 0 0; font-size: 16px; text-align: center;"></p>
   </div>
