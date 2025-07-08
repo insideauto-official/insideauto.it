@@ -28,6 +28,21 @@
     
     <style>
         /* Stili identici alle altre landing */
+        .container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.cap-verifier, .map-container {
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
         body { font-family: Arial, sans-serif; background: #FFFFFF; color: #333; }
         .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
         .hero { text-align: center; padding: 30px 0; }
@@ -202,116 +217,70 @@
 </div>
 
        <!-- ============ INIZIO SEZIONE VERIFICA CAP ============ -->
-<div style="margin: 60px 0; text-align: center;">
-    <h2>Visita la nostra sede operativa</h2>
+<div style="margin: 60px 0;">
+  <!-- 1. TOOL CAP (PRIMA) -->
+  <div style="max-width: 800px; margin: 0 auto 40px; padding: 25px; background: white; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+    <h2 style="text-align: center; margin-bottom: 20px;">Verifica la copertura nella tua zona</h2>
     
-    <!-- Indirizzo e pulsante direzioni -->
-    <div style="background: #F5F9F5; padding: 20px; border-radius: 10px; max-width: 600px; margin: 0 auto 20px;">
-        <p style="font-size: 1.2rem; margin-bottom: 10px;">
-            <strong>📍 Via Padania Industriale 1, 31027 Spresiano (TV)</strong>
-        </p>
-        <a 
-            href="https://www.google.com/maps/dir//Via+Padania+Industriale+1,+31027+Spresiano+TV" 
-            target="_blank" 
-            style="background: #25D366; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;"
-        >
-            Ottieni indicazioni
-        </a>
+    <div style="display: flex; gap: 15px; max-width: 500px; margin: 0 auto;">
+      <input 
+        type="text" 
+        id="capInput" 
+        placeholder="Inserisci il tuo CAP (es: 31027)" 
+        style="flex: 1; padding: 12px; border: 1px solid #DDD; border-radius: 8px; font-size: 16px;"
+        maxlength="5"
+      >
+      <button 
+        onclick="verificaCopertura()" 
+        style="background: #25D366; color: white; border: none; padding: 0 30px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px;"
+      >
+        Verifica
+      </button>
     </div>
+    <p id="risultatoVerifica" style="margin: 20px 0 0; font-size: 16px; text-align: center;"></p>
+  </div>
 
-    <!-- Mappa interattiva (embed Google Maps) -->
-    <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2768.123456789012!2d12.25000000000001!3d45.78330000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477930e7a5f87a95%3A0x38e91d70402e8180!2sVia%20Padania%20Industriale%201%2C%2031027%20Spresiano%20TV!5e0!3m2!1sit!2sit!4v1720297886341!5m2!1sit!2sit"
-        width="100%"
-        height="400"
-        style="border:0; border-radius: 10px; margin-top: 20px;"
-        allowfullscreen
-        loading="lazy"
-    >
-    </iframe>
-
-    <!-- Testo ottimizzato per SEO -->
-    <p style="margin-top: 20px; color: #666;">
-        Servizi disponibili: <strong>lavaggio sedili auto, pulizia interni auto, igienizzazione auto</strong>
+  <!-- 2. MAPPA (DOPO) -->
+  <div style="max-width: 800px; margin: 0 auto; padding: 25px; background: white; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+    <h3 style="text-align: center; margin-bottom: 15px;">📍 Sede Operativa</h3>
+    <p style="text-align: center; margin-bottom: 20px; font-size: 18px;">
+      <strong>Via Padania Industriale 1, 31027 Spresiano (TV)</strong><br>
+      <a href="https://maps.app.goo.gl/..." style="color: #25D366; text-decoration: underline;" target="_blank">Ottieni indicazioni</a>
     </p>
-</div>
-
-<!-- Script CAP e Mappa -->
-<script>
-// Database CAP serviti (personalizza con i tuoi)
-<div style="margin: 60px 0; text-align: center;">
-    <h2>Verifica la copertura nella tua zona</h2>
     
-    <!-- Tool Verifica CAP -->
-    <div style="max-width: 500px; margin: 0 auto 30px; padding: 20px; background: #F9F9F9; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.05);">
-        <div style="display: flex; gap: 10px;">
-            <input 
-                type="text" 
-                id="capInput" 
-                placeholder="Inserisci il tuo CAP (es: 31027)" 
-                style="flex: 1; padding: 12px; border: 1px solid #DDD; border-radius: 5px;"
-                maxlength="5"
-            >
-            <button 
-                onclick="verificaCopertura()" 
-                style="background: #25D366; color: white; border: none; padding: 0 25px; border-radius: 5px; font-weight: bold; cursor: pointer;"
-            >
-                Verifica
-            </button>
-        </div>
-        <p id="risultatoVerifica" style="margin: 15px 0 0; font-size: 14px; text-align: center;"></p>
-    </div>
-
-    <!-- Mappa Sede Operativa -->
-    <h3 style="margin-bottom: 15px;">📍 Sede Operativa</h3>
-    <p style="margin-bottom: 20px; font-size: 1.1rem;">
-        <strong>Via Padania Industriale 1, 31027 Spresiano (TV)</strong><br>
-        <a href="https://maps.app.goo.gl/examplelink" style="color: #25D366;" target="_blank">Ottieni indicazioni</a>
-    </p>
     <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2782.123456789012!2d12.25000000000001!3d45.78330000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477930e7a5f87a95%3A0x38e91d70402e8180!2sInsideAuto!5e0!3m2!1sit!2sit!4v1720297886341"
-        width="100%"
-        height="400"
-        style="border:0; border-radius: 10px;"
-        allowfullscreen
-        loading="lazy"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2782.123456789012!2d12.25000000000001!3d45.78330000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477930e7a5f87a95%3A0x38e91d70402e8180!2sInsideAuto!5e0!3m2!1sit!2sit!4v1720297886341"
+      width="100%"
+      height="450"
+      style="border:0; border-radius: 8px;"
+      allowfullscreen
+      loading="lazy"
     ></iframe>
+  </div>
 </div>
 
 <script>
-// Database CAP serviti (elenco completo provincia di Treviso)
+// Database CAP (esempio)
 const copertura = {
-    // CAP principali città (lista completa sotto)
-    '31027': { comuni: ['Spresiano'], servito: true },
-    '31100': { comuni: ['Treviso'], servito: true },
-    '31015': { comuni: ['Conegliano'], servito: true },
-    '31044': { comuni: ['Montebelluna'], servito: true },
-    '31033': { comuni: ['Castelfranco Veneto'], servito: true },
-    '31046': { comuni: ['Oderzo'], servito: true },
-    '31050': { comuni: ['Villorba', 'Carbonera'], servito: true },
-    '31020': { comuni: ['Vazzola', 'San Vendemiano'], servito: true },
-    // Altri CAP (aggiungi quelli mancanti)
-    '31011': { comuni: ['Asolo'], servito: false },
-    '31040': { comuni: ['Nervesa della Battaglia'], servito: true },
-    '31055': { comuni: ['Quinto di Treviso'], servito: true }
-    // Aggiungi questi CAP alla costante `copertura` nello script:
-'31010': { comuni: ['Miane', 'Follina'], servito: false },
-'31012': { comuni: ['Cappella Maggiore'], servito: false },
-'31013': { comuni: ['Codognè'], servito: false },
-'31016': { comuni: ['Godega di Sant\'Urbano'], servito: false },
-'31017': { comuni: ['Pieve di Soligo'], servito: false },
-'31018': { comuni: ['Sernaglia della Battaglia'], servito: false },
+  '31027': { comuni: ['Spresiano'], servito: true },
+  '31100': { comuni: ['Treviso'], servito: true }
+  // Aggiungi questi CAP alla costante `copertura` nello script:
+'31010': { comuni: ['Miane', 'Follina'], servito: true },
+'31012': { comuni: ['Cappella Maggiore'], servito: true },
+'31013': { comuni: ['Codognè'], servito: true },
+'31016': { comuni: ['Godega di Sant\'Urbano'], servito: true },
+'31017': { comuni: ['Pieve di Soligo'], servito: true },
+'31018': { comuni: ['Sernaglia della Battaglia'], servito: true },
 '31021': { comuni: ['Mogliano Veneto'], servito: true },
 '31022': { comuni: ['Preganziol'], servito: true },
 '31023': { comuni: ['Casier'], servito: true },
 '31024': { comuni: ['Istrana'], servito: true },
-'31025': { comuni: ['Santa Lucia di Piave'], servito: false },
+'31025': { comuni: ['Santa Lucia di Piave'], servito: true },
 '31026': { comuni: ['Silea'], servito: true },
-'31027': { comuni: ['Spresiano'], servito: true },
-'31028': { comuni: ['Vazzola'], servito: false },
+'31028': { comuni: ['Vazzola'], servito: true },
 '31029': { comuni: ['Vittorio Veneto'], servito: true },
-'31030': { comuni: ['Breda di Piave'], servito: false },
-'31031': { comuni: ['Caerano di San Marco'], servito: false },
+'31030': { comuni: ['Breda di Piave'], servito: true },
+'31031': { comuni: ['Caerano di San Marco'], servito: true },
 '31032': { comuni: ['Casale sul Sile'], servito: true },
 '31034': { comuni: ['Cimadolmo'], servito: false },
 '31035': { comuni: ['Cison di Valmarino'], servito: false },
@@ -337,40 +306,40 @@ const copertura = {
 };
 
 function verificaCopertura() {
-    const cap = document.getElementById('capInput').value;
-    const risultato = document.getElementById('risultatoVerifica');
-    
-    if (!/^\d{5}$/.test(cap)) {
-        risultato.innerHTML = '⚠️ Inserisci un CAP valido di 5 cifre';
-        risultato.style.color = '#FF0000';
-        return;
-    }
+  const cap = document.getElementById('capInput').value;
+  const risultato = document.getElementById('risultatoVerifica');
+  
+  if (!/^\d{5}$/.test(cap)) {
+    risultato.innerHTML = '⚠️ Inserisci un CAP valido di 5 cifre';
+    risultato.style.color = '#FF0000';
+    return;
+  }
 
-    const zona = copertura[cap];
-    
-    if (zona?.servito) {
-        risultato.innerHTML = `
-            ✅ <strong>Servizio disponibile a ${zona.comuni.join(', ')}!</strong><br>
-            <a href="https://wa.me/393500036917?text=Il%20mio%20CAP%20è%20${cap}%20(${zona.comuni.join(', ')})%20e%20vorrei%20prenotare" 
-               style="background: #25D366; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 8px;">
-               PRENOTA ORA
-            </a>
-        `;
-        risultato.style.color = '#25A765';
-    } else {
-        risultato.innerHTML = `
-            🔴 Servizio non ancora disponibile nel CAP ${cap}<br>
-            <button onclick="avvisamiDisponibilita('${cap}')" 
-                    style="background: #FFA500; color: white; border: none; padding: 8px 15px; border-radius: 5px; margin-top: 8px; cursor: pointer;">
-                    🚀 Avvisami quando arriveremo
-            </button>
-        `;
-        risultato.style.color = '#FFA500';
-    }
+  const zona = copertura[cap];
+  
+  if (zona?.servito) {
+    risultato.innerHTML = `
+      ✅ <strong>Serviamo ${zona.comuni.join(', ')}!</strong><br>
+      <a href="https://wa.me/393500036917?text=Servizio%20per%20CAP%20${cap}" 
+         style="background: #25D366; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 10px;">
+         PRENOTA ORA
+      </a>
+    `;
+    risultato.style.color = '#25D366';
+  } else {
+    risultato.innerHTML = `
+      🔴 Non ancora servito nel CAP ${cap}<br>
+      <button onclick="avvisamiDisponibilita('${cap}')" 
+              style="background: #FFA500; color: white; border: none; padding: 10px 20px; border-radius: 5px; margin-top: 10px; cursor: pointer;">
+              🚀 Avvisami quando arriveremo
+      </button>
+    `;
+    risultato.style.color = '#FFA500';
+  }
 }
 
 function avvisamiDisponibilita(cap) {
-    window.open(`https://wa.me/393500036917?text=Avvisami%20quando%20servirete%20il%20CAP%20${cap}`, '_blank');
+  window.open(`https://wa.me/393500036917?text=Avvisami%20per%20il%20CAP%20${cap}`, '_blank');
 }
 </script>
         
