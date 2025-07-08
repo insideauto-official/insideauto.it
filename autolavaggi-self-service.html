@@ -233,55 +233,35 @@
        <!-- ============ INIZIO SEZIONE VERIFICA CAP ============ -->
 <div style="margin: 60px 0;">
   <!-- 1. TOOL CAP (PRIMA) -->
-  <div style="margin: 30px 0; padding: 0 15px;">
-  <h2 style="text-align: center; margin-bottom: 20px;">Verifica la copertura nella tua zona</h2>
-  
-  <!-- Container flessibile per input e pulsante -->
-  <div style="display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: 0 auto;">
-    <!-- Input CAP -->
-    <input 
-      type="text" 
-      id="capInputMobile"
-      placeholder="Inserisci CAP (es: 31050)"
-      style="
-        padding: 12px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        font-size: 16px;
-        width: 100%;
-        box-sizing: border-box;
-      "
-      maxlength="5"
-    >
+  <div style="margin: 60px 0; max-width: 800px; margin-left: auto; margin-right: auto; padding: 0 15px;">
+  <!-- SEZIONE VERIFICA CAP -->
+  <div style="margin-bottom: 40px;">
+    <h2 style="text-align: center; margin-bottom: 20px;">Verifica la copertura nella tua zona</h2>
     
-    <!-- Pulsante Verifica ottimizzato per mobile -->
-    <button
-      onclick="verificaCoperturaMobile()"
-      style="
-        background: #25D366;
-        color: white;
-        border: none;
-        padding: 14px;
-        border-radius: 8px;
-        font-weight: bold;
-        font-size: 16px;
-        cursor: pointer;
-        width: 100%;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      "
-    >
-      Verifica
-    </button>
+    <div style="display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: 0 auto;">
+      <input 
+        type="text" 
+        id="capInput"
+        placeholder="Inserisci CAP (es: 31050)"
+        style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; width: 100%; box-sizing: border-box;"
+        maxlength="5"
+      >
+      
+      <button onclick="verificaCopertura()"
+        style="background: #25D366; color: white; border: none; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        Verifica
+      </button>
+      
+      <div id="risultatoVerifica" style="margin-top: 15px; padding: 12px; border-radius: 8px; text-align: center; font-size: 15px;"></div>
     </div>
-    <p id="risultatoVerifica" style="margin: 20px 0 0; font-size: 16px; text-align: center;"></p>
   </div>
 
-  <!-- 2. MAPPA (DOPO) -->
-  <div style="max-width: 800px; margin: 0 auto; padding: 25px; background: white; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+  <!-- SEZIONE MAPPA -->
+  <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
     <h3 style="text-align: center; margin-bottom: 15px;">📍 Sede Operativa</h3>
     <p style="text-align: center; margin-bottom: 20px; font-size: 18px;">
       <strong>Via Padania Industriale 1, 31027 Spresiano (TV)</strong><br>
-      <a href="https://maps.app.goo.gl/..." style="color: #25D366; text-decoration: underline;" target="_blank">Ottieni indicazioni</a>
+      <a href="https://maps.app.goo.gl/b9TaCGbQEX5YhQC49" style="color: #25D366; text-decoration: underline;" target="_blank">Ottieni indicazioni</a>
     </p>
     
     <iframe
@@ -296,49 +276,54 @@
 </div>
 
 <script>
-// Database CAP (esempio)
+// Database completo CAP Provincia di Treviso
 const copertura = {
   '31027': { comuni: ['Spresiano'], servito: true },
-  '31100': { comuni: ['Treviso'], servito: true }
-  // Aggiungi questi CAP alla costante `copertura` nello script:
-'31010': { comuni: ['Miane', 'Follina'], servito: true },
-'31012': { comuni: ['Cappella Maggiore'], servito: true },
-'31013': { comuni: ['Codognè'], servito: true },
-'31016': { comuni: ['Godega di Sant\'Urbano'], servito: true },
-'31017': { comuni: ['Pieve di Soligo'], servito: true },
-'31018': { comuni: ['Sernaglia della Battaglia'], servito: true },
-'31021': { comuni: ['Mogliano Veneto'], servito: true },
-'31022': { comuni: ['Preganziol'], servito: true },
-'31023': { comuni: ['Casier'], servito: true },
-'31024': { comuni: ['Istrana'], servito: true },
-'31025': { comuni: ['Santa Lucia di Piave'], servito: true },
-'31026': { comuni: ['Silea'], servito: true },
-'31028': { comuni: ['Vazzola'], servito: true },
-'31029': { comuni: ['Vittorio Veneto'], servito: true },
-'31030': { comuni: ['Breda di Piave'], servito: true },
-'31031': { comuni: ['Caerano di San Marco'], servito: true },
-'31032': { comuni: ['Casale sul Sile'], servito: true },
-'31034': { comuni: ['Cimadolmo'], servito: false },
-'31035': { comuni: ['Cison di Valmarino'], servito: false },
-'31036': { comuni: ['Maser'], servito: false },
-'31037': { comuni: ['Monfumo'], servito: false },
-'31038': { comuni: ['Paese'], servito: true },
-'31039': { comuni: ['Pederobba'], servito: false },
-'31041': { comuni: ['Ponzano Veneto'], servito: true },
-'31042': { comuni: ['Riese Pio X'], servito: false },
-'31043': { comuni: ['Salgareda'], servito: false },
-'31045': { comuni: ['Motta di Livenza'], servito: false },
-'31047': { comuni: ['Ponte di Piave'], servito: false },
-'31048': { comuni: ['San Biagio di Callalta'], servito: false },
-'31049': { comuni: ['Valdobbiadene'], servito: false },
-'31051': { comuni: ['Fonte'], servito: false },
-'31052': { comuni: ['Maserada sul Piave'], servito: false },
-'31053': { comuni: ['Pieve del Grappa'], servito: false },
-'31054': { comuni: ['Possagno'], servito: false },
-'31056': { comuni: ['Refrontolo'], servito: false },
-'31057': { comuni: ['San Zenone degli Ezzelini'], servito: false },
-'31058': { comuni: ['Santo Stefano di Valdobbiadene'], servito: false },
-'31059': { comuni: ['Tarzo'], servito: false }
+  '31100': { comuni: ['Treviso'], servito: true },
+  '31015': { comuni: ['Conegliano'], servito: true },
+  '31044': { comuni: ['Montebelluna'], servito: true },
+  '31033': { comuni: ['Castelfranco Veneto'], servito: true },
+  '31046': { comuni: ['Oderzo'], servito: true },
+  '31050': { comuni: ['Villorba', 'Carbonera'], servito: true },
+  '31020': { comuni: ['Vazzola', 'San Vendemiano'], servito: true },
+  '31010': { comuni: ['Miane', 'Follina'], servito: false },
+  '31012': { comuni: ['Cappella Maggiore'], servito: false },
+  '31013': { comuni: ['Codognè'], servito: false },
+  '31016': { comuni: ['Godega di Sant\'Urbano'], servito: false },
+  '31017': { comuni: ['Pieve di Soligo'], servito: false },
+  '31018': { comuni: ['Sernaglia della Battaglia'], servito: false },
+  '31021': { comuni: ['Mogliano Veneto'], servito: true },
+  '31022': { comuni: ['Preganziol'], servito: true },
+  '31023': { comuni: ['Casier'], servito: true },
+  '31024': { comuni: ['Istrana'], servito: true },
+  '31025': { comuni: ['Santa Lucia di Piave'], servito: false },
+  '31026': { comuni: ['Silea'], servito: true },
+  '31028': { comuni: ['Vazzola'], servito: false },
+  '31029': { comuni: ['Vittorio Veneto'], servito: true },
+  '31030': { comuni: ['Breda di Piave'], servito: false },
+  '31031': { comuni: ['Caerano di San Marco'], servito: false },
+  '31032': { comuni: ['Casale sul Sile'], servito: true },
+  '31034': { comuni: ['Cimadolmo'], servito: false },
+  '31035': { comuni: ['Cison di Valmarino'], servito: false },
+  '31036': { comuni: ['Maser'], servito: false },
+  '31037': { comuni: ['Monfumo'], servito: false },
+  '31038': { comuni: ['Paese'], servito: true },
+  '31039': { comuni: ['Pederobba'], servito: false },
+  '31041': { comuni: ['Ponzano Veneto'], servito: true },
+  '31042': { comuni: ['Riese Pio X'], servito: false },
+  '31043': { comuni: ['Salgareda'], servito: false },
+  '31045': { comuni: ['Motta di Livenza'], servito: false },
+  '31047': { comuni: ['Ponte di Piave'], servito: false },
+  '31048': { comuni: ['San Biagio di Callalta'], servito: false },
+  '31049': { comuni: ['Valdobbiadene'], servito: false },
+  '31051': { comuni: ['Fonte'], servito: false },
+  '31052': { comuni: ['Maserada sul Piave'], servito: false },
+  '31053': { comuni: ['Pieve del Grappa'], servito: false },
+  '31054': { comuni: ['Possagno'], servito: false },
+  '31056': { comuni: ['Refrontolo'], servito: false },
+  '31057': { comuni: ['San Zenone degli Ezzelini'], servito: false },
+  '31058': { comuni: ['Santo Stefano di Valdobbiadene'], servito: false },
+  '31059': { comuni: ['Tarzo'], servito: false }
 };
 
 function verificaCopertura() {
@@ -347,35 +332,39 @@ function verificaCopertura() {
   
   if (!/^\d{5}$/.test(cap)) {
     risultato.innerHTML = '⚠️ Inserisci un CAP valido di 5 cifre';
+    risultato.style.background = '#FFF3F3';
     risultato.style.color = '#FF0000';
     return;
   }
 
-  const zona = copertura[cap];
-  
-  if (zona?.servito) {
-    risultato.innerHTML = `
-      ✅ <strong>Serviamo ${zona.comuni.join(', ')}!</strong><br>
-      <a href="https://wa.me/393500036917?text=Servizio%20per%20CAP%20${cap}" 
-         style="background: #25D366; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 10px;">
-         PRENOTA ORA
-      </a>
-    `;
-    risultato.style.color = '#25D366';
+  if (copertura[cap]) {
+    if (copertura[cap].servito) {
+      risultato.innerHTML = `✅ Servizio disponibile a ${copertura[cap].comuni.join(', ')}!<br>
+        <a href="https://wa.me/393500036917?text=Servizio%20per%20${copertura[cap].comuni.join(', ')}%20(CAP%20${cap})" 
+           style="background: #25D366; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 10px;">
+           PRENOTA ORA
+        </a>`;
+      risultato.style.background = '#F5FFF7';
+      risultato.style.color = '#25D366';
+    } else {
+      risultato.innerHTML = `🔴 Non ancora servito a ${copertura[cap].comuni.join(', ')} (CAP ${cap})<br>
+        <button onclick="avvisamiDisponibilita('${cap}')" 
+                style="background: #FFA500; color: white; border: none; padding: 10px 20px; border-radius: 5px; margin-top: 10px; cursor: pointer;">
+                🚀 Avvisami quando arriveremo
+        </button>`;
+      risultato.style.background = '#FFF8E6';
+      risultato.style.color = '#FFA500';
+    }
   } else {
-    risultato.innerHTML = `
-      🔴 Non ancora servito nel CAP ${cap}<br>
-      <button onclick="avvisamiDisponibilita('${cap}')" 
-              style="background: #FFA500; color: white; border: none; padding: 10px 20px; border-radius: 5px; margin-top: 10px; cursor: pointer;">
-              🚀 Avvisami quando arriveremo
-      </button>
-    `;
-    risultato.style.color = '#FFA500';
+    risultato.innerHTML = '🔴 CAP non riconosciuto nella provincia di Treviso';
+    risultato.style.background = '#FFF3F3';
+    risultato.style.color = '#FF0000';
   }
 }
 
 function avvisamiDisponibilita(cap) {
-  window.open(`https://wa.me/393500036917?text=Avvisami%20per%20il%20CAP%20${cap}`, '_blank');
+  const comuni = copertura[cap] ? copertura[cap].comuni.join(', ') : '';
+  window.open(`https://wa.me/393500036917?text=Avvisami%20per%20${comuni}%20(CAP%20${cap})`, '_blank');
 }
 </script>
         
