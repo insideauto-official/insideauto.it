@@ -202,8 +202,45 @@
 </div>
 
        <!-- ============ INIZIO SEZIONE VERIFICA CAP ============ -->
-<div style="margin: 60px 0;">
-    <h2 style="text-align: center;">Verifica la copertura nella tua zona</h2>
+<div style="margin: 60px 0; text-align: center;">
+    <h2>Visita la nostra sede operativa</h2>
+    
+    <!-- Indirizzo e pulsante direzioni -->
+    <div style="background: #F5F9F5; padding: 20px; border-radius: 10px; max-width: 600px; margin: 0 auto 20px;">
+        <p style="font-size: 1.2rem; margin-bottom: 10px;">
+            <strong>📍 Via Padania Industriale 1, 31027 Spresiano (TV)</strong>
+        </p>
+        <a 
+            href="https://www.google.com/maps/dir//Via+Padania+Industriale+1,+31027+Spresiano+TV" 
+            target="_blank" 
+            style="background: #25D366; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block;"
+        >
+            Ottieni indicazioni
+        </a>
+    </div>
+
+    <!-- Mappa interattiva (embed Google Maps) -->
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2768.123456789012!2d12.25000000000001!3d45.78330000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477930e7a5f87a95%3A0x38e91d70402e8180!2sVia%20Padania%20Industriale%201%2C%2031027%20Spresiano%20TV!5e0!3m2!1sit!2sit!4v1720297886341!5m2!1sit!2sit"
+        width="100%"
+        height="400"
+        style="border:0; border-radius: 10px; margin-top: 20px;"
+        allowfullscreen
+        loading="lazy"
+    >
+    </iframe>
+
+    <!-- Testo ottimizzato per SEO -->
+    <p style="margin-top: 20px; color: #666;">
+        Servizi disponibili: <strong>lavaggio sedili auto, pulizia interni auto, igienizzazione auto</strong>
+    </p>
+</div>
+
+<!-- Script CAP e Mappa -->
+<script>
+// Database CAP serviti (personalizza con i tuoi)
+<div style="margin: 60px 0; text-align: center;">
+    <h2>Verifica la copertura nella tua zona</h2>
     
     <!-- Tool Verifica CAP -->
     <div style="max-width: 500px; margin: 0 auto 30px; padding: 20px; background: #F9F9F9; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.05);">
@@ -211,7 +248,7 @@
             <input 
                 type="text" 
                 id="capInput" 
-                placeholder="Inserisci il tuo CAP (es: 31050)" 
+                placeholder="Inserisci il tuo CAP (es: 31027)" 
                 style="flex: 1; padding: 12px; border: 1px solid #DDD; border-radius: 5px;"
                 maxlength="5"
             >
@@ -225,23 +262,78 @@
         <p id="risultatoVerifica" style="margin: 15px 0 0; font-size: 14px; text-align: center;"></p>
     </div>
 
-    <!-- Mappa (versione ottimizzata) -->
-    <div id="mappa" style="width:100%;height:400px;border-radius:10px;background:#F5F5F5;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="caricaMappa()">
-        <div style="text-align:center;">
-            <img src="https://raw.githubusercontent.com/insideauto-official/insideauto.it/main/images/mappa-preview.jpg" alt="Anteprima mappa zona di copertura" style="max-width:100%; border-radius:8px; opacity:0.8;">
-            <p style="margin-top:10px;background:#25D366;color:white;padding:8px;border-radius:5px;display:inline-block;">▶️ Carica la mappa interattiva</p>
-        </div>
-    </div>
+    <!-- Mappa Sede Operativa -->
+    <h3 style="margin-bottom: 15px;">📍 Sede Operativa</h3>
+    <p style="margin-bottom: 20px; font-size: 1.1rem;">
+        <strong>Via Padania Industriale 1, 31027 Spresiano (TV)</strong><br>
+        <a href="https://maps.app.goo.gl/examplelink" style="color: #25D366;" target="_blank">Ottieni indicazioni</a>
+    </p>
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2782.123456789012!2d12.25000000000001!3d45.78330000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477930e7a5f87a95%3A0x38e91d70402e8180!2sInsideAuto!5e0!3m2!1sit!2sit!4v1720297886341"
+        width="100%"
+        height="400"
+        style="border:0; border-radius: 10px;"
+        allowfullscreen
+        loading="lazy"
+    ></iframe>
 </div>
 
-<!-- Script CAP e Mappa -->
 <script>
-// Database CAP serviti (personalizza con i tuoi)
+// Database CAP serviti (elenco completo provincia di Treviso)
 const copertura = {
-    '31050': { comuni: ['Spresiano'], servito: true },
+    // CAP principali città (lista completa sotto)
+    '31027': { comuni: ['Spresiano'], servito: true },
     '31100': { comuni: ['Treviso'], servito: true },
-    '31015': { comuni: ['Conegliano'], servito: true }
-    // Aggiungi altri CAP qui
+    '31015': { comuni: ['Conegliano'], servito: true },
+    '31044': { comuni: ['Montebelluna'], servito: true },
+    '31033': { comuni: ['Castelfranco Veneto'], servito: true },
+    '31046': { comuni: ['Oderzo'], servito: true },
+    '31050': { comuni: ['Villorba', 'Carbonera'], servito: true },
+    '31020': { comuni: ['Vazzola', 'San Vendemiano'], servito: true },
+    // Altri CAP (aggiungi quelli mancanti)
+    '31011': { comuni: ['Asolo'], servito: false },
+    '31040': { comuni: ['Nervesa della Battaglia'], servito: true },
+    '31055': { comuni: ['Quinto di Treviso'], servito: true }
+    // Aggiungi questi CAP alla costante `copertura` nello script:
+'31010': { comuni: ['Miane', 'Follina'], servito: false },
+'31012': { comuni: ['Cappella Maggiore'], servito: false },
+'31013': { comuni: ['Codognè'], servito: false },
+'31016': { comuni: ['Godega di Sant\'Urbano'], servito: false },
+'31017': { comuni: ['Pieve di Soligo'], servito: false },
+'31018': { comuni: ['Sernaglia della Battaglia'], servito: false },
+'31021': { comuni: ['Mogliano Veneto'], servito: true },
+'31022': { comuni: ['Preganziol'], servito: true },
+'31023': { comuni: ['Casier'], servito: true },
+'31024': { comuni: ['Istrana'], servito: true },
+'31025': { comuni: ['Santa Lucia di Piave'], servito: false },
+'31026': { comuni: ['Silea'], servito: true },
+'31027': { comuni: ['Spresiano'], servito: true },
+'31028': { comuni: ['Vazzola'], servito: false },
+'31029': { comuni: ['Vittorio Veneto'], servito: true },
+'31030': { comuni: ['Breda di Piave'], servito: false },
+'31031': { comuni: ['Caerano di San Marco'], servito: false },
+'31032': { comuni: ['Casale sul Sile'], servito: true },
+'31034': { comuni: ['Cimadolmo'], servito: false },
+'31035': { comuni: ['Cison di Valmarino'], servito: false },
+'31036': { comuni: ['Maser'], servito: false },
+'31037': { comuni: ['Monfumo'], servito: false },
+'31038': { comuni: ['Paese'], servito: true },
+'31039': { comuni: ['Pederobba'], servito: false },
+'31041': { comuni: ['Ponzano Veneto'], servito: true },
+'31042': { comuni: ['Riese Pio X'], servito: false },
+'31043': { comuni: ['Salgareda'], servito: false },
+'31045': { comuni: ['Motta di Livenza'], servito: false },
+'31047': { comuni: ['Ponte di Piave'], servito: false },
+'31048': { comuni: ['San Biagio di Callalta'], servito: false },
+'31049': { comuni: ['Valdobbiadene'], servito: false },
+'31051': { comuni: ['Fonte'], servito: false },
+'31052': { comuni: ['Maserada sul Piave'], servito: false },
+'31053': { comuni: ['Pieve del Grappa'], servito: false },
+'31054': { comuni: ['Possagno'], servito: false },
+'31056': { comuni: ['Refrontolo'], servito: false },
+'31057': { comuni: ['San Zenone degli Ezzelini'], servito: false },
+'31058': { comuni: ['Santo Stefano di Valdobbiadene'], servito: false },
+'31059': { comuni: ['Tarzo'], servito: false }
 };
 
 function verificaCopertura() {
@@ -267,10 +359,10 @@ function verificaCopertura() {
         risultato.style.color = '#25A765';
     } else {
         risultato.innerHTML = `
-            🔴 Non ancora servito nel CAP ${cap}<br>
+            🔴 Servizio non ancora disponibile nel CAP ${cap}<br>
             <button onclick="avvisamiDisponibilita('${cap}')" 
                     style="background: #FFA500; color: white; border: none; padding: 8px 15px; border-radius: 5px; margin-top: 8px; cursor: pointer;">
-                    🚀 Avvisami quando arriverete
+                    🚀 Avvisami quando arriveremo
             </button>
         `;
         risultato.style.color = '#FFA500';
@@ -279,21 +371,6 @@ function verificaCopertura() {
 
 function avvisamiDisponibilita(cap) {
     window.open(`https://wa.me/393500036917?text=Avvisami%20quando%20servirete%20il%20CAP%20${cap}`, '_blank');
-}
-
-function caricaMappa() {
-    document.getElementById('mappa').innerHTML = `
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d177770.129272798!2d12.07539625!3d45.763409999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477930e7a5f87a95%3A0x38e91d70402e8180!2sProvincia%20di%20Treviso!5e0!3m2!1sit!2sit!4v1720297886341!5m2!1sit!2sit" 
-            width="100%" 
-            height="100%" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Zona di copertura servizio lavaggio sedili auto">
-        </iframe>
-    `;
 }
 </script>
         
