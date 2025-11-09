@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergenza in Auto - Intervento in Giornata | InsideAuto Treviso</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            line-height: 1.6;
+            color: #000000;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: #ffffff;
+            padding: 20px 0;
+            border-bottom: 2px solid #f0f0f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .emergency-badge {
+            background: #ff0000;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #000;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .highlight-text {
+            background: linear-gradient(120deg, #ffeb3b 0%, #f9d423 100%);
+            color: #000 !important;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            display: inline-block;
+            box-shadow: 0 2px 8px rgba(255, 235, 59, 0.6);
+            border: 2px solid #fbc02d;
+            margin: 5px 0;
+            text-shadow: none;
+        }
+
+        .emergency-cta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .call-button {
+            background: #ff0000;
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            min-width: 200px;
+        }
+
+        .call-button:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+        }
+
+        .call-button::before {
+            content: '📞';
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+        }
+
+        .whatsapp-button {
+            background: #25d366;
+            color: white;
+            border: none;
+            padding: 20px 40px 20px 75px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            min-width: 200px;
+        }
+
+        .whatsapp-button:hover {
+            background: #1eb855;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-button::before {
+            content: '💬';
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            display: block;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 60px 0;
+            background: #ffffff;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #000;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border: 2px solid #f0f0f0;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: #ff0000;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .urgency-badge {
+            background: #ff0000;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: #f8f8f8;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .pricing h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #000;
+        }
+
+        .pricing-card {
+            background: #ffffff;
+            border: 3px solid #ff0000;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .price-highlight {
+            font-size: 4em;
+            font-weight: bold;
+            color: #ff0000;
+            margin: 20px 0;
+        }
+
+        .price-subtitle {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .includes {
+            text-align: left;
+            margin: 30px 0;
+        }
+
+        .includes h3 {
+            color: #000;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .includes ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .includes li {
+            padding: 8px 0;
+            color: #333;
+        }
+
+        .includes li::before {
+            content: '✅';
+            margin-right: 10px;
+        }
+
+        .rental-option {
+            background: #e8f5e8;
+            border: 1px solid #25d366;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .rental-option h4 {
+            color: #25d366;
+            margin-bottom: 10px;
+        }
+
+        /* Why Choose Us */
+        .why-choose {
+            padding: 60px 0;
+            background: #ffffff;
+        }
+
+        .why-choose h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #000;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .feature p {
+            color: #666;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #000000;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta-text {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #f8f8f8;
+            padding: 60px 0;
+        }
+
+        .contact-section h3 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .contact-text {
+            text-align: center;
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            border-color: #ff0000;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .contact-card h4 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .contact-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn.whatsapp {
+            background: #25d366;
+            color: white;
+        }
+
+        .contact-btn.whatsapp:hover {
+            background: #1eb855;
+            transform: translateY(-2px);
+        }
+
+        .contact-btn.phone {
+            background: #ff0000;
+            color: white;
+        }
+
+        .contact-btn.phone:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #000000;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            color: #25d366;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1em;
+            }
+
+            .emergency-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .call-button,
+            .whatsapp-button {
+                min-width: 280px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card {
+                margin: 0 20px;
+            }
+
+            .header .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .contact-options {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">InsideAuto Treviso</div>
+            <div class="emergency-badge">🚨 EMERGENZA IN AUTO</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>EMERGENZA IN AUTO?</h1>
+            <p class="subtitle highlight-text">Intervento rapido per problemi urgenti di vomito, urina e sangue sul sedile dell'interno auto</p>
+            <p class="subtitle"><strong>🕐 INTERVENTO IN GIORNATA</strong> - Chiamaci subito!</p>
+            
+            <div class="emergency-cta">
+                <a href="tel:+393500036917" class="call-button">
+                    CHIAMA ORA
+                </a>
+                <a href="https://wa.me/393500036917?text=Ciao! Ho un problema urgente con la mia auto e ho bisogno di un intervento in giornata" class="whatsapp-button" target="_blank">
+                    WHATSAPP
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2>Problemi che Risolviamo Subito</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💧</div>
+                    <h3>Macchia e Odore di Urina</h3>
+                    <p>Rimozione completa di odori di urina da sedili, tappetini e tappezzerie. Utilizziamo prodotti specifici per neutralizzare gli odori persistenti.</p>
+                    <span class="urgency-badge">RISOLUZIONE RAPIDA</span>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🤢</div>
+                    <h3>Residui di Vomito</h3>
+                    <p>Pulizia profonda e disinfezione completa di tappezzerie e sedili contaminati da vomito. Eliminazione totale di batteri e odori sgradevoli.</p>
+                    <span class="urgency-badge">TRATTAMENTO URGENTE</span>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🩸</div>
+                    <h3>Macchie di Sangue</h3>
+                    <p>Rimozione professionale di macchie di sangue da interni auto con tecniche specifiche per eliminare completamente le macchie e i batteri.</p>
+                    <span class="urgency-badge">INTERVENTO IMMEDIATO</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="container">
+            <h2>Prezzo Fisso - Nessuna Sorpresa</h2>
+            <div class="pricing-card">
+                <h3>Intervento di Emergenza</h3>
+                <div class="price-highlight">da 50€</div>
+                <p class="price-subtitle">Tutto incluso - Prezzo fisso per qualsiasi intervento</p>
+                
+                <div class="includes">
+                    <h3>Cosa Include:</h3>
+                    <ul>
+                        <li>Intervento in giornata garantito</li>
+                        <li>Pulizia profonda e disinfezione</li>
+                        <li>Prodotti specifici per ogni tipo di problema</li>
+                        <li>Neutralizzazione completa degli odori</li>
+                        <li>Asciugatura completa degli interni</li>
+                        <li>Garanzia di risultato</li>
+                    </ul>
+                </div>
+
+                <div class="rental-option">
+                    <h4>🚗 Auto Sostitutiva Disponibile</h4>
+                    <p>Durante i lavori sulla tua auto, puoi utilizzare la nostra auto sostitutiva per solo <strong>25€</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose">
+        <div class="container">
+            <h2>Perché Scegliere Noi per le Emergenze</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Velocità</h3>
+                    <p>Intervento in giornata garantito. Non devi aspettare giorni per risolvere il problema.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Specializzazione</h3>
+                    <p>Specialisti nella pulizia di emergenza con prodotti e tecniche specifiche.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">💯</div>
+                    <h3>Garanzia</h3>
+                    <p>Garantiamo il risultato. Se il problema persiste, ritorniamo per completare il lavoro.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🚗</div>
+                    <h3>Auto Sostitutiva</h3>
+                    <p>Durante i lavori sulla tua auto, puoi utilizzare la nostra auto sostitutiva per solo 25€. La mobilità è garantita!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <p class="cta-text">Non aspettare! Ogni minuto conta per eliminare odori e batteri</p>
+            <div class="emergency-cta">
+                <a href="tel:+393500036917" class="call-button">
+                    CHIAMA ORA
+                </a>
+                <a href="https://wa.me/393500036917?text=Ciao! Ho un problema urgente e ho bisogno di un intervento in giornata" class="whatsapp-button" target="_blank">
+                    WHATSAPP
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h3>Contattaci Ora</h3>
+            <p class="contact-text">
+                Per un servizio rapido e diretto, scrivici su WhatsApp o chiamaci direttamente. 
+                Rispondiamo in pochi minuti!
+            </p>
+            
+            <div class="contact-options">
+                <div class="contact-card">
+                    <div class="contact-icon">💬</div>
+                    <h4>WhatsApp</h4>
+                    <p>Scrivi su WhatsApp per una risposta immediata</p>
+                    <a href="https://wa.me/393500036917?text=Ciao! Ho un problema urgente con la mia auto e ho bisogno di un intervento in giornata. Posso essere contattato subito al numero: [inserisci il tuo numero]" class="contact-btn whatsapp" target="_blank">
+                        SCRIVI SU WHATSAPP
+                    </a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h4>Telefono</h4>
+                    <p>Chiamaci per parlare direttamente con noi</p>
+                    <a href="tel:+393500036917" class="contact-btn phone">
+                        CHIAMA ORA
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 InsideAuto Treviso - Emergenza in Auto - P. IVA 05282450260</p>
+            <p>La soluzione rapida per i tuoi problemi urgenti all'interno dell'abitacolo</p>
+            <p>
+                💬 WhatsApp: <a href="https://wa.me/393500036917">393500036917</a> | 
+                📞 Telefono: <a href="tel:+393500036917">+39 350 003 6917</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Emoji message già presente nel CSS
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Landing page caricata con emoji message 💬');
+        });
+
+        // Analytics per emergenze
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_view', {
+                page_title: 'Emergenza in Auto - Intervento Giornaliero',
+                page_location: window.location.href
+            });
+        }
+    </script>
+</body>
+</html>
