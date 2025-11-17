@@ -1880,7 +1880,8 @@
                 else {
                     status = 'Chiuso';
                     badgeClass = 'status-closed';
-                    nextInfo = 'Riapre lunedì alle 8:00';
+                    const nextDay = getNextOpeningDay(today);
+                    nextInfo = 'Riapre ' + nextDay + ' alle 8:00';
                 }
             }
             // Weekend (Saturday=6, Sunday=0)
