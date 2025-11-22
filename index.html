@@ -151,14 +151,15 @@
         </div>
     </section>
 
+    
     <!-- Calcolatore Trasformazione -->
     <section id="calcolatore" class="py-16">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                    <i class="fas fa-calculator mr-3"></i>Calcolatore Trasformazione Auto
+                    <i class="fas fa-calculator mr-3"></i>Calcolatore Car Detailing Premium
                 </h2>
-                <p class="text-xl text-gray-600">Scopri l'investimento per trasformare la tua auto</p>
+                <p class="text-xl text-gray-600">Scopri l'investimento per il trattamento premium della tua auto</p>
             </div>
 
             <div class="max-w-4xl mx-auto">
@@ -168,22 +169,18 @@
                         <div class="space-y-6">
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-2">
-                                    <i class="fas fa-exclamation-triangle mr-2 text-red-500"></i>Tipo di Problema
+                                    <i class="fas fa-tools mr-2 text-blue-500"></i>Tipo di Trattamento
                                 </label>
                                 <select id="problemType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculateTransformation()">
-                                    <option value="">Seleziona il problema...</option>
-                                    <option value="pulizia-generale" data-price="50">Pulizia Generale</option>
-                                    <option value="macchie-cibo" data-price="60">Macchie di Cibo/Bevande</option>
-                                    <option value="pelo-animale" data-price="70">Pelo di Animale</option>
-                                    <option value="cattivi-odori" data-price="75">Cattivi Odori</option>
-                                    <option value="usura-intensa" data-price="80">Usura Intensa</option>
-                                    <option value="macchie-sangue" data-price="90">Rimozione Macchie di Sangue</option>
-                                    <option value="macchie-urina" data-price="95">Rimozione Macchie di Urina</option>
-                                    <option value="vomito" data-price="100">Rimozione Vomito</option>
-                                    <option value="odore-fumo" data-price="85">Eliminazione Odore Fumo</option>
-                                    <option value="muffa-umidita" data-price="105">Trattamento Muffa/Umidità</option>
-                                    <option value="trasformazione-totale" data-price="120">Pulizia Standard Completa</option>
-                                    <option value="altra-situazione" data-price="75">Altra Situazione</option>
+                                    <option value="">Seleziona il trattamento...</option>
+                                    <option value="detailing-standard" data-price="80">Detailing Standard</option>
+                                    <option value="detailing-premium" data-price="120">Detailing Premium Completo</option>
+                                    <option value="protezione-plastiche" data-price="60">Protezione Plastiche Specializzata</option>
+                                    <option value="sanificazione-ozono" data-price="90">Sanificazione Ozono</option>
+                                    <option value="condizionamento-pelle" data-price="100">Condizionamento Pelle Premium</option>
+                                    <option value="tornador-deep" data-price="70">Aspirazione Tornador Profonda</option>
+                                    <option value="trattamento-completo" data-price="150">Trattamento Completo Premium</option>
+                                    <option value="restauro-interni" data-price="200">Restauro Interni Professionale</option>
                                 </select>
                             </div>
 
@@ -193,35 +190,38 @@
                                 </label>
                                 <select id="vehicleType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculateTransformation()">
                                     <option value="">Seleziona il veicolo...</option>
-                                    <optgroup label="Auto">
+                                    <optgroup label="Auto Standard">
                                         <option value="auto-piccola" data-multiplier="1.0">Auto Piccola (Panda, 500, Yaris)</option>
                                         <option value="auto-media" data-multiplier="1.2">Auto Media (Golf, Focus, Giulietta)</option>
                                         <option value="auto-grande" data-multiplier="1.4">Auto Grande (Passat, Mondeo, A6)</option>
+                                    </optgroup>
+                                    <optgroup label="SUV">
                                         <option value="suv-piccolo" data-multiplier="1.3">SUV Piccolo (Puma, T-Cross, CX-3)</option>
                                         <option value="suv-grande" data-multiplier="1.6">SUV Grande (X5, Q7, ML)</option>
-                                        <option value="monovolume" data-multiplier="1.5">Monovolume (Zafira, Touran, Scenic)</option>
+                                        <option value="suv-luxury" data-multiplier="1.8">SUV Luxury (Range Rover, Bentley)</option>
                                     </optgroup>
-                                    <optgroup label="Furgoni">
-                                        <option value="fiorino" data-multiplier="1.3">Fiat Fiorino</option>
-                                        <option value="doblo" data-multiplier="1.4">Fiat Doblò</option>
-                                        <option value="ducato" data-multiplier="1.8">Fiat Ducato</option>
-                                        <option value="iveco-daily" data-multiplier="1.9">Iveco Daily</option>
-                                        <option value="mercedes-sprinter" data-multiplier="2.0">Mercedes Sprinter</option>
-                                        <option value="ford-transit" data-multiplier="1.8">Ford Transit</option>
+                                    <optgroup label="Auto Premium">
+                                        <option value="berlina-premium" data-multiplier="1.5">Berlina Premium (BMW Serie 5, Audi A6)</option>
+                                        <option value="auto-luxury" data-multiplier="2.0">Auto Luxury (Bentley, Rolls-Royce)</option>
+                                        <option value="sportiva" data-multiplier="1.7">Auto Sportiva (Porsche, Ferrari)</option>
+                                    </optgroup>
+                                    <optgroup label="Commerciali">
+                                        <option value="furgone-piccolo" data-multiplier="1.4">Furgone Piccolo (Fiorino, Kangoo)</option>
+                                        <option value="furgone-grande" data-multiplier="1.8">Furgone Grande (Ducato, Sprinter)</option>
                                     </optgroup>
                                 </select>
                             </div>
 
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-2">
-                                    <i class="fas fa-cogs mr-2 text-green-500"></i>Tipo di Trasformazione Necessaria
+                                    <i class="fas fa-star mr-2 text-yellow-500"></i>Livello di Servizio
                                 </label>
                                 <select id="serviceType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculateTransformation()">
-                                    <option value="">Seleziona la situazione...</option>
-                                    <option value="singolo-problema" data-discount="0.6">Problema Localizzato (singola zona)</option>
-                                    <option value="pulizia-completa" data-discount="1.0">Pulizia Standard Completa</option>
-                                    <option value="deep-cleaning" data-discount="1.3">Deep Cleaning Intensivo</option>
-                                    <option value="restauro-completo" data-discount="1.6">Restauro Completo Interni</option>
+                                    <option value="">Seleziona il livello...</option>
+                                    <option value="base" data-discount="0.8">Detailing Base</option>
+                                    <option value="premium" data-discount="1.0">Detailing Premium</option>
+                                    <option value="luxury" data-discount="1.3">Detailing Luxury</option>
+                                    <option value="concours" data-discount="1.6">Detailing Concours</option>
                                 </select>
                             </div>
 
@@ -268,7 +268,7 @@
                                     <div>
                                         <h4 class="font-bold text-blue-800">🎁 INCLUSO PER TE!</h4>
                                         <p class="text-blue-700 text-sm">
-                                            Vieni da lontano per il nostro servizio? 
+                                            Vieni da lontano per il nostro servizio premium? 
                                             <strong>Auto sostitutiva GRATUITA inclusa!</strong><br>
                                             <span class="text-xs">Lasci la tua auto da noi e sei libero di muoverti</span>
                                         </p>
@@ -278,7 +278,7 @@
 
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-2">
-                                    <i class="fas fa-calendar mr-2 text-green-500"></i>Scegli il Giorno per la Trasformazione
+                                    <i class="fas fa-calendar mr-2 text-green-500"></i>Scegli il Giorno per il Trattamento
                                 </label>
                                 
                                 <div class="calendar-nav">
@@ -300,7 +300,7 @@
                         <!-- Risultato Trasformazione -->
                         <div class="bg-gray-50 rounded-lg p-6">
                             <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">
-                                <i class="fas fa-gem mr-2"></i>Valore della Trasformazione
+                                <i class="fas fa-star mr-2"></i>Valore del Trattamento Premium
                             </h3>
                             
                             <div id="transformationSummary" class="space-y-4 mb-6">
@@ -311,7 +311,7 @@
 
                             <div class="border-t pt-4">
                                 <div class="flex justify-between items-center mb-4">
-                                    <span class="text-xl font-bold">Investimento per la Trasformazione:</span>
+                                    <span class="text-xl font-bold">Investimento per il Detailing:</span>
                                     <span id="totalInvestment" class="text-3xl font-bold text-green-600">€ --</span>
                                 </div>
                                 
@@ -320,18 +320,17 @@
                                         <i class="fas fa-shield-alt text-green-600 mr-2"></i>
                                         <span class="text-sm text-green-800 font-semibold">Garanzia Soddisfatti o Rimborsati</span>
                                     </div>
-                                    <p class="text-xs text-green-700 mt-1">Se non ottieni il risultato promesso, non investi nulla!</p>
+                                    <p class="text-xs text-green-700 mt-1">Se non ottieni il risultato premium promesso, non investi nulla!</p>
                                 </div>
 
                                 <button id="requestTransformation" class="w-full btn-primary py-3 rounded-lg font-semibold text-lg pulse-animation" onclick="scrollToContactForm()" disabled>
-                                    <i class="fas fa-magic mr-2"></i>✨ Trasforma la Mia Auto
+                                    <i class="fas fa-star mr-2"></i>✨ Prenota Detailing Premium
                                 </button>
 
                                 <div class="text-center mt-4">
                                     <p class="text-sm text-gray-600 mb-2">Oppure contattaci direttamente:</p>
-                                    <a href="https://wa.me/393500036917" class="whatsapp-btn-simple">
-                                    <i class="fab fa-whatsapp"></i> Invia su WhatsApp
-                                    </a>
+                                    <a href="https://wa.me/393500036917" target="_blank" id="whatsappQuickBtn" class="btn-whatsapp px-6 py-2 rounded-lg font-semibold text-sm inline-flex items-center">
+                                        <i class="fab fa-whatsapp mr-2"></i>Invia su WhatsApp
                                     </a>
                                 </div>
                             </div>
