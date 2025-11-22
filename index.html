@@ -54,24 +54,78 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .hero-gradient { background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); }
-        .card-shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }
-        .btn-primary { background: #000; color: #fff; transition: all 0.3s; }
-        .btn-primary:hover { background: #1f2937; transform: translateY(-1px); }
-        .service-card:hover { transform: translateY(-2px); transition: all 0.3s; }
-        .pulse-animation { animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
-        .sticky-header { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6;
+        }
+        .hero-gradient { 
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); 
+        }
+        .card-shadow { 
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); 
+        }
+        .btn-primary { 
+            background: #000; 
+            color: #fff; 
+            transition: all 0.3s; 
+        }
+        .btn-primary:hover { 
+            background: #1f2937; 
+            transform: translateY(-1px); 
+        }
+        .service-card:hover { 
+            transform: translateY(-2px); 
+            transition: all 0.3s; 
+        }
+        .pulse-animation { 
+            animation: pulse 2s infinite; 
+        }
+        @keyframes pulse { 
+            0%, 100% { opacity: 1; } 
+            50% { opacity: 0.7; } 
+        }
+        .sticky-header { 
+            position: sticky; 
+            top: 0; 
+            z-index: 50; 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px); 
+        }
         
-        /* Mobile hero title fix */
+        /* Mobile optimizations */
         @media (max-width: 640px) {
+            .mobile-padding-fix {
+                padding-left: 1rem;
+                padding-right: 1rem;
+                overflow-x: hidden;
+            }
+            .mobile-form-spacing {
+                padding-bottom: 5rem;
+            }
             .hero-title-mobile {
                 line-height: 1.1;
-                margin-bottom: 1.5rem;
+                font-size: 2.25rem;
+                word-wrap: break-word;
             }
             .hero-title-mobile br.mobile-break {
                 display: block;
+            }
+            .mobile-container {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            .whatsapp-mobile-adjust {
+                bottom: 80px;
+                right: 15px;
+                transform: scale(0.9);
+            }
+            .form-field-mobile {
+                margin-right: 0.5rem;
+                padding-right: 2rem;
+            }
+            .calculator-card-mobile {
+                padding: 1rem;
+                margin: 0 0.5rem;
             }
         }
         
@@ -79,6 +133,50 @@
             .hero-title-mobile br.mobile-break {
                 display: none;
             }
+        }
+        
+        /* WhatsApp floating button - responsive positioning */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn-simple {
+            background-color: #25D366;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn-simple:hover {
+            background-color: #128C7E;
+            transform: translateY(-1px);
         }
         
         /* Calendar styles */
@@ -118,6 +216,17 @@
             background: #f3f4f6;
             opacity: 0.6;
             cursor: not-allowed;
+        }
+        
+        .date-option.today {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+
+        .date-option.today.selected {
+            border-color: #22c55e;
+            background: #22c55e;
+            color: white;
         }
         
         .day-name {
@@ -166,104 +275,42 @@
         .calendar-nav button:disabled {
             opacity: 0.5;
             cursor: not-allowed;
+            background: #f9fafb;
         }
         
-        /* WhatsApp floating button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50px;
-            padding: 15px;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            transition: all 0.3s;
+        /* Fix hero alignment issues */
+        .hero-content {
+            max-width: 100%;
+            overflow: hidden;
         }
         
-        .whatsapp-float:hover {
-            background-color: #128C7E;
-            transform: translateY(-2px);
+        .hero-title {
+            text-align: center;
+            line-height: 1.1;
+            word-wrap: break-word;
         }
         
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: white;
-            border: none;
-            transition: all 0.3s ease;
+        /* Ensure proper form spacing on mobile */
+        .form-container {
+            padding-bottom: 6rem;
         }
         
-        .whatsapp-btn-simple {
-    background-color: #25D366;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.whatsapp-btn-simple:hover {
-    background-color: #128C7E;
-    transform: translateY(-1px);
-}
-        .date-option.today {
-        border-color: #3b82f6;
-        background: #eff6ff;
-    }
-
-    .date-option.today.selected {
-        border-color: #22c55e;
-        background: #22c55e;
-        color: white;
-    }
-
-    .date-option.unavailable {
-        background: #f3f4f6;
-        opacity: 0.6;
-        cursor: not-allowed;
-    }
-
-    .calendar-nav button:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-        background: #f9fafb;
-    }
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            background-color: #f9f9f9;
-        }
-        .hero-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-        h3 {
-            color: #555;
-            margin: 30px 0 15px 0;
-        }
-        .problem-list {
-            margin: 20px 0;
-        }
-        .problem-list li {
-            margin: 10px 0;
-            font-weight: bold;
-        }
-        .solution-text {
-            margin-top: 30px;
+        /* Fix calendar responsiveness */
+        @media (max-width: 640px) {
+            .calendar-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+            
+            .calendar-nav {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+            
+            .calendar-nav span {
+                order: -1;
+            }
         }
     </style>
 </head>
@@ -291,68 +338,94 @@
         </nav>
     </header>
 
-        <!-- Hero Section -->
+    <!-- Hero Section -->
     <section class="hero-gradient py-16 lg:py-20">
-        <div class="container mx-auto px-4 text-center">
+        <div class="container mx-auto px-4 text-center hero-content">
             <div class="max-w-4xl mx-auto">
                 <h1 class="text-4xl lg:text-6xl font-bold mb-6 hero-title-mobile">
-                    Pulizia<br class="mobile-break sm:hidden">
-                    <span class="text-green-500 font-extrabold">COMPLETA</span><br>
+                    <span class="text-green-500 font-extrabold">Pulizia COMPLETA</span><br>
                     Interni Auto<br>
                     a Treviso
                 </h1>
-                <div class="hero-container">
-        <h2><strong>Senti sempre quell'odore ogni volta che apri la portiera della tua auto...</strong></h2>
-        
-        <p><strong>Quello stesso odore persistente</strong> che ti fa storcere il naso ogni mattina quando sali in auto. Le macchie sul sedile che hai provato mille volte a far sparire. <strong>La polvere</strong> che si accumula continuamente, nonostante tu pulisca e pulisca ancora.</p>
+                <div class="bg-white rounded-xl card-shadow p-6 lg:p-8 max-w-4xl mx-auto">
+                    <h2 class="text-xl lg:text-2xl font-bold mb-4 text-gray-800">
+                        <strong>Senti sempre quell'odore ogni volta che apri la portiera della tua auto...</strong>
+                    </h2>
+                    
+                    <p class="text-base lg:text-lg mb-6 text-gray-700">
+                        <strong>Quello stesso odore persistente</strong> che ti fa storcere il naso ogni mattina quando sali in auto. Le macchie sul sedile che hai provato mille volte a far sparire. <strong>La polvere</strong> che si accumula continuamente, nonostante tu pulisca e pulisca ancora.
+                    </p>
 
-        <h3><strong>Sei stanco di:</strong></h3>
-        <ul class="problem-list">
-            <li>❌ <strong>Entrare in auto e sentire subito quel cattivo odore</strong> che ti mette di cattivo umore</li>
-            <li>❌ <strong>Vedere quelle macchie ostinate sui sedili</strong> che rovinano l'aspetto del tuo veicolo</li>
-            <li>❌ <strong>La polvere che torna dopo poche ore</strong>, rendendo l'abitacolo sempre polveroso</li>
-            <li>❌ <strong>Gli sguardi imbarazzanti dei passeggeri</strong> quando salgono in macchina</li>
-            <li>❌ <strong>Il disagio di non poter offrire</strong> un passaggio pulito e profumato</li>
-        </ul>
+                    <h3 class="text-lg lg:text-xl font-bold mb-4 text-gray-800">
+                        <strong>Sei stanco di:</strong>
+                    </h3>
+                    <ul class="text-sm lg:text-base space-y-3 mb-6 text-left max-w-3xl mx-auto">
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 text-lg">❌</span>
+                            <span><strong>Entrare in auto e sentire subito quel cattivo odore</strong> che ti mette di cattivo umore</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 text-lg">❌</span>
+                            <span><strong>Vedere quelle macchie ostinate sui sedili</strong> che rovinano l'aspetto del tuo veicolo</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 text-lg">❌</span>
+                            <span><strong>La polvere che torna dopo poche ore</strong>, rendendo l'abitacolo sempre polveroso</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 text-lg">❌</span>
+                            <span><strong>Gli sguardi imbarazzanti dei passeggeri</strong> quando salgono in macchina</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 text-lg">❌</span>
+                            <span><strong>Il disagio di non poter offrire</strong> un passaggio pulito e profumato</span>
+                        </li>
+                    </ul>
 
-        <h3><strong>È ora di dire basta a questi problemi</strong></h3>
-        
-        <div class="solution-text">
-            <p><strong>Immagina di aprire la portiera della tua auto</strong> e respirare immediatamente aria fresca e pulita. <strong>Sederti su sedili immacolati</strong> senza nemmeno una macchia. <strong>Guidare in un ambiente privo di polvere</strong> che ti fa sentire a casa anche in movimento.</p>
+                    <h3 class="text-lg lg:text-xl font-bold mb-4 text-gray-800">
+                        <strong>È ora di dire basta a questi problemi</strong>
+                    </h3>
+                    
+                    <div class="text-base lg:text-lg text-gray-700">
+                        <p class="mb-4">
+                            <strong>Immagina di aprire la portiera della tua auto</strong> e respirare immediatamente aria fresca e pulita. <strong>Sederti su sedili immacolati</strong> senza nemmeno una macchia. <strong>Guidare in un ambiente privo di polvere</strong> che ti fa sentire a casa anche in movimento.
+                        </p>
 
-            <p><strong>Questo non è un sogno</strong> - è la realtà che puoi ottenere oggi stesso.</p>
-        </div>
-    </div>
+                        <p class="text-lg font-semibold text-green-600">
+                            <strong>Questo non è un sogno</strong> - è la realtà che puoi ottenere oggi stesso.
+                        </p>
+                    </div>
+                </div>
                 
                 <!-- Trust Indicators -->
-                <div class="flex flex-wrap justify-center gap-8 mb-10">
+                <div class="flex flex-wrap justify-center gap-6 lg:gap-8 mb-10 mt-8">
                     <div class="flex items-center">
-                        <i class="fas fa-medal text-black text-2xl mr-3"></i>
-                        <span class="font-semibold">10+ anni esperienza</span>
+                        <i class="fas fa-medal text-black text-xl lg:text-2xl mr-2 lg:mr-3"></i>
+                        <span class="font-semibold text-sm lg:text-base">10+ anni esperienza</span>
                     </div>
                     <div class="flex items-center">
-                        <i class="fas fa-map-marker-alt text-black text-2xl mr-3"></i>
-                        <span class="font-semibold">Treviso e Provincia</span>
+                        <i class="fas fa-map-marker-alt text-black text-xl lg:text-2xl mr-2 lg:mr-3"></i>
+                        <span class="font-semibold text-sm lg:text-base">Treviso e Provincia</span>
                     </div>
                     <div class="flex items-center">
-                        <i class="fas fa-shield-alt text-black text-2xl mr-3"></i>
-                        <span class="font-semibold">Garanzia Risultato</span>
+                        <i class="fas fa-shield-alt text-black text-xl lg:text-2xl mr-2 lg:mr-3"></i>
+                        <span class="font-semibold text-sm lg:text-base">Garanzia Risultato</span>
                     </div>
                 </div>
 
                 <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#calcolatore" class="btn-primary px-8 py-4 rounded-lg text-lg font-semibold pulse-animation">
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+                    <a href="#calcolatore" class="btn-primary px-6 lg:px-8 py-3 lg:py-4 rounded-lg text-base lg:text-lg font-semibold pulse-animation">
                         <i class="fas fa-calculator mr-2"></i>Calcolatore Trasformazione
                     </a>
-                    <a href="#gallery" class="border-2 border-black px-8 py-4 rounded-lg text-lg font-semibold hover:bg-black hover:text-white transition">
+                    <a href="#gallery" class="border-2 border-black px-6 lg:px-8 py-3 lg:py-4 rounded-lg text-base lg:text-lg font-semibold hover:bg-black hover:text-white transition">
                         <i class="fas fa-images mr-2"></i>Guarda i Risultati
                     </a>
                 </div>
                 
-                <div class="text-center mt-4">
+                <div class="text-center">
                     <a href="https://wa.me/393500036917?text=Ciao%20InsideAuto%21%20Sono%20interessato%20alla%20pulizia%20completa%20interni%20auto.%20Potreste%20darmi%20maggiori%20informazioni%3F" target="_blank" class="inline-flex items-center text-green-600 hover:text-green-700 font-semibold">
-                        <i class="fab fa-whatsapp mr-2 text-xl"></i>
+                        <i class="fab fa-whatsapp mr-2 text-lg"></i>
                         Contattaci su WhatsApp
                     </a>
                 </div>
@@ -374,7 +447,7 @@
                 <!-- Aspirazione Profonda -->
                 <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
                     <div class="flex items-start space-x-3">
-                        <div class="bg-green-500 icon-round p-2 flex-shrink-0">
+                        <div class="bg-green-500 rounded-full p-2 flex-shrink-0">
                             <i class="fas fa-check-circle text-white text-sm"></i>
                         </div>
                         <div>
@@ -387,7 +460,7 @@
                 <!-- Lavaggio Sedili -->
                 <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
                     <div class="flex items-start space-x-3">
-                        <div class="bg-green-500 icon-round p-2 flex-shrink-0">
+                        <div class="bg-green-500 rounded-full p-2 flex-shrink-0">
                             <i class="fas fa-check-circle text-white text-sm"></i>
                         </div>
                         <div>
@@ -400,7 +473,7 @@
                 <!-- Plastiche e Pannelli -->
                 <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
                     <div class="flex items-start space-x-3">
-                        <div class="bg-green-500 icon-round p-2 flex-shrink-0">
+                        <div class="bg-green-500 rounded-full p-2 flex-shrink-0">
                             <i class="fas fa-check-circle text-white text-sm"></i>
                         </div>
                         <div>
@@ -413,7 +486,7 @@
                 <!-- Moquette e Tappetini -->
                 <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
                     <div class="flex items-start space-x-3">
-                        <div class="bg-green-500 icon-round p-2 flex-shrink-0">
+                        <div class="bg-green-500 rounded-full p-2 flex-shrink-0">
                             <i class="fas fa-check text-white text-sm"></i>
                         </div>
                         <div>
@@ -426,7 +499,7 @@
                 <!-- Vetri Interni -->
                 <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
                     <div class="flex items-start space-x-3">
-                        <div class="bg-green-500 icon-round p-2 flex-shrink-0">
+                        <div class="bg-green-500 rounded-full p-2 flex-shrink-0">
                             <i class="fas fa-check text-white text-sm"></i>
                         </div>
                         <div>
@@ -439,7 +512,7 @@
                 <!-- Sanificazione -->
                 <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
                     <div class="flex items-start space-x-3">
-                        <div class="bg-green-500 icon-roundicon-round p-2 flex-shrink-0">
+                        <div class="bg-green-500 rounded-full p-2 flex-shrink-0">
                             <i class="fas fa-check text-white text-sm"></i>
                         </div>
                         <div>
@@ -453,7 +526,7 @@
     </section>
 
     <!-- Calcolatore Trasformazione -->
-    <section id="calcolatore" class="py-16">
+    <section id="calcolatore" class="py-16 form-container mobile-form-spacing">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
@@ -463,15 +536,15 @@
             </div>
 
             <div class="max-w-4xl mx-auto">
-                <div class="bg-white rounded-xl card-shadow p-8">
-                    <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl card-shadow p-6 lg:p-8 calculator-card-mobile">
+                    <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
                         <!-- Form Calcolatore -->
                         <div class="space-y-6">
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-2">
                                     <i class="fas fa-exclamation-triangle mr-2 text-red-500"></i>Tipo di Problema
                                 </label>
-                                <select id="problemType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculateTransformation()">
+                                <select id="problemType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none form-field-mobile" onchange="calculateTransformation()">
                                     <option value="">Seleziona il problema...</option>
                                     <option value="pulizia-generale" data-price="50">Pulizia Generale</option>
                                     <option value="macchie-cibo" data-price="60">Macchie di Cibo/Bevande</option>
@@ -492,7 +565,7 @@
                                 <label class="block text-sm font-bold text-gray-700 mb-2">
                                     <i class="fas fa-car mr-2 text-blue-500"></i>Tipo di Veicolo
                                 </label>
-                                <select id="vehicleType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculateTransformation()">
+                                <select id="vehicleType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none form-field-mobile" onchange="calculateTransformation()">
                                     <option value="">Seleziona il veicolo...</option>
                                     <optgroup label="Auto">
                                         <option value="auto-piccola" data-multiplier="1.0">Auto Piccola (Panda, 500, Yaris)</option>
@@ -517,7 +590,7 @@
                                 <label class="block text-sm font-bold text-gray-700 mb-2">
                                     <i class="fas fa-cogs mr-2 text-green-500"></i>Tipo di Trasformazione Necessaria
                                 </label>
-                                <select id="serviceType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculateTransformation()">
+                                <select id="serviceType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none form-field-mobile" onchange="calculateTransformation()">
                                     <option value="">Seleziona la situazione...</option>
                                     <option value="singolo-problema" data-discount="0.6">Problema Localizzato (singola zona)</option>
                                     <option value="pulizia-completa" data-discount="1.0">Pulizia Standard Completa</option>
@@ -530,7 +603,7 @@
                                 <label class="block text-sm font-bold text-gray-700 mb-2">
                                     <i class="fas fa-map-marker-alt mr-2 text-purple-500"></i>Da dove vieni?
                                 </label>
-                                <select id="customerLocation" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none" onchange="calculateTransformation()">
+                                <select id="customerLocation" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none form-field-mobile" onchange="calculateTransformation()">
                                     <option value="">Seleziona la tua zona...</option>
                                     
                                     <optgroup label="Provincia di Treviso">
@@ -632,7 +705,6 @@
                                     <p class="text-sm text-gray-600 mb-2">Oppure contattaci direttamente:</p>
                                     <a href="https://wa.me/393500036917" class="whatsapp-btn-simple">
                                     <i class="fab fa-whatsapp"></i> Invia su WhatsApp
-                                    </a>
                                     </a>
                                 </div>
                             </div>
@@ -897,7 +969,7 @@
                     <p class="text-xl text-gray-600">Compila il form e ti ricontatteremo entro 2 ore</p>
                 </div>
 
-                <div class="bg-white rounded-xl card-shadow p-8">
+                <div class="bg-white rounded-xl card-shadow p-6 lg:p-8">
                     <form id="contactForm" action="https://formspree.io/f/xdkzvadp" method="POST" class="space-y-6">
     <!-- Campi nascosti Formspree -->
     <input type="hidden" name="_subject" value="Nuova Richiesta Trasformazione Auto - InsideAuto">
@@ -1008,7 +1080,7 @@
                         </div>
                         <div class="flex items-center space-x-2">
                             <i class="fas fa-envelope"></i>
-                            <span>info@insideauto.it</span>
+                            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="224b4c444d624b4c514b46474357564d0c4b56">[email&#160;protected]</a></span>
                         </div>
                         <div class="flex items-center space-x-2">
                             <i class="fas fa-map-marker-alt"></i>
@@ -1030,13 +1102,13 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/393500036917?text=Ciao%20InsideAuto%21%20Sono%20interessato%20alla%20pulizia%20completa%20interni%20auto.%20Potreste%20darmi%20maggiori%20informazioni%3F" target="_blank" class="whatsapp-float">
+    <!-- WhatsApp Floating Button - Mobile Optimized -->
+    <a href="https://wa.me/393500036917?text=Ciao%20InsideAuto%21%20Sono%20interessato%20alla%20pulizia%20completa%20interni%20auto.%20Potreste%20darmi%20maggiori%20informazioni%3F" target="_blank" class="whatsapp-float whatsapp-mobile-adjust">
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 
     <!-- JavaScript -->
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Calendar functionality - Complete Corrected Version
 let currentWeekOffset = 0;
 let selectedDate = null;
@@ -1092,413 +1164,1883 @@ function generateCalendarWeek(weekOffset = 0) {
     return weekDates;
 }
 
-// Render calendar
-function renderCalendar() {
-    const weekDates = generateCalendarWeek(currentWeekOffset);
+// Display calendar week
+function displayCalendarWeek(weekOffset = 0) {
+    const weekDates = generateCalendarWeek(weekOffset);
     const calendarGrid = document.getElementById('calendarGrid');
-    const weekDisplay = document.getElementById('weekDisplay');
+    
+    if (!calendarGrid) return;
     
     // Update week display
-    const firstDate = weekDates[0].date;
-    const lastDate = weekDates[4].date;
-    const monthName = firstDate.toLocaleDateString('it-IT', { month: 'long' });
-    const year = firstDate.getFullYear();
+    const weekDisplay = document.getElementById('weekDisplay');
+    if (weekDisplay) {
+        const startDate = weekDates[0].date;
+        const endDate = weekDates[4].date;
+        const startMonth = startDate.toLocaleDateString('it-IT', { month: 'short' });
+        const endMonth = endDate.toLocaleDateString('it-IT', { month: 'short' });
+        
+        if (startMonth === endMonth) {
+            weekDisplay.textContent = `Settimana ${startDate.getDate()}-${endDate.getDate()} ${startMonth} ${startDate.getFullYear()}`;
+        } else {
+            weekDisplay.textContent = `Settimana ${startDate.getDate()} ${startMonth} - ${endDate.getDate()} ${endMonth} ${startDate.getFullYear()}`;
+        }
+    }
     
-    weekDisplay.textContent = `Settimana ${firstDate.getDate()}-${lastDate.getDate()} ${monthName} ${year}`;
-    
-    // Clear and render calendar grid
+    // Clear previous calendar
     calendarGrid.innerHTML = '';
     
+    // Create calendar cells
     weekDates.forEach((dateInfo, index) => {
-        const dateElement = document.createElement('div');
+        const dateCell = document.createElement('div');
+        dateCell.className = `date-option ${dateInfo.available ? 'available' : 'unavailable'} ${dateInfo.isToday ? 'today' : ''}`;
         
-        // Set classes based on availability
-        let classes = 'date-option';
-        if (dateInfo.isPast) {
-            classes += ' unavailable';
-        } else {
-            classes += ' available';
+        if (selectedDate && selectedDate.getTime() === dateInfo.date.getTime()) {
+            dateCell.classList.add('selected');
         }
         
-        if (dateInfo.isToday) {
-            classes += ' today';
+        if (!dateInfo.available) {
+            dateCell.classList.add('unavailable');
         }
         
-        dateElement.className = classes;
-        
-        // Add click handler for all non-past dates
-        if (!dateInfo.isPast) {
-            dateElement.onclick = () => selectDate(dateInfo, index);
-            dateElement.style.cursor = 'pointer';
-        } else {
-            dateElement.style.cursor = 'not-allowed';
-        }
-        
-        // Set content
-        let availabilityText = '';
-        if (dateInfo.isPast) {
-            availabilityText = '⏰ Passato';
-        } else if (dateInfo.isToday) {
-            availabilityText = '📅 Oggi';
-        } else {
-            availabilityText = '✅ Disponibile';
-        }
-        
-        dateElement.innerHTML = `
+        dateCell.innerHTML = `
             <div class="day-name">${dateInfo.dayName}</div>
             <div class="date-number">${dateInfo.dayNumber}</div>
             <div class="month">${dateInfo.month}</div>
-            <div class="availability">${availabilityText}</div>
+            <div class="availability">
+                ${dateInfo.available ? 
+                    (dateInfo.isToday ? 'Oggi' : 'Libero') : 
+                    'Occupato'
+                }
+            </div>
         `;
         
-        calendarGrid.appendChild(dateElement);
+        if (dateInfo.available) {
+            dateCell.onclick = () => selectDate(dateInfo.date);
+        }
+        
+        calendarGrid.appendChild(dateCell);
     });
     
     // Update navigation buttons
     const prevBtn = document.getElementById('prevWeekBtn');
     const nextBtn = document.getElementById('nextWeekBtn');
     
-    // Disable previous button if we're at current week
-    prevBtn.disabled = currentWeekOffset <= 0;
+    if (prevBtn) {
+        prevBtn.disabled = currentWeekOffset <= -8; // Allow going back 8 weeks
+    }
     
-    // Limit to 8 weeks in advance
-    nextBtn.disabled = currentWeekOffset >= 8;
+    if (nextBtn) {
+        nextBtn.disabled = currentWeekOffset >= 12; // Don't allow going forward more than 12 weeks
+    }
+}
+
+// Select date function
+function selectDate(date) {
+    selectedDate = date;
+    displayCalendarWeek(currentWeekOffset); // Refresh calendar to show selection
+    calculateTransformation(); // Recalculate transformation with selected date
 }
 
 // Navigate weeks
 function navigateWeek(direction) {
-    const newOffset = currentWeekOffset + direction;
-    
-    // Don't go to past weeks
-    if (newOffset < 0) return;
-    
-    // Don't go more than 8 weeks in advance
-    if (newOffset > 8) return;
-    
-    currentWeekOffset = newOffset;
-    renderCalendar();
-    
-    // Reset selection when changing week
-    selectedDate = null;
-    calculateTransformation();
+    currentWeekOffset += direction;
+    displayCalendarWeek(currentWeekOffset);
 }
 
-// Select date
-function selectDate(dateInfo, index) {
-    if (dateInfo.isPast) return;
+// Transformation calculator
+function calculateTransformation() {
+    const problemSelect = document.getElementById('problemType');
+    const vehicleSelect = document.getElementById('vehicleType');
+    const serviceSelect = document.getElementById('serviceType');
+    const locationSelect = document.getElementById('customerLocation');
     
-    // Remove previous selection
-    document.querySelectorAll('.date-option').forEach(el => el.classList.remove('selected'));
-    
-    // Add selection to clicked date
-    const dateElements = document.querySelectorAll('.date-option');
-    if (dateElements[index]) {
-        dateElements[index].classList.add('selected');
-    }
-    
-    selectedDate = dateInfo.fullDate;
-    calculateTransformation();
-}
-
-// Auto-adjust for new week - IMPROVED VERSION
-function checkWeekUpdate() {
-    const now = new Date();
-    const currentMonday = getCurrentMonday();
-    
-    // Initialize on first run
-    if (!initialMonday) {
-        initialMonday = new Date(currentMonday);
+    if (!problemSelect || !vehicleSelect || !serviceSelect || !locationSelect) {
         return;
     }
     
-    // Check if we're in a new week
-    const daysDifference = Math.floor((currentMonday - initialMonday) / (1000 * 60 * 60 * 24));
-    const weeksDifference = Math.floor(daysDifference / 7);
+    const problemOption = problemSelect.options[problemSelect.selectedIndex];
+    const vehicleOption = vehicleSelect.options[vehicleSelect.selectedIndex];
+    const serviceOption = serviceSelect.options[serviceSelect.selectedIndex];
+    const locationOption = locationSelect.options[locationSelect.selectedIndex];
     
-    // If we're viewing the "current week" but actual week has changed
-    if (currentWeekOffset === 0 && weeksDifference > 0) {
-        // Reset to new current week
-        initialMonday = new Date(currentMonday);
-        renderCalendar();
-        console.log('📅 Calendario aggiornato automaticamente alla nuova settimana');
+    if (!problemOption || !vehicleOption || !serviceOption || !locationOption) {
+        updateTransformationSummary(null);
+        return;
     }
+    
+    const basePrice = parseFloat(problemOption.dataset.price) || 0;
+    const vehicleMultiplier = parseFloat(vehicleOption.dataset.multiplier) || 1;
+    const serviceMultiplier = parseFloat(serviceOption.dataset.discount) || 1;
+    
+    // Calculate base transformation value
+    let totalValue = basePrice * vehicleMultiplier * serviceMultiplier;
+    
+    // Apply location adjustments
+    const locationValue = locationOption.value;
+    let locationAdjustment = 0;
+    
+    if (locationValue === 'friuli' || locationValue === 'emilia' || locationValue === 'lombardia' || locationValue === 'altro-italia') {
+        // Free car replacement included - no extra charge
+        locationAdjustment = 0;
+    } else if (locationValue === 'estero') {
+        // Foreign clients - premium service
+        locationAdjustment = totalValue * 0.2; // 20% extra
+        totalValue += locationAdjustment;
+    } else {
+        // Regular Veneto clients
+        locationAdjustment = -totalValue * 0.1; // 10% local discount
+        totalValue += locationAdjustment;
+    }
+    
+    // Format and display results
+    const formattedValue = `€${totalValue.toFixed(0)}`;
+    
+    // Update summary display
+    updateTransformationSummary({
+        problem: problemOption.text,
+        vehicle: vehicleOption.text,
+        service: serviceOption.text,
+        location: locationOption.text,
+        date: selectedDate ? selectedDate.toLocaleDateString('it-IT', { 
+            weekday: 'long', 
+            day: 'numeric', 
+            month: 'long',
+            year: 'numeric'
+        }) : 'Seleziona data',
+        basePrice: basePrice,
+        vehicleMultiplier: vehicleMultiplier,
+        serviceMultiplier: serviceMultiplier,
+        locationAdjustment: locationAdjustment,
+        total: totalValue,
+        formattedTotal: formattedValue
+    });
+    
+    // Show car replacement offer for distant clients
+    const carReplacementOffer = document.getElementById('carReplacementOffer');
+    if (carReplacementOffer) {
+        if (locationValue === 'friuli' || locationValue === 'emilia' || locationValue === 'lombardia' || locationValue === 'altro-italia') {
+            carReplacementOffer.style.display = 'block';
+        } else {
+            carReplacementOffer.style.display = 'none';
+        }
+    }
+    
+    // Enable/disable request button
+    const requestButton = document.getElementById('requestTransformation');
+    const canRequest = problemOption.value && vehicleOption.value && serviceOption.value && locationOption.value && selectedDate;
+    
+    if (requestButton) {
+        requestButton.disabled = !canRequest;
+    }
+    
+    // Store calculated data for form submission
+    calculatedData = {
+        problemType: problemOption.value,
+        vehicleType: vehicleOption.value,
+        serviceType: serviceOption.value,
+        customerLocation: locationOption.value,
+        selectedDate: selectedDate ? selectedDate.toISOString() : null,
+        totalPrice: totalValue
+    };
 }
 
-// Calculate transformation
-function calculateTransformation() {
-    const problemType = document.getElementById('problemType');
-    const vehicleType = document.getElementById('vehicleType');
-    const serviceType = document.getElementById('serviceType');
-    const customerLocation = document.getElementById('customerLocation');
+// Update transformation summary display
+function updateTransformationSummary(data) {
+    const summaryElement = document.getElementById('transformationSummary');
+    const totalElement = document.getElementById('totalInvestment');
     
-    // Check if all required fields are filled
-    if (!problemType.value || !vehicleType.value || !serviceType.value || !customerLocation.value) {
-        document.getElementById('transformationSummary').innerHTML = `
+    if (!summaryElement || !totalElement) {
+        return;
+    }
+    
+    if (!data) {
+        summaryElement.innerHTML = `
             <div class="flex justify-between items-center">
-                <span class="text-gray-600">Seleziona tutti i parametri per il calcolo</span>
+                <span class="text-gray-600">Seleziona i parametri per il calcolo</span>
             </div>
         `;
-        document.getElementById('totalInvestment').textContent = '€ --';
-        document.getElementById('requestTransformation').disabled = true;
+        totalElement.textContent = '€ --';
         return;
     }
-
-    // Update WhatsApp links with calculated data
-function updateWhatsAppLinks() {
-    if (!calculatedData.problem) return;
     
-    const message = `Ciao InsideAuto! Ho calcolato la trasformazione per la mia auto:
-
-🔧 Problema: ${calculatedData.problem}
-🚗 Veicolo: ${calculatedData.vehicle}
-⚙️ Servizio: ${calculatedData.service}
-📍 Provenienza: ${calculatedData.location}
-📅 Data richiesta: ${calculatedData.date}
-💎 Investimento stimato: ${calculatedData.investment}
-${calculatedData.carReplacement ? '🚗 Auto sostitutiva: INCLUSA GRATIS' : ''}
-
-Posso avere maggiori informazioni e confermare la prenotazione?`;
-    
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/393500036917?text=${encodedMessage}`;
-    
-    // Update all WhatsApp buttons
-    document.getElementById('whatsappQuickBtn').href = whatsappUrl;
-    document.getElementById('whatsappContactBtn').href = whatsappUrl;
-    
-    // Update contact form
-    document.getElementById('requestDetails').value = `Problema: ${calculatedData.problem}
-Veicolo: ${calculatedData.vehicle}
-Servizio: ${calculatedData.service}
-Provenienza: ${calculatedData.location}
-Data richiesta: ${calculatedData.date}
-Investimento stimato: ${calculatedData.investment}${calculatedData.carReplacement ? '\nAuto sostitutiva: INCLUSA' : ''}`;
-}
-    
-    // Get values
-    const basePrice = parseInt(problemType.selectedOptions[0].dataset.price);
-    const multiplier = parseFloat(vehicleType.selectedOptions[0].dataset.multiplier);
-    const serviceMultiplier = parseFloat(serviceType.selectedOptions[0].dataset.discount);
-    
-    // Calculate price
-    const finalPrice = Math.round(basePrice * multiplier * serviceMultiplier);
-    const priceRange = `${finalPrice}-${Math.round(finalPrice * 1.3)}`;
-    
-    // Check for car replacement service
-    const isOutsideVeneto = ['friuli', 'emilia', 'lombardia', 'altro-italia'].includes(customerLocation.value);
-    const carReplacementOffer = document.getElementById('carReplacementOffer');
-    
-    if (isOutsideVeneto) {
-        carReplacementOffer.style.display = 'block';
-    } else {
-        carReplacementOffer.style.display = 'none';
-    }
-    
-    // Store calculated data
-    calculatedData = {
-        problem: problemType.selectedOptions[0].text,
-        vehicle: vehicleType.selectedOptions[0].text,
-        service: serviceType.selectedOptions[0].text,
-        location: customerLocation.selectedOptions[0].text,
-        date: selectedDate || 'Da definire',
-        investment: `€ ${priceRange}`,
-        carReplacement: isOutsideVeneto
-    };
-    
-    // Update summary
-    document.getElementById('transformationSummary').innerHTML = `
-        <div class="space-y-2">
-            <div class="flex items-center">
-                <div class="bg-green-500 rounded-full p-2 mr-3">
-                    <i class="fas fa-check text-white text-xs"></i>
-                </div>
-                <span class="text-sm">${calculatedData.problem}</span>
+    summaryElement.innerHTML = `
+        <div class="space-y-3">
+            <div class="flex justify-between items-start">
+                <span class="text-sm text-gray-600">Problema:</span>
+                <span class="text-sm font-medium text-right">${data.problem}</span>
             </div>
-            <div class="flex items-center">
-                <div class="bg-green-500 rounded-full p-2 mr-3">
-                    <i class="fas fa-check text-white text-xs"></i>
-                </div>
-                <span class="text-sm">${calculatedData.vehicle}</span>
+            <div class="flex justify-between items-start">
+                <span class="text-sm text-gray-600">Veicolo:</span>
+                <span class="text-sm font-medium text-right">${data.vehicle}</span>
             </div>
-            <div class="flex items-center">
-                <div class="bg-green-500 icon-round p-1 mr-3">
-                    <i class="fas fa-check text-white text-xs"></i>
-                </div>
-                <span class="text-sm">${calculatedData.service}</span>
+            <div class="flex justify-between items-start">
+                <span class="text-sm text-gray-600">Servizio:</span>
+                <span class="text-sm font-medium text-right">${data.service}</span>
             </div>
-            ${selectedDate ? `
-            <div class="flex items-center">
-                <div class="bg-green-500 icon-round p-1 mr-3">
-                    <i class="fas fa-check text-white text-xs"></i>
+            <div class="flex justify-between items-start">
+                <span class="text-sm text-gray-600">Zona:</span>
+                <span class="text-sm font-medium text-right">${data.location}</span>
+            </div>
+            <div class="flex justify-between items-start">
+                <span class="text-sm text-gray-600">Data:</span>
+                <span class="text-sm font-medium text-right">${data.date}</span>
+            </div>
+            <div class="border-t pt-2 mt-3">
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold">Totale:</span>
+                    <span class="text-lg font-bold text-green-600">${data.formattedTotal}</span>
                 </div>
-                <span class="text-sm">📅 ${selectedDate}</span>
-            </div>` : ''}
-            ${isOutsideVeneto ? `
-            <div class="flex items-center">
-                <div class="bg-blue-500 rounded-full p-1 mr-3">
-                    <i class="fas fa-gift text-white text-xs"></i>
-                </div>
-                <span class="text-sm text-blue-600 font-semibold">🚗 Auto sostitutiva INCLUSA</span>
-            </div>` : ''}
+            </div>
         </div>
     `;
     
-    document.getElementById('totalInvestment').textContent = `€ ${priceRange}`;
-    document.getElementById('requestTransformation').disabled = false;
-    
-    // Update WhatsApp links
-    updateWhatsAppLinks();
+    totalElement.textContent = data.formattedTotal;
 }
 
-// Update WhatsApp links with calculated data
-function updateWhatsAppLinks() {
-    if (!calculatedData.problem) return;
-    
-    const message = `Ciao InsideAuto! Ho utilizzato il calcolatore sul vostro sito per la mia auto:
-
-🔧 PROBLEMA: ${calculatedData.problem}
-🚗 VEICOLO: ${calculatedData.vehicle}
-⚙️ SERVIZIO: ${calculatedData.service}
-📍 PROVENIENZA: ${calculatedData.location}
-📅 DATA PREFERITA: ${calculatedData.date}
-💎 INVESTIMENTO STIMATO: ${calculatedData.investment}${calculatedData.carReplacement ? '\n🚗 AUTO SOSTITUTIVA: INCLUSA GRATIS!' : ''}
-
-Vorrei maggiori informazioni e confermare la prenotazione. Quando possiamo sentirci?
-
-Grazie!`;
-    
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/393500036917?text=${encodedMessage}`;
-    
-    // Update all WhatsApp buttons
-    const whatsappButtons = [
-        document.getElementById('whatsappQuickBtn'),
-        document.getElementById('whatsappContactBtn'),
-        document.querySelector('.whatsapp-float')
-    ];
-    
-    whatsappButtons.forEach(button => {
-        if (button) {
-            button.href = whatsappUrl;
-        }
-    });
-    
-    // Update contact form
-    const requestDetails = document.getElementById('requestDetails');
-    if (requestDetails) {
-        const formText = `🔧 Problema: ${calculatedData.problem}
-🚗 Veicolo: ${calculatedData.vehicle}
-⚙️ Servizio: ${calculatedData.service}
-📍 Provenienza: ${calculatedData.location}
-📅 Data richiesta: ${calculatedData.date}
-💎 Investimento stimato: ${calculatedData.investment}${calculatedData.carReplacement ? '\n🚗 Auto sostitutiva: INCLUSA' : ''}`;
-        
-        requestDetails.value = formText;
-    }
-}
-// Scroll to contact form and populate with calculated data
+// Scroll to contact form
 function scrollToContactForm() {
-    // Populate form with calculated data
-    if (calculatedData.problem) {
-        const requestDetails = document.getElementById('requestDetails');
-        const detailsText = `🔧 Problema: ${calculatedData.problem}
-🚗 Veicolo: ${calculatedData.vehicle}
-⚙️ Servizio: ${calculatedData.service}
-📍 Provenienza: ${calculatedData.location}
-📅 Data richiesta: ${calculatedData.date}
-💎 Investimento stimato: ${calculatedData.investment}${calculatedData.carReplacement ? '\n🚗 Auto sostitutiva: INCLUSA GRATIS' : ''}`;
+    const contactSection = document.getElementById('contatti');
+    const detailsField = document.getElementById('requestDetails');
+    
+    if (detailsField && calculatedData) {
+        const detailsText = `
+        Dettagli Richiesta Trasformazione:
         
-        requestDetails.value = detailsText;
+        Tipo Problema: ${document.getElementById('problemType').selectedOptions[0]?.text || 'Non selezionato'}
+        Tipo Veicolo: ${document.getElementById('vehicleType').selectedOptions[0]?.text || 'Non selezionato'}
+        Tipo Servizio: ${document.getElementById('serviceType').selectedOptions[0]?.text || 'Non selezionato'}
+        Zona Cliente: ${document.getElementById('customerLocation').selectedOptions[0]?.text || 'Non selezionato'}
+        Data Selezionata: ${selectedDate ? selectedDate.toLocaleDateString('it-IT', { 
+            weekday: 'long', 
+            day: 'numeric', 
+            month: 'long',
+            year: 'numeric'
+        }) : 'Non selezionata'}
         
-        // Add visual feedback
-        requestDetails.style.backgroundColor = '#f0fdf4';
-        setTimeout(() => {
-            requestDetails.style.backgroundColor = '';
-        }, 2000);
+        Prezzo Stimato: €${calculatedData.totalPrice?.toFixed(0) || 'Non calcolato'}
+        `;
+        detailsField.value = detailsText;
     }
     
-    // Scroll to form
-    document.getElementById('contatti').scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-    });
-    
-    // Focus on first empty field
-    setTimeout(() => {
-        const nameField = document.querySelector('input[type="text"]');
-        if (nameField && !nameField.value) {
-            nameField.focus();
-        }
-    }, 1000);
+    if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
-// Form submission with complete data
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+// Initialize calendar and calculator when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize calendar
+    if (document.getElementById('calendarGrid')) {
+        displayCalendarWeek(0);
+        initialMonday = getCurrentMonday();
+    }
     
-    // Get form data
-    const formData = new FormData(this);
-    const name = this.querySelector('input[type="text"]').value;
-    const phone = this.querySelector('input[type="tel"]').value;
-    const email = this.querySelector('input[type="email"]').value || 'Non fornita';
-    const details = document.getElementById('requestDetails').value;
-    const notes = this.querySelector('textarea[rows="3"]').value || 'Nessuna nota aggiuntiva';
+    // Add event listeners for select elements
+    const selects = ['problemType', 'vehicleType', 'serviceType', 'customerLocation'];
+    selects.forEach(selectId => {
+        const selectElement = document.getElementById(selectId);
+        if (selectElement) {
+            selectElement.addEventListener('change', calculateTransformation);
+        }
+    });
     
-    // Create complete message for WhatsApp with all data
-    const completeMessage = `🚗 NUOVA RICHIESTA TRASFORMAZIONE AUTO - InsideAuto
+    // Initial calculation
+    calculateTransformation();
+});
 
-👤 DATI CLIENTE:
-Nome: ${name}
-Telefono: ${phone}
-Email: ${email}
-
-📋 DETTAGLI TRASFORMAZIONE:
-${details}
-
-📝 NOTE AGGIUNTIVE:
-${notes}
-
-⏰ Richiesta inviata: ${new Date().toLocaleString('it-IT')}
-
-Contattare il cliente entro 2 ore per conferma appuntamento.`;
-    
-    // Show success message
-    alert('✅ Richiesta inviata con successo!\n\nTi contatteremo entro 2 ore per confermare la trasformazione della tua auto.\n\nPuoi anche contattarci direttamente su WhatsApp per una risposta più rapida.');
-    
-    // Optional: Open WhatsApp with complete data
-    if (confirm('Vuoi inviare i dettagli anche tramite WhatsApp per una risposta più rapida?')) {
-        const encodedCompleteMessage = encodeURIComponent(completeMessage);
-        const whatsappUrlComplete = `https://wa.me/393500036917?text=${encodedCompleteMessage}`;
-        window.open(whatsappUrlComplete, '_blank');
+// WhatsApp integration for contact button
+document.addEventListener('DOMContentLoaded', function() {
+    const whatsappBtn = document.getElementById('whatsappContactBtn');
+    if (whatsappBtn && calculatedData) {
+        const message = encodeURIComponent(
+            `Ciao InsideAuto! Sono interessato alla pulizia completa interni auto.\n\n` +
+            `Dettagli della mia richiesta:\n` +
+            `${document.getElementById('problemType').selectedOptions[0]?.text || 'Problema: Non specificato'}\n` +
+            `${document.getElementById('vehicleType').selectedOptions[0]?.text || 'Veicolo: Non specificato'}\n` +
+            `${document.getElementById('serviceType').selectedOptions[0]?.text || 'Servizio: Non specificato'}\n` +
+            `${document.getElementById('customerLocation').selectedOptions[0]?.text || 'Zona: Non specificata'}\n` +
+            `${calculatedData.totalPrice ? `Prezzo stimato: €${calculatedData.totalPrice.toFixed(0)}` : ''}`
+        );
+        whatsappBtn.href = `https://wa.me/393500036917?text=${message}`;
     }
 });
 
-// Smooth scroll for internal links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+// Contact form handling
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(contactForm);
+            
+            // Add calculated data if available
+            if (calculatedData && Object.keys(calculatedData).length > 0) {
+                formData.append('calcolatore_dati', JSON.stringify(calculatedData));
+            }
+            
+            // Submit to Formspree
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Richiesta inviata con successo! Ti contatteremo entro 2 ore.');
+                    contactForm.reset();
+                    calculatedData = {};
+                    updateTransformationSummary(null);
+                } else {
+                    alert('Errore nell\'invio della richiesta. Riprova o contattaci direttamente.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Errore nell\'invio della richiesta. Riprova o contattaci direttamente.');
             });
-        }
-    });
+        });
+    }
 });
 
-// Initialize calendar on page load - UPDATED
+// Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
-    // Set initial Monday
-    initialMonday = getCurrentMonday();
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+});
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulizia Completa Interni Auto a Treviso - Trasforma la Tua Auto | InsideAuto™</title>
+    <meta name="description" content="Pulizia completa interni auto a Treviso. Trasformiamo la tua auto con aspirazione profonda, lavaggio sedili, plastiche e moquette. Auto sostitutiva inclusa per clienti fuori Veneto.">
+    <meta name="keywords" content="pulizia completa interni auto, pulizia interni auto Treviso, autolavaggio completo Treviso, lavaggio sedili auto, sanificazione auto Treviso">
     
-    renderCalendar();
+    <!-- Open Graph -->
+    <meta property="og:title" content="Pulizia Completa Interni Auto a Treviso - InsideAuto™">
+    <meta property="og:description" content="Trasformiamo la tua auto dall'interno con tecniche professionali. Auto sostitutiva inclusa per clienti fuori Veneto.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://insideauto.it/pulizia-completa-interni">
+    <meta property="og:image" content="https://insideauto.it/images/loghi/foto-logo-andrea.png">
     
-    // Check for week updates every hour
-    setInterval(checkWeekUpdate, 3600000); // 1 hour
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/loghi/foto-logo-andrea.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/loghi/foto-logo-andrea.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/loghi/foto-logo-andrea.png">
+    <link rel="shortcut icon" href="images/loghi/foto-logo-andrea.png">
+    <meta name="msapplication-TileImage" content="images/loghi/foto-logo-andrea.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#000000">
     
-    // Also check every time user visits the page (faster detection)
-    setInterval(checkWeekUpdate, 300000); // 5 minutes
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Pulizia Completa Interni Auto",
+        "provider": {
+            "@type": "AutomotiveBusiness",
+            "name": "InsideAuto™",
+            "url": "https://insideauto.it",
+            "telephone": "+39-350-003-6917",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Treviso",
+                "addressRegion": "Veneto", 
+                "addressCountry": "IT"
+            }
+        },
+        "areaServed": ["Treviso", "Veneto", "Italia"],
+        "description": "Servizio professionale di pulizia completa interni auto con aspirazione profonda, lavaggio sedili, plastiche e moquette"
+    }
+    </script>
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6;
+        }
+        .hero-gradient { 
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); 
+        }
+        .card-shadow { 
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); 
+        }
+        .btn-primary { 
+            background: #000; 
+            color: #fff; 
+            transition: all 0.3s; 
+        }
+        .btn-primary:hover { 
+            background: #1f2937; 
+            transform: translateY(-1px); 
+        }
+        .service-card:hover { 
+            transform: translateY(-2px); 
+            transition: all 0.3s; 
+        }
+        .pulse-animation { 
+            animation: pulse 2s infinite; 
+        }
+        @keyframes pulse { 
+            0%, 100% { opacity: 1; } 
+            50% { opacity: 0.7; } 
+        }
+        .sticky-header { 
+            position: sticky; 
+            top: 0; 
+            z-index: 50; 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px); 
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            .mobile-padding-fix {
+                padding-left: 1rem;
+                padding-right: 1rem;
+                overflow-x: hidden;
+            }
+            .mobile-form-spacing {
+                padding-bottom: 5rem;
+            }
+            .hero-title-mobile {
+                line-height: 1.1;
+                font-size: 2.25rem;
+                word-wrap: break-word;
+            }
+            .hero-title-mobile br.mobile-break {
+                display: block;
+            }
+            .mobile-container {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            .whatsapp-mobile-adjust {
+                bottom: 80px;
+                right: 15px;
+                transform: scale(0.9);
+            }
+            .form-field-mobile {
+                margin-right: 0.5rem;
+                padding-right: 2rem;
+            }
+            .calculator-card-mobile {
+                padding: 1rem;
+                margin: 0 0.5rem;
+            }
+        }
+        
+        @media (min-width: 641px) {
+            .hero-title-mobile br.mobile-break {
+                display: none;
+            }
+        }
+        
+        /* WhatsApp floating button - responsive positioning */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn-simple {
+            background-color: #25D366;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn-simple:hover {
+            background-color: #128C7E;
+            transform: translateY(-1px);
+        }
+        
+        /* Calendar styles */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .date-option {
+            border: 2px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 12px 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .date-option.available:hover {
+            border-color: #22c55e;
+            background: #f0fdf4;
+            transform: translateY(-2px);
+        }
+        
+        .date-option.selected {
+            border-color: #22c55e;
+            background: #22c55e;
+            color: white;
+        }
+        
+        .date-option.unavailable {
+            background: #f3f4f6;
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .date-option.today {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+
+        .date-option.today.selected {
+            border-color: #22c55e;
+            background: #22c55e;
+            color: white;
+        }
+        
+        .day-name {
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .date-number {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        
+        .month {
+            font-size: 0.75rem;
+            margin-bottom: 4px;
+        }
+        
+        .availability {
+            font-size: 0.65rem;
+            font-weight: 500;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .calendar-nav button {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .calendar-nav button:hover {
+            background: #e5e7eb;
+            transform: translateY(-1px);
+        }
+        
+        .calendar-nav button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: #f9fafb;
+        }
+        
+        /* Fix hero alignment issues */
+        .hero-content {
+            max-width: 100%;
+            overflow: hidden;
+        }
+        
+        .hero-title {
+            text-align: center;
+            line-height: 1.1;
+            word-wrap: break-word;
+        }
+        
+        /* Ensure proper form spacing on mobile */
+        .form-container {
+            padding-bottom: 6rem;
+        }
+        
+        /* Fix calendar responsiveness */
+        @media (max-width: 640px) {
+            .calendar-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+            
+            .calendar-nav {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+            
+            .calendar-nav span {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Header -->
+    <header class="sticky-header border-b border-gray-200">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <img src="images/loghi/foto-logo-andrea.png" alt="InsideAuto Logo" class="h-8 w-auto">
+                    <h1 class="text-xl font-bold">InsideAuto™</h1>
+                </a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#servizio" class="hover:text-black transition">Il Servizio</a>
+                    <a href="#processo" class="hover:text-black transition">Come Lavoriamo</a>
+                    <a href="#gallery" class="hover:text-black transition">Prima/Dopo</a>
+                    <a href="#calcolatore" class="hover:text-black transition">Calcolatore</a>
+                    <a href="#contatti" class="hover:text-black transition">Contatti</a>
+                </div>
+                <a href="tel:+393500036917" class="btn-primary px-6 py-2 rounded-lg font-medium">
+                    <i class="fas fa-phone mr-2"></i>Chiama Ora
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient py-16 lg:py-20">
+        <div class="container mx-auto px-4 text-center hero-content">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl lg:text-6xl font-bold mb-6 hero-title-mobile">
+                    <span class="text-green-500 font-extrabold">Pulizia COMPLETA</span><br>
+                    Interni Auto<br>
+                    a Treviso
+                </h1>
+                <div class="bg-white rounded-xl card-shadow p-6 lg:p-8 max-w-4xl mx-auto">
+                    <h2 class="text-xl lg:text-2xl font-bold mb-4 text-gray-800">
+                        <strong>Senti sempre quell'odore ogni volta che apri la portiera della tua auto...</strong>
+                    </h2>
+                    
+                    <p class="text-base lg:text-lg mb-6 text-gray-700">
+                        <strong>Quello stesso odore persistente</strong> che ti fa storcere il naso ogni mattina quando sali in auto. Le macchie sul sedile che hai provato mille volte a far sparire. <strong>La polvere</strong> che si accumula continuamente, nonostante tu pulisca e pulisca ancora.
+                    </p>
+
+                    <h3 class="text-lg lg:text-xl font-bold mb-4 text-gray-800">
+                        <strong>Sei stanco di:</strong>
+                    </h3>
+                    <ul class="text-sm lg:text-base space-y-3 mb-6 text-left max-w-3xl mx-auto">
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 text-lg">❌</span>
+                            <span><strong>Entrare in auto e sentire subito quel cattivo odore</strong> che ti mette di cattivo umore</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 text-lg">❌</span>
+                            <span><strong>Vedere quelle macchie ostinate sui sedili</strong> che rovinano l'aspetto del tuo veicolo</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 text-lg">❌</span>
+                            <span><strong>La polvere che torna dopo poche ore</strong>, rendendo l'abitacolo sempre polveroso</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 text-lg">❌</span>
+                            <span><strong>Gli sguardi imbarazzanti dei passeggeri</strong> quando salgono in macchina</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 text-lg">❌</span>
+                            <span><strong>Il disagio di non poter offrire</strong> un passaggio pulito e profumato</span>
+                        </li>
+                    </ul>
+
+                    <h3 class="text-lg lg:text-xl font-bold mb-4 text-gray-800">
+                        <strong>È ora di dire basta a questi problemi</strong>
+                    </h3>
+                    
+                    <div class="text-base lg:text-lg text-gray-700">
+                        <p class="mb-4">
+                            <strong>Immagina di aprire la portiera della tua auto</strong> e respirare immediatamente aria fresca e pulita. <strong>Sederti su sedili immacolati</strong> senza nemmeno una macchia. <strong>Guidare in un ambiente privo di polvere</strong> che ti fa sentire a casa anche in movimento.
+                        </p>
+
+                        <p class="text-lg font-semibold text-green-600">
+                            <strong>Questo non è un sogno</strong> - è la realtà che puoi ottenere oggi stesso.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Trust Indicators -->
+                <div class="flex flex-wrap justify-center gap-6 lg:gap-8 mb-10 mt-8">
+                    <div class="flex items-center">
+                        <i class="fas fa-medal text-black text-xl lg:text-2xl mr-2 lg:mr-3"></i>
+                        <span class="font-semibold text-sm lg:text-base">10+ anni esperienza</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-map-marker-alt text-black text-xl lg:text-2xl mr-2 lg:mr-3"></i>
+                        <span class="font-semibold text-sm lg:text-base">Treviso e Provincia</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-shield-alt text-black text-xl lg:text-2xl mr-2 lg:mr-3"></i>
+                        <span class="font-semibold text-sm lg:text-base">Garanzia Risultato</span>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+                    <a href="#calcolatore" class="btn-primary px-6 lg:px-8 py-3 lg:py-4 rounded-lg text-base lg:text-lg font-semibold pulse-animation">
+                        <i class="fas fa-calculator mr-2"></i>Calcolatore Trasformazione
+                    </a>
+                    <a href="#gallery" class="border-2 border-black px-6 lg:px-8 py-3 lg:py-4 rounded-lg text-base lg:text-lg font-semibold hover:bg-black hover:text-white transition">
+                        <i class="fas fa-images mr-2"></i>Guarda i Risultati
+                    </a>
+                </div>
+                
+                <div class="text-center">
+                    <a href="https://wa.me/393500036917?text=Ciao%20InsideAuto%21%20Sono%20interessato%20alla%20pulizia%20completa%20interni%20auto.%20Potreste%20darmi%20maggiori%20informazioni%3F" target="_blank" class="inline-flex items-center text-green-600 hover:text-green-700 font-semibold">
+                        <i class="fab fa-whatsapp mr-2 text-lg"></i>
+                        Contattaci su WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cosa Include nel Servizio -->
+    <section id="servizio" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">🔧 Cosa Include la Pulizia Completa</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Ogni dettaglio viene curato per restituirti un abitacolo come nuovo
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- Aspirazione Profonda -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-green-500 rounded-full p-2 flex-shrink-0">
+                            <i class="fas fa-check-circle text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">Aspirazione Profonda</h3>
+                            <p class="text-gray-600 text-sm">Rimozione completa di polvere, briciole e residui da ogni angolo dell'abitacolo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lavaggio Sedili -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-green-500 rounded-full p-2 flex-shrink-0">
+                            <i class="fas fa-check-circle text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">Lavaggio Sedili Professionale</h3>
+                            <p class="text-gray-600 text-sm">Pulizia profonda tessuto e pelle con prodotti specifici certificati</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plastiche e Pannelli -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-green-500 rounded-full p-2 flex-shrink-0">
+                            <i class="fas fa-check-circle text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">Pulizia Plastiche</h3>
+                            <p class="text-gray-600 text-sm">Sanificazione e protezione di cruscotto, portiere e tutti i pannelli</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Moquette e Tappetini -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-green-500 rounded-full p-2 flex-shrink-0">
+                            <i class="fas fa-check text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">Moquette e Tappetini</h3>
+                            <p class="text-gray-600 text-sm">Lavaggio profondo con macchine a vapore professionali</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vetri Interni -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-green-500 rounded-full p-2 flex-shrink-0">
+                            <i class="fas fa-check text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">Vetri Interni</h3>
+                            <p class="text-gray-600 text-sm">Pulizia cristalli senza aloni per massima visibilità</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sanificazione -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-green-500 rounded-full p-2 flex-shrink-0">
+                            <i class="fas fa-check text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">Sanificazione Finale</h3>
+                            <p class="text-gray-600 text-sm">Trattamento antibatterico e deodorante per un ambiente salubre</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calcolatore Trasformazione -->
+    <section id="calcolatore" class="py-16 form-container mobile-form-spacing">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                    <i class="fas fa-calculator mr-3"></i>Calcolatore Trasformazione Auto
+                </h2>
+                <p class="text-xl text-gray-600">Scopri l'investimento per trasformare la tua auto</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-xl card-shadow p-6 lg:p-8 calculator-card-mobile">
+                    <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+                        <!-- Form Calcolatore -->
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fas fa-exclamation-triangle mr-2 text-red-500"></i>Tipo di Problema
+                                </label>
+                                <select id="problemType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none form-field-mobile" onchange="calculateTransformation()">
+                                    <option value="">Seleziona il problema...</option>
+                                    <option value="pulizia-generale" data-price="50">Pulizia Generale</option>
+                                    <option value="macchie-cibo" data-price="60">Macchie di Cibo/Bevande</option>
+                                    <option value="pelo-animale" data-price="70">Pelo di Animale</option>
+                                    <option value="cattivi-odori" data-price="75">Cattivi Odori</option>
+                                    <option value="usura-intensa" data-price="80">Usura Intensa</option>
+                                    <option value="macchie-sangue" data-price="90">Rimozione Macchie di Sangue</option>
+                                    <option value="macchie-urina" data-price="95">Rimozione Macchie di Urina</option>
+                                    <option value="vomito" data-price="100">Rimozione Vomito</option>
+                                    <option value="odore-fumo" data-price="85">Eliminazione Odore Fumo</option>
+                                    <option value="muffa-umidita" data-price="105">Trattamento Muffa/Umidità</option>
+                                    <option value="trasformazione-totale" data-price="120">Pulizia Standard Completa</option>
+                                    <option value="altra-situazione" data-price="75">Altra Situazione</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fas fa-car mr-2 text-blue-500"></i>Tipo di Veicolo
+                                </label>
+                                <select id="vehicleType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none form-field-mobile" onchange="calculateTransformation()">
+                                    <option value="">Seleziona il veicolo...</option>
+                                    <optgroup label="Auto">
+                                        <option value="auto-piccola" data-multiplier="1.0">Auto Piccola (Panda, 500, Yaris)</option>
+                                        <option value="auto-media" data-multiplier="1.2">Auto Media (Golf, Focus, Giulietta)</option>
+                                        <option value="auto-grande" data-multiplier="1.4">Auto Grande (Passat, Mondeo, A6)</option>
+                                        <option value="suv-piccolo" data-multiplier="1.3">SUV Piccolo (Puma, T-Cross, CX-3)</option>
+                                        <option value="suv-grande" data-multiplier="1.6">SUV Grande (X5, Q7, ML)</option>
+                                        <option value="monovolume" data-multiplier="1.5">Monovolume (Zafira, Touran, Scenic)</option>
+                                    </optgroup>
+                                    <optgroup label="Furgoni">
+                                        <option value="fiorino" data-multiplier="1.3">Fiat Fiorino</option>
+                                        <option value="doblo" data-multiplier="1.4">Fiat Doblò</option>
+                                        <option value="ducato" data-multiplier="1.8">Fiat Ducato</option>
+                                        <option value="iveco-daily" data-multiplier="1.9">Iveco Daily</option>
+                                        <option value="mercedes-sprinter" data-multiplier="2.0">Mercedes Sprinter</option>
+                                        <option value="ford-transit" data-multiplier="1.8">Ford Transit</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fas fa-cogs mr-2 text-green-500"></i>Tipo di Trasformazione Necessaria
+                                </label>
+                                <select id="serviceType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none form-field-mobile" onchange="calculateTransformation()">
+                                    <option value="">Seleziona la situazione...</option>
+                                    <option value="singolo-problema" data-discount="0.6">Problema Localizzato (singola zona)</option>
+                                    <option value="pulizia-completa" data-discount="1.0">Pulizia Standard Completa</option>
+                                    <option value="deep-cleaning" data-discount="1.3">Deep Cleaning Intensivo</option>
+                                    <option value="restauro-completo" data-discount="1.6">Restauro Completo Interni</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fas fa-map-marker-alt mr-2 text-purple-500"></i>Da dove vieni?
+                                </label>
+                                <select id="customerLocation" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none form-field-mobile" onchange="calculateTransformation()">
+                                    <option value="">Seleziona la tua zona...</option>
+                                    
+                                    <optgroup label="Provincia di Treviso">
+                                        <option value="treviso">Treviso</option>
+                                        <option value="conegliano">Conegliano</option>
+                                        <option value="castelfranco">Castelfranco Veneto</option>
+                                        <option value="montebelluna">Montebelluna</option>
+                                        <option value="oderzo">Oderzo</option>
+                                        <option value="spresiano">Spresiano</option>
+                                        <option value="vittorio-veneto">Vittorio Veneto</option>
+                                    </optgroup>
+                                    
+                                    <optgroup label="Altre Province Veneto">
+                                        <option value="padova">Padova</option>
+                                        <option value="venezia">Venezia/Mestre</option>
+                                        <option value="vicenza">Vicenza</option>
+                                        <option value="verona">Verona</option>
+                                        <option value="rovigo">Rovigo</option>
+                                        <option value="belluno">Belluno</option>
+                                    </optgroup>
+                                    
+                                    <optgroup label="🚗 AUTO SOSTITUTIVA INCLUSA">
+                                        <option value="friuli">Friuli-Venezia Giulia</option>
+                                        <option value="emilia">Emilia-Romagna</option>
+                                        <option value="lombardia">Lombardia</option>
+                                        <option value="altro-italia">Altra Regione Italia</option>
+                                    </optgroup>
+                                    
+                                    <option value="estero">Estero</option>
+                                </select>
+                            </div>
+
+                            <div id="carReplacementOffer" class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4" style="display: none;">
+                                <div class="flex items-center">
+                                    <i class="fas fa-car text-blue-600 mr-3 text-xl"></i>
+                                    <div>
+                                        <h4 class="font-bold text-blue-800">🎁 INCLUSO PER TE!</h4>
+                                        <p class="text-blue-700 text-sm">
+                                            Vieni da lontano per il nostro servizio? 
+                                            <strong>Auto sostitutiva GRATUITA inclusa!</strong><br>
+                                            <span class="text-xs">Lasci la tua auto da noi e sei libero di muoverti</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fas fa-calendar mr-2 text-green-500"></i>Scegli il Giorno per la Trasformazione
+                                </label>
+                                
+                                <div class="calendar-nav">
+                                    <button type="button" id="prevWeekBtn" onclick="navigateWeek(-1)">
+                                        <i class="fas fa-chevron-left mr-1"></i> Precedente
+                                    </button>
+                                    <span id="weekDisplay" class="font-semibold text-gray-700">Settimana 7-11 Luglio 2025</span>
+                                    <button type="button" id="nextWeekBtn" onclick="navigateWeek(1)">
+                                        Successiva <i class="fas fa-chevron-right ml-1"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="calendar-grid" id="calendarGrid">
+                                    <!-- Calendar will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Risultato Trasformazione -->
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">
+                                <i class="fas fa-gem mr-2"></i>Valore della Trasformazione
+                            </h3>
+                            
+                            <div id="transformationSummary" class="space-y-4 mb-6">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Seleziona i parametri per il calcolo</span>
+                                </div>
+                            </div>
+
+                            <div class="border-t pt-4">
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="text-xl font-bold">Investimento per la Trasformazione:</span>
+                                    <span id="totalInvestment" class="text-3xl font-bold text-green-600">€ --</span>
+                                </div>
+                                
+                                <div class="bg-green-100 border border-green-300 rounded-lg p-4 mb-4">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-shield-alt text-green-600 mr-2"></i>
+                                        <span class="text-sm text-green-800 font-semibold">Garanzia Soddisfatti o Rimborsati</span>
+                                    </div>
+                                    <p class="text-xs text-green-700 mt-1">Se non ottieni il risultato promesso, non investi nulla!</p>
+                                </div>
+
+                                <button id="requestTransformation" class="w-full btn-primary py-3 rounded-lg font-semibold text-lg pulse-animation" onclick="scrollToContactForm()" disabled>
+                                    <i class="fas fa-magic mr-2"></i>✨ Trasforma la Mia Auto
+                                </button>
+
+                                <div class="text-center mt-4">
+                                    <p class="text-sm text-gray-600 mb-2">Oppure contattaci direttamente:</p>
+                                    <a href="https://wa.me/393500036917" class="whatsapp-btn-simple">
+                                    <i class="fab fa-whatsapp"></i> Invia su WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prima/Dopo Gallery -->
+    <section id="gallery" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">📸 Trasformazioni Realizzate</h2>
+                <p class="text-xl text-gray-600">Casi reali di pulizia completa interni - Prima e Dopo</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Caso 1: Auto Familiare Completa -->
+                <div class="bg-white rounded-lg border border-gray-200 card-shadow overflow-hidden">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-car text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-gray-500 text-sm">Prima: Auto familiare molto sporca</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">Auto Familiare - Pulizia Completa</h3>
+                        <p class="text-gray-600 text-sm mb-3">Monovolume con 5 anni di utilizzo intensivo. Sedili macchiati, moquette rovinata, plastiche sbiadite.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded">Caso Complesso</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Come Nuova</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Caso 2: SUV Premium -->
+                <div class="bg-white rounded-lg border border-gray-200 card-shadow overflow-hidden">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-car-side text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-gray-500 text-sm">Prima: SUV con interni in pelle</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">SUV Premium - Interni Pelle</h3>
+                        <p class="text-gray-600 text-sm mb-3">BMW X5 con sedili in pelle macchiati e cruscotto opacizzato. Trasformazione total premium.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Pelle Premium</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Showroom Quality</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Caso 3: Furgone Commerciale -->
+                <div class="bg-white rounded-lg border border-gray-200 card-shadow overflow-hidden">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-truck text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-gray-500 text-sm">Prima: Furgone lavoro</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">Furgone Ducato - Uso Intensivo</h3>
+                        <p class="text-gray-600 text-sm mb-3">Fiat Ducato da lavoro con sedili consumati e abitacolo molto sporco. Cliente da Padova.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Uso Professionale</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Rinnovato</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <a href="https://wa.me/393500036917?text=Ciao%20InsideAuto%21%20Vorrei%20vedere%20più%20esempi%20di%20trasformazioni%20realizzate%20per%20la%20pulizia%20completa%20interni.%20Potete%20inviarmi%20altre%20foto%3F" target="_blank" class="btn-primary px-8 py-3 rounded-lg font-semibold">
+                    <i class="fas fa-images mr-2"></i>Vedi Altri Casi Risolti
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processo Step-by-Step -->
+    <section id="processo" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">⚙️ Come Lavoriamo</h2>
+                <p class="text-xl text-gray-600">Il nostro processo professionale in 6 fasi</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Fase 1 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">1</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Sopralluogo e Valutazione</h3>
+                            <p class="text-gray-600">Analizziamo le condizioni attuali e identifichiamo le problematiche specifiche da risolvere.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fase 2 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">2</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Aspirazione Profonda</h3>
+                            <p class="text-gray-600">Rimozione completa di polvere, residui e detriti con aspiratori professionali ad alta potenza.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fase 3 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">3</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Trattamento Sedili</h3>
+                            <p class="text-gray-600">Pulizia mirata di tessuto o pelle con prodotti specifici e tecniche appropriate al materiale.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fase 4 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">4</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Pulizia Plastiche</h3>
+                            <p class="text-gray-600">Sanificazione di cruscotto, portiere e pannelli con prodotti specifici per interni auto.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fase 5 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">5</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Moquette e Tappetini</h3>
+                            <p class="text-gray-600">Lavaggio con vapore saturo e asciugatura professionale per eliminare macchie e odori.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fase 6 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">6</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Controllo Qualità</h3>
+                            <p class="text-gray-600">Ispezione finale e rifinitura di ogni dettaglio per garantire il risultato perfetto.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recensioni Clienti -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">⭐⭐⭐⭐⭐ Cosa Dicono i Nostri Clienti</h2>
+                <p class="text-xl text-gray-600">Testimonianze reali sulla pulizia completa interni</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Recensione 1 -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400 text-lg">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-sm text-gray-600">5/5</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Auto familiare con 3 bambini piccoli. Era diventata inutilizzabile per lo sporco. Andrea ha fatto miracoli - sembra uscita dal concessionario!"</p>
+                    <div class="font-semibold">Francesca R. - Treviso</div>
+                    <div class="text-sm text-gray-500">Pulizia completa Volkswagen Touran</div>
+                </div>
+
+                <!-- Recensione 2 -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400 text-lg">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-sm text-gray-600">5/5</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">"BMW con interni in pelle rovinati. Servizio professionale eccezionale. Sono venuto da Padova e ne è valsa la pena. Auto sostitutiva inclusa!"</p>
+                    <div class="font-semibold">Marco T. - Padova</div>
+                    <div class="text-sm text-gray-500">Pulizia completa BMW Serie 5</div>
+                </div>
+
+                <!-- Recensione 3 -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 card-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400 text-lg">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-sm text-gray-600">5/5</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Furgone da lavoro completamente trasformato. Non credevo fosse possibile ottenere questo risultato. Professionalità e qualità top!"</p>
+                    <div class="font-semibold">Giuseppe L. - Conegliano</div>
+                    <div class="text-sm text-gray-500">Pulizia completa Fiat Ducato</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">❓ Domande Frequenti</h2>
+                <p class="text-xl text-gray-600">Tutto quello che devi sapere sulla pulizia completa interni</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-6">
+                <!-- FAQ 1 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">Quanto tempo richiede la pulizia completa?</h3>
+                    <p class="text-gray-600">Il tempo varia da 3 a 6 ore in base alle condizioni dell'auto. Per veicoli molto sporchi o grandi (furgoni) può richiedere un'intera giornata.</p>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">L'auto sostitutiva è davvero gratuita?</h3>
+                    <p class="text-gray-600">Sì, per clienti che vengono da fuori Veneto offriamo gratuitamente un'auto sostitutiva durante il servizio. È il nostro modo di ringraziare chi ci sceglie da lontano.</p>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">Che garanzia offrite sul risultato?</h3>
+                    <p class="text-gray-600">Garanzia soddisfatti o rimborsati al 100%. Se non ottieni il risultato promesso, non paghi nulla. È la nostra sicurezza nella qualità del servizio.</p>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">Quali prodotti utilizzate?</h3>
+                    <p class="text-gray-600">Solo prodotti professionali certificati specifici per automotive. Prodotti diversi per tessuto, pelle, plastiche e superfici delicate.</p>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">Posso prenotare anche per furgoni commerciali?</h3>
+                    <p class="text-gray-600">Assolutamente sì. Trattiamo ogni tipo di veicolo commerciale: Fiorino, Doblò, Ducato, Sprinter, Daily. Prezzi adeguati alle dimensioni.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Contatti -->
+    <section id="contatti" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-4">🚗 Richiedi la Tua Trasformazione</h2>
+                    <p class="text-xl text-gray-600">Compila il form e ti ricontatteremo entro 2 ore</p>
+                </div>
+
+                <div class="bg-white rounded-xl card-shadow p-6 lg:p-8">
+                    <form id="contactForm" action="https://formspree.io/f/xdkzvadp" method="POST" class="space-y-6">
+    <!-- Campi nascosti Formspree -->
+    <input type="hidden" name="_subject" value="Nuova Richiesta Trasformazione Auto - InsideAuto">
+    <input type="hidden" name="_next" value="https://insideauto.it/">
+    <input type="hidden" name="_language" value="it">
+    
+    <div class="grid md:grid-cols-2 gap-4">
+        <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">Nome *</label>
+            <input type="text" name="nome" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Il tuo nome">
+        </div>
+        <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">Telefono *</label>
+            <input type="tel" name="telefono" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Il tuo telefono">
+        </div>
+    </div>
+
+    <div>
+    <label class="block text-sm font-semibold text-gray-700 mb-2">Email *</label>
+    <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="La tua email">
+</div>
+
+    <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-2">Dettagli della Trasformazione</label>
+        <textarea name="dettagli_trasformazione" id="requestDetails" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Dettagli automaticamente compilati dal calcolatore..."></textarea>
+    </div>
+
+    <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-2">Note aggiuntive (opzionale)</label>
+        <textarea name="note_aggiuntive" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black" placeholder="Aggiungi altri dettagli se necessario..."></textarea>
+    </div>
+
+    <button type="submit" class="w-full btn-primary py-3 rounded-lg font-semibold text-lg">
+        <i class="fas fa-paper-plane mr-2"></i>Richiedi Trasformazione
+    </button>
+
+    <div class="text-center mt-6">
+        <p class="text-sm text-gray-600 mb-3">Oppure contattaci direttamente:</p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="tel:+393500036917" class="btn-primary px-6 py-3 rounded-lg font-semibold inline-flex items-center justify-center">
+                <i class="fas fa-phone mr-2"></i>350 003 6917
+            </a>
+            <a href="https://wa.me/393500036917" target="_blank" id="whatsappContactBtn" class="btn-whatsapp px-6 py-3 rounded-lg font-semibold inline-flex items-center justify-center">
+                <i class="fab fa-whatsapp mr-2"></i>Invia su WhatsApp
+            </a>
+        </div>
+    </div>
+</form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Logo e Descrizione -->
+                <div>
+                    <a href="index.html" class="flex items-center space-x-2 mb-4">
+                        <img src="images/loghi/foto-logo-andrea.png" alt="InsideAuto Logo" class="h-8 w-auto">
+                        <h3 class="text-xl font-bold">InsideAuto™</h3>
+                    </a>
+                    <p class="text-gray-400 mb-4">Specializzati SOLO in pulizia interni auto dal 2014. Trasformiamo i casi più difficili a Treviso e in tutto il Veneto.</p>
+                    <div class="flex space-x-4">
+                        <i class="fab fa-facebook text-xl text-gray-400 hover:text-white cursor-pointer"></i>
+                        <i class="fab fa-instagram text-xl text-gray-400 hover:text-white cursor-pointer"></i>
+                        <i class="fab fa-youtube text-xl text-gray-400 hover:text-white cursor-pointer"></i>
+                    </div>
+                </div>
+                
+                <!-- Servizi -->
+                <div>
+                    <h4 class="font-bold mb-4 text-white">Servizi Specializzati</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Pulizia Completa Interni</a></li>
+                        <li><a href="#" class="hover:text-white">Car Detailing Premium</a></li>
+                        <li><a href="#" class="hover:text-white">Sanificazione Ozono</a></li>
+                        <li><a href="#" class="hover:text-white">Rimozione Macchie Impossibili</a></li>
+                        <li><a href="#" class="hover:text-white">Auto Sostitutiva</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Zone -->
+                <div>
+                    <h4 class="font-bold mb-4 text-white">Zone Servite</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Treviso Centro</li>
+                        <li>Conegliano</li>
+                        <li>Castelfranco Veneto</li>
+                        <li>Montebelluna</li>
+                        <li>Padova</li>
+                        <li>Tutto il Veneto</li>
+                    </ul>
+                </div>
+                
+                <!-- Contatti -->
+                <div>
+                    <h4 class="font-bold mb-4 text-white">Contatti</h4>
+                    <div class="space-y-3 text-gray-400">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+393500036917" class="hover:text-white">350 003 6917</a>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fab fa-whatsapp"></i>
+                            <a href="https://wa.me/393500036917" target="_blank" class="hover:text-white">WhatsApp</a>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-envelope"></i>
+                            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="224b4c444d624b4c514b46474357564d0c4b56">[email&#160;protected]</a></span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Treviso, Veneto</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-clock"></i>
+                            <span>Lun-Sab 8:00-19:00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 InsideAuto™ - Specialisti in Pulizia Interni Auto | P.IVA: IT12345678901 | 
+                <a href="#" class="hover:text-white">Privacy Policy</a> | 
+                <a href="#" class="hover:text-white">Cookie Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button - Mobile Optimized -->
+    <a href="https://wa.me/393500036917?text=Ciao%20InsideAuto%21%20Sono%20interessato%20alla%20pulizia%20completa%20interni%20auto.%20Potreste%20darmi%20maggiori%20informazioni%3F" target="_blank" class="whatsapp-float whatsapp-mobile-adjust">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Calendar functionality - Complete Corrected Version
+let currentWeekOffset = 0;
+let selectedDate = null;
+let calculatedData = {};
+let initialMonday = null; // Store the Monday of the week when page was loaded
+
+// Get current week's Monday
+function getCurrentMonday() {
+    const today = new Date();
+    const day = today.getDay();
+    const diff = today.getDate() - day + (day === 0 ? -6 : 1); // adjust when day is sunday
+    const monday = new Date(today.setDate(diff));
+    return monday;
+}
+
+// Generate calendar dates starting from current week
+function generateCalendarWeek(weekOffset = 0) {
+    const baseMonday = getCurrentMonday();
+    baseMonday.setDate(baseMonday.getDate() + (weekOffset * 7));
+    
+    const weekDates = [];
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Reset time for comparison
+    
+    for (let i = 0; i < 5; i++) { // Monday to Friday
+        const date = new Date(baseMonday);
+        date.setDate(baseMonday.getDate() + i);
+        
+        // Don't allow past dates (except today)
+        const isToday = date.getTime() === today.getTime();
+        const isPast = date < today && !isToday;
+        
+        // All future dates (including today) are available
+        const availability = !isPast;
+        
+        weekDates.push({
+            date: date,
+            dayName: date.toLocaleDateString('it-IT', { weekday: 'short' }).toUpperCase(),
+            dayNumber: date.getDate(),
+            month: date.toLocaleDateString('it-IT', { month: 'short' }).toUpperCase(),
+            available: availability,
+            isPast: isPast,
+            isToday: isToday,
+            fullDate: date.toLocaleDateString('it-IT', { 
+                weekday: 'long', 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric' 
+            })
+        });
+    }
+    
+    return weekDates;
+}
+
+// Display calendar week
+function displayCalendarWeek(weekOffset = 0) {
+    const weekDates = generateCalendarWeek(weekOffset);
+    const calendarGrid = document.getElementById('calendarGrid');
+    
+    if (!calendarGrid) return;
+    
+    // Update week display
+    const weekDisplay = document.getElementById('weekDisplay');
+    if (weekDisplay) {
+        const startDate = weekDates[0].date;
+        const endDate = weekDates[4].date;
+        const startMonth = startDate.toLocaleDateString('it-IT', { month: 'short' });
+        const endMonth = endDate.toLocaleDateString('it-IT', { month: 'short' });
+        
+        if (startMonth === endMonth) {
+            weekDisplay.textContent = `Settimana ${startDate.getDate()}-${endDate.getDate()} ${startMonth} ${startDate.getFullYear()}`;
+        } else {
+            weekDisplay.textContent = `Settimana ${startDate.getDate()} ${startMonth} - ${endDate.getDate()} ${endMonth} ${startDate.getFullYear()}`;
+        }
+    }
+    
+    // Clear previous calendar
+    calendarGrid.innerHTML = '';
+    
+    // Create calendar cells
+    weekDates.forEach((dateInfo, index) => {
+        const dateCell = document.createElement('div');
+        dateCell.className = `date-option ${dateInfo.available ? 'available' : 'unavailable'} ${dateInfo.isToday ? 'today' : ''}`;
+        
+        if (selectedDate && selectedDate.getTime() === dateInfo.date.getTime()) {
+            dateCell.classList.add('selected');
+        }
+        
+        if (!dateInfo.available) {
+            dateCell.classList.add('unavailable');
+        }
+        
+        dateCell.innerHTML = `
+            <div class="day-name">${dateInfo.dayName}</div>
+            <div class="date-number">${dateInfo.dayNumber}</div>
+            <div class="month">${dateInfo.month}</div>
+            <div class="availability">
+                ${dateInfo.available ? 
+                    (dateInfo.isToday ? 'Oggi' : 'Libero') : 
+                    'Occupato'
+                }
+            </div>
+        `;
+        
+        if (dateInfo.available) {
+            dateCell.onclick = () => selectDate(dateInfo.date);
+        }
+        
+        calendarGrid.appendChild(dateCell);
+    });
+    
+    // Update navigation buttons
+    const prevBtn = document.getElementById('prevWeekBtn');
+    const nextBtn = document.getElementById('nextWeekBtn');
+    
+    if (prevBtn) {
+        prevBtn.disabled = currentWeekOffset <= -8; // Allow going back 8 weeks
+    }
+    
+    if (nextBtn) {
+        nextBtn.disabled = currentWeekOffset >= 12; // Don't allow going forward more than 12 weeks
+    }
+}
+
+// Select date function
+function selectDate(date) {
+    selectedDate = date;
+    displayCalendarWeek(currentWeekOffset); // Refresh calendar to show selection
+    calculateTransformation(); // Recalculate transformation with selected date
+}
+
+// Navigate weeks
+function navigateWeek(direction) {
+    currentWeekOffset += direction;
+    displayCalendarWeek(currentWeekOffset);
+}
+
+// Transformation calculator
+function calculateTransformation() {
+    const problemSelect = document.getElementById('problemType');
+    const vehicleSelect = document.getElementById('vehicleType');
+    const serviceSelect = document.getElementById('serviceType');
+    const locationSelect = document.getElementById('customerLocation');
+    
+    if (!problemSelect || !vehicleSelect || !serviceSelect || !locationSelect) {
+        return;
+    }
+    
+    const problemOption = problemSelect.options[problemSelect.selectedIndex];
+    const vehicleOption = vehicleSelect.options[vehicleSelect.selectedIndex];
+    const serviceOption = serviceSelect.options[serviceSelect.selectedIndex];
+    const locationOption = locationSelect.options[locationSelect.selectedIndex];
+    
+    if (!problemOption || !vehicleOption || !serviceOption || !locationOption) {
+        updateTransformationSummary(null);
+        return;
+    }
+    
+    const basePrice = parseFloat(problemOption.dataset.price) || 0;
+    const vehicleMultiplier = parseFloat(vehicleOption.dataset.multiplier) || 1;
+    const serviceMultiplier = parseFloat(serviceOption.dataset.discount) || 1;
+    
+    // Calculate base transformation value
+    let totalValue = basePrice * vehicleMultiplier * serviceMultiplier;
+    
+    // Apply location adjustments
+    const locationValue = locationOption.value;
+    let locationAdjustment = 0;
+    
+    if (locationValue === 'friuli' || locationValue === 'emilia' || locationValue === 'lombardia' || locationValue === 'altro-italia') {
+        // Free car replacement included - no extra charge
+        locationAdjustment = 0;
+    } else if (locationValue === 'estero') {
+        // Foreign clients - premium service
+        locationAdjustment = totalValue * 0.2; // 20% extra
+        totalValue += locationAdjustment;
+    } else {
+        // Regular Veneto clients
+        locationAdjustment = -totalValue * 0.1; // 10% local discount
+        totalValue += locationAdjustment;
+    }
+    
+    // Format and display results
+    const formattedValue = `€${totalValue.toFixed(0)}`;
+    
+    // Update summary display
+    updateTransformationSummary({
+        problem: problemOption.text,
+        vehicle: vehicleOption.text,
+        service: serviceOption.text,
+        location: locationOption.text,
+        date: selectedDate ? selectedDate.toLocaleDateString('it-IT', { 
+            weekday: 'long', 
+            day: 'numeric', 
+            month: 'long',
+            year: 'numeric'
+        }) : 'Seleziona data',
+        basePrice: basePrice,
+        vehicleMultiplier: vehicleMultiplier,
+        serviceMultiplier: serviceMultiplier,
+        locationAdjustment: locationAdjustment,
+        total: totalValue,
+        formattedTotal: formattedValue
+    });
+    
+    // Show car replacement offer for distant clients
+    const carReplacementOffer = document.getElementById('carReplacementOffer');
+    if (carReplacementOffer) {
+        if (locationValue === 'friuli' || locationValue === 'emilia' || locationValue === 'lombardia' || locationValue === 'altro-italia') {
+            carReplacementOffer.style.display = 'block';
+        } else {
+            carReplacementOffer.style.display = 'none';
+        }
+    }
+    
+    // Enable/disable request button
+    const requestButton = document.getElementById('requestTransformation');
+    const canRequest = problemOption.value && vehicleOption.value && serviceOption.value && locationOption.value && selectedDate;
+    
+    if (requestButton) {
+        requestButton.disabled = !canRequest;
+    }
+    
+    // Store calculated data for form submission
+    calculatedData = {
+        problemType: problemOption.value,
+        vehicleType: vehicleOption.value,
+        serviceType: serviceOption.value,
+        customerLocation: locationOption.value,
+        selectedDate: selectedDate ? selectedDate.toISOString() : null,
+        totalPrice: totalValue
+    };
+}
+
+// Update transformation summary display
+function updateTransformationSummary(data) {
+    const summaryElement = document.getElementById('transformationSummary');
+    const totalElement = document.getElementById('totalInvestment');
+    
+    if (!summaryElement || !totalElement) {
+        return;
+    }
+    
+    if (!data) {
+        summaryElement.innerHTML = `
+            <div class="flex justify-between items-center">
+                <span class="text-gray-600">Seleziona i parametri per il calcolo</span>
+            </div>
+        `;
+        totalElement.textContent = '€ --';
+        return;
+    }
+    
+    summaryElement.innerHTML = `
+        <div class="space-y-3">
+            <div class="flex justify-between items-start">
+                <span class="text-sm text-gray-600">Problema:</span>
+                <span class="text-sm font-medium text-right">${data.problem}</span>
+            </div>
+            <div class="flex justify-between items-start">
+                <span class="text-sm text-gray-600">Veicolo:</span>
+                <span class="text-sm font-medium text-right">${data.vehicle}</span>
+            </div>
+            <div class="flex justify-between items-start">
+                <span class="text-sm text-gray-600">Servizio:</span>
+                <span class="text-sm font-medium text-right">${data.service}</span>
+            </div>
+            <div class="flex justify-between items-start">
+                <span class="text-sm text-gray-600">Zona:</span>
+                <span class="text-sm font-medium text-right">${data.location}</span>
+            </div>
+            <div class="flex justify-between items-start">
+                <span class="text-sm text-gray-600">Data:</span>
+                <span class="text-sm font-medium text-right">${data.date}</span>
+            </div>
+            <div class="border-t pt-2 mt-3">
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold">Totale:</span>
+                    <span class="text-lg font-bold text-green-600">${data.formattedTotal}</span>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    totalElement.textContent = data.formattedTotal;
+}
+
+// Scroll to contact form
+function scrollToContactForm() {
+    const contactSection = document.getElementById('contatti');
+    const detailsField = document.getElementById('requestDetails');
+    
+    if (detailsField && calculatedData) {
+        const detailsText = `
+        Dettagli Richiesta Trasformazione:
+        
+        Tipo Problema: ${document.getElementById('problemType').selectedOptions[0]?.text || 'Non selezionato'}
+        Tipo Veicolo: ${document.getElementById('vehicleType').selectedOptions[0]?.text || 'Non selezionato'}
+        Tipo Servizio: ${document.getElementById('serviceType').selectedOptions[0]?.text || 'Non selezionato'}
+        Zona Cliente: ${document.getElementById('customerLocation').selectedOptions[0]?.text || 'Non selezionato'}
+        Data Selezionata: ${selectedDate ? selectedDate.toLocaleDateString('it-IT', { 
+            weekday: 'long', 
+            day: 'numeric', 
+            month: 'long',
+            year: 'numeric'
+        }) : 'Non selezionata'}
+        
+        Prezzo Stimato: €${calculatedData.totalPrice?.toFixed(0) || 'Non calcolato'}
+        `;
+        detailsField.value = detailsText;
+    }
+    
+    if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+// Initialize calendar and calculator when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize calendar
+    if (document.getElementById('calendarGrid')) {
+        displayCalendarWeek(0);
+        initialMonday = getCurrentMonday();
+    }
+    
+    // Add event listeners for select elements
+    const selects = ['problemType', 'vehicleType', 'serviceType', 'customerLocation'];
+    selects.forEach(selectId => {
+        const selectElement = document.getElementById(selectId);
+        if (selectElement) {
+            selectElement.addEventListener('change', calculateTransformation);
+        }
+    });
+    
+    // Initial calculation
+    calculateTransformation();
+});
+
+// WhatsApp integration for contact button
+document.addEventListener('DOMContentLoaded', function() {
+    const whatsappBtn = document.getElementById('whatsappContactBtn');
+    if (whatsappBtn && calculatedData) {
+        const message = encodeURIComponent(
+            `Ciao InsideAuto! Sono interessato alla pulizia completa interni auto.\n\n` +
+            `Dettagli della mia richiesta:\n` +
+            `${document.getElementById('problemType').selectedOptions[0]?.text || 'Problema: Non specificato'}\n` +
+            `${document.getElementById('vehicleType').selectedOptions[0]?.text || 'Veicolo: Non specificato'}\n` +
+            `${document.getElementById('serviceType').selectedOptions[0]?.text || 'Servizio: Non specificato'}\n` +
+            `${document.getElementById('customerLocation').selectedOptions[0]?.text || 'Zona: Non specificata'}\n` +
+            `${calculatedData.totalPrice ? `Prezzo stimato: €${calculatedData.totalPrice.toFixed(0)}` : ''}`
+        );
+        whatsappBtn.href = `https://wa.me/393500036917?text=${message}`;
+    }
+});
+
+// Contact form handling
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(contactForm);
+            
+            // Add calculated data if available
+            if (calculatedData && Object.keys(calculatedData).length > 0) {
+                formData.append('calcolatore_dati', JSON.stringify(calculatedData));
+            }
+            
+            // Submit to Formspree
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Richiesta inviata con successo! Ti contatteremo entro 2 ore.');
+                    contactForm.reset();
+                    calculatedData = {};
+                    updateTransformationSummary(null);
+                } else {
+                    alert('Errore nell\'invio della richiesta. Riprova o contattaci direttamente.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Errore nell\'invio della richiesta. Riprova o contattaci direttamente.');
+            });
+        });
+    }
+});
+
+// Smooth scrolling for navigation links
+document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
 });
     </script>
 </body>
