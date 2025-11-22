@@ -291,6 +291,95 @@
             line-height: 1.1;
             word-wrap: break-word;
         }
+
+        /* Video Slider Styles */
+        .video-slider-container {
+            max-width: 400px;
+            margin: 3rem auto;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .video-slider {
+            position: relative;
+            width: 100%;
+            height: 700px; /* 9:16 ratio = 400px * (16/9) = 711px approx */
+            overflow: hidden;
+        }
+
+        .video-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-slide.active {
+            opacity: 1;
+        }
+
+        .video-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .video-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .video-overlay p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .slider-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-btn.active {
+            background: #007bff;
+            transform: scale(1.2);
+        }
+
+        .slider-btn:hover {
+            background: #007bff;
+        }
         
         /* Ensure proper form spacing on mobile */
         .form-container {
