@@ -210,6 +210,8 @@
             border-color: #22c55e;
             background: #22c55e;
             color: white;
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3);
+            font-weight: 700;
         }
         
         .date-option.unavailable {
@@ -546,18 +548,18 @@
                                 </label>
                                 <select id="problemType" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none form-field-mobile" onchange="calculateTransformation()">
                                     <option value="">Seleziona il problema...</option>
-                                    <option value="pulizia-generale" data-price="50">Pulizia Generale</option>
+                                    <option value="pulizia-generale" data-price="120">Pulizia Generale</option>
                                     <option value="macchie-cibo" data-price="60">Macchie di Cibo/Bevande</option>
                                     <option value="pelo-animale" data-price="70">Pelo di Animale</option>
                                     <option value="cattivi-odori" data-price="75">Cattivi Odori</option>
-                                    <option value="usura-intensa" data-price="80">Usura Intensa</option>
+                                    <option value="usura-intensa" data-price="150">Usura Intensa</option>
                                     <option value="macchie-sangue" data-price="90">Rimozione Macchie di Sangue</option>
                                     <option value="macchie-urina" data-price="95">Rimozione Macchie di Urina</option>
                                     <option value="vomito" data-price="100">Rimozione Vomito</option>
                                     <option value="odore-fumo" data-price="85">Eliminazione Odore Fumo</option>
                                     <option value="muffa-umidita" data-price="105">Trattamento Muffa/Umidità</option>
-                                    <option value="trasformazione-totale" data-price="120">Pulizia Standard Completa</option>
-                                    <option value="altra-situazione" data-price="75">Altra Situazione</option>
+                                    <option value="trasformazione-totale" data-price="180">Pulizia Standard Completa</option>
+                                    <option value="altra-situazione" data-price="130">Altra Situazione</option>
                                 </select>
                             </div>
 
@@ -1080,7 +1082,7 @@
                         </div>
                         <div class="flex items-center space-x-2">
                             <i class="fas fa-envelope"></i>
-                            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="224b4c444d624b4c514b46474357564d0c4b56">[email&#160;protected]</a></span>
+                            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3d54535b527d54534e5459585c484952135449">[email&#160;protected]</a></span>
                         </div>
                         <div class="flex items-center space-x-2">
                             <i class="fas fa-map-marker-alt"></i>
@@ -1124,28 +1126,34 @@ function getCurrentMonday() {
     return monday;
 }
 
+// Normalize date to remove time component for comparison
+function normalizeDate(date) {
+    const normalized = new Date(date);
+    normalized.setHours(0, 0, 0, 0);
+    return normalized;
+}
+
 // Generate calendar dates starting from current week
 function generateCalendarWeek(weekOffset = 0) {
     const baseMonday = getCurrentMonday();
     baseMonday.setDate(baseMonday.getDate() + (weekOffset * 7));
     
     const weekDates = [];
-    const today = new Date();
-    today.setHours(0, 0, 0, 0); // Reset time for comparison
+    const today = normalizeDate(new Date());
     
     for (let i = 0; i < 5; i++) { // Monday to Friday
-        const date = new Date(baseMonday);
+        const date = normalizeDate(new Date(baseMonday));
         date.setDate(baseMonday.getDate() + i);
         
         // Don't allow past dates (except today)
-        const isToday = date.getTime() === today.getTime();
+        const isToday = normalizeDate(date).getTime() === today.getTime();
         const isPast = date < today && !isToday;
         
         // All future dates (including today) are available
         const availability = !isPast;
         
         weekDates.push({
-            date: date,
+            date: normalizeDate(date),
             dayName: date.toLocaleDateString('it-IT', { weekday: 'short' }).toUpperCase(),
             dayNumber: date.getDate(),
             month: date.toLocaleDateString('it-IT', { month: 'short' }).toUpperCase(),
@@ -1236,7 +1244,7 @@ function displayCalendarWeek(weekOffset = 0) {
 
 // Select date function
 function selectDate(date) {
-    selectedDate = date;
+    selectedDate = normalizeDate(date); // Normalize date to ensure proper comparison
     displayCalendarWeek(currentWeekOffset); // Refresh calendar to show selection
     calculateTransformation(); // Recalculate transformation with selected date
 }
@@ -1521,3 +1529,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
     </script>
 </body>
+</html>
